@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partners & Tools – Synomic</title>
+  <meta name="description" content="Synomic werkt met toonaangevende tools op het gebied van AI, automatisering en finance: Claude AI, n8n en Moneybird." />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .partner-hero {
+      padding: 130px 6vw 72px;
+      background: linear-gradient(135deg, #0e2136 0%, #1B3A5C 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .partner-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; right: 0;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(43,196,196,.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Partner grid - Novictus inspired */
+    .partner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .partner-card {
+      background: #fff;
+      border: 1px solid #e8edf3;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .partner-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(27,58,92,.1);
+    }
+
+    .partner-card-header {
+      padding: 36px 36px 28px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 1px solid #f0f4f8;
+    }
+
+    .partner-logo-box {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .partner-logo-box svg,
+    .partner-logo-box img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .partner-card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 3px;
+    }
+
+    .partner-card-cat {
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--cyan);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .partner-card-body {
+      padding: 28px 36px 32px;
+    }
+
+    .partner-card-body p {
+      font-size: .95rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .partner-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .partner-tag {
+      padding: 4px 12px;
+      background: #f0f7ff;
+      border-radius: 40px;
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: .04em;
+    }
+
+    .partner-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--navy);
+      font-family: 'Syne', sans-serif;
+      letter-spacing: .03em;
+      transition: color .2s, gap .2s;
+    }
+
+    .partner-link:hover {
+      color: var(--cyan);
+      gap: 12px;
+    }
+
+    .partner-link-arrow {
+      font-size: 1rem;
+      transition: transform .2s;
+    }
+
+    .partner-link:hover .partner-link-arrow {
+      transform: translateX(3px);
+    }
+
+    /* Strip versie voor homepage/diensten */
+    .partners-strip {
+      padding: 56px 6vw;
+      background: #f8fafc;
+      border-top: 1px solid #e8edf3;
+      border-bottom: 1px solid #e8edf3;
+    }
+
+    .partners-strip-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .partners-strip-label {
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .partners-strip-more {
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--navy);
+      font-family: 'Syne', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color .2s;
+    }
+
+    .partners-strip-more:hover { color: var(--cyan); }
+
+    .partners-logos-row {
+      display: flex;
+      align-items: stretch;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .partner-pill {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #fff;
+      border: 1px solid #e8edf3;
+      border-radius: 14px;
+      padding: 18px 24px;
+      flex: 1;
+      min-width: 200px;
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+      text-decoration: none;
+    }
+
+    .partner-pill:hover {
+      border-color: var(--cyan);
+      box-shadow: 0 4px 20px rgba(43,196,196,.12);
+      transform: translateY(-2px);
+    }
+
+    .partner-pill-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .partner-pill-info strong {
+      display: block;
+      font-family: 'Syne', sans-serif;
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 2px;
+    }
+
+    .partner-pill-info span {
+      font-size: .78rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="nav-logo" href="index.html">
+    <img src="logo.png" alt="Synomic" />
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Menu openen">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="over-ons.html">Over ons</a></li>
+    <li><a href="diensten.html">Diensten</a></li>
+    <li><a href="projecten.html">Projecten</a></li>
+    <li><a href="partners.html" class="active">Partners</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HEADER -->
+<div class="partner-hero">
+  <div class="breadcrumb"><a href="index.html">Home</a><span>/</span>Partners</div>
+  <h1 style="color:#fff;font-size:clamp(2rem,4vw,3rem);opacity:0;animation:fadeUp .6s .1s forwards;">
+    Tools & <span style="color:var(--cyan)">Partners</span>
+  </h1>
+  <p style="color:rgba(255,255,255,.7);max-width:560px;margin-top:14px;opacity:0;animation:fadeUp .6s .25s forwards;">
+    Synomic werkt met toonaangevende technologieën op het snijvlak van AI, automatisering en finance. Hieronder een overzicht van de tools die dagelijks worden ingezet.
+  </p>
+</div>
+
+<!-- PARTNER CARDS -->
+<section style="padding:72px 6vw;">
+
+  <div class="partner-grid">
+
+    <!-- Claude AI -->
+    <div class="partner-card reveal">
+      <div class="partner-card-header">
+        <div style="width:64px;height:64px;min-width:64px;border-radius:16px;background:#fff;border:1px solid #e8edf3;padding:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><img src="data:image/png;base64,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" alt="Claude AI" style="max-width:48px;max-height:48px;object-fit:contain;" /></div>
+        <div>
+          <div class="partner-card-title">Claude AI</div>
+          <div class="partner-card-cat">Kunstmatige Intelligentie</div>
+        </div>
+      </div>
+      <div class="partner-card-body">
+        <p>
+          Claude is naast het menselijk brein de hoofdmotor van Synomic. Alle AI-systemen draaien op Claude. Als taalmodel van Anthropic helpt Claude bij het analyseren van complexe documenten, opstellen van rapportages, beantwoorden van vragen en het ondersteunen van besluitvormingsprocessen. Claude wordt ingezet als de slimme kern achter geautomatiseerde workflows en finance analyses.
+        </p>
+        <a href="https://claude.ai" target="_blank" rel="noopener" class="partner-link">
+          Meer over Claude AI <span class="partner-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- n8n -->
+    <div class="partner-card reveal">
+      <div class="partner-card-header">
+        <div style="width:64px;height:64px;min-width:64px;border-radius:16px;background:#fff;border:1px solid #e8edf3;padding:6px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMjYzIDIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsPSJub25lIj4KCiA8Zz4KICA8dGl0bGU+TGF5ZXIgMTwvdGl0bGU+CiAgPHBhdGggaWQ9InN2Z18xIiBmaWxsPSIjRUE0QjcxIiBkPSJtMjM5LDgzYy0xMS4xODMsMCAtMjAuNTgsLTcuNjQ5IC0yMy4yNDQsLTE4bC0yNy41MDgsMGMtNS44NjYsMCAtMTAuODcyLDQuMjQxIC0xMS44MzYsMTAuMDI3bC0wLjk4Nyw1LjkxOWMtMC45MzYsNS42MTkgLTMuNzc5LDEwLjUwOSAtNy43OTksMTQuMDU0YzQuMDIsMy41NDUgNi44NjMsOC40MzUgNy43OTksMTQuMDU0bDAuOTg3LDUuOTE5YzAuOTY0LDUuNzg2IDUuOTcsMTAuMDI3IDExLjgzNiwxMC4wMjdsMy41MDgsMGMyLjY2NCwtMTAuMzUxIDEyLjA2MSwtMTggMjMuMjQ0LC0xOGMxMy4yNTUsMCAyNCwxMC43NDUgMjQsMjRjMCwxMy4yNTUgLTEwLjc0NSwyNCAtMjQsMjRjLTExLjE4MywwIC0yMC41OCwtNy42NDkgLTIzLjI0NCwtMThsLTMuNTA4LDBjLTExLjczMiwwIC0yMS43NDQsLTguNDgyIC0yMy42NzMsLTIwLjA1NGwtMC45ODcsLTUuOTE5Yy0wLjk2NCwtNS43ODYgLTUuOTcsLTEwLjAyNyAtMTEuODM2LC0xMC4wMjdsLTkuNTA4LDBjLTIuNjY0LDEwLjM1MSAtMTIuMDYxLDE4IC0yMy4yNDQsMThjLTExLjE4MywwIC0yMC41OCwtNy42NDkgLTIzLjI0NCwtMThsLTEzLjUxMiwwYy0yLjY2NCwxMC4zNTEgLTEyLjA2MSwxOCAtMjMuMjQ0LDE4Yy0xMy4yNTQ4LDAgLTI0LC0xMC43NDUgLTI0LC0yNGMwLC0xMy4yNTUgMTAuNzQ1MiwtMjQgMjQsLTI0YzExLjE4MywwIDIwLjU4LDcuNjQ5IDIzLjI0NCwxOGwxMy41MTIsMGMyLjY2NCwtMTAuMzUxIDEyLjA2MSwtMTggMjMuMjQ0LC0xOGMxMS4xODMsMCAyMC41OCw3LjY0OSAyMy4yNDQsMThsOS41MDgsMGM1Ljg2NiwwIDEwLjg3MiwtNC4yNDEgMTEuODM2LC0xMC4wMjdsMC45ODcsLTUuOTE5YzEuOTI5LC0xMS41NzIgMTEuOTQxLC0yMC4wNTQgMjMuNjczLC0yMC4wNTRsMjcuNTA4LDBjMi42NjQsLTEwLjM1MSAxMi4wNjEsLTE4IDIzLjI0NCwtMThjMTMuMjU1LDAgMjQsMTAuNzQ1IDI0LDI0YzAsMTMuMjU1IC0xMC43NDUsMjQgLTI0LDI0em0wLC0xMmM2LjYyNywwIDEyLC01LjM3MyAxMiwtMTJjMCwtNi42MjcgLTUuMzczLC0xMiAtMTIsLTEyYy02LjYyNywwIC0xMiw1LjM3MyAtMTIsMTJjMCw2LjYyNyA1LjM3MywxMiAxMiwxMnptLTE4MCwzNmM2LjYyNywwIDEyLC01LjM3MyAxMiwtMTJjMCwtNi42MjcgLTUuMzczLC0xMiAtMTIsLTEyYy02LjYyNzQsMCAtMTIsNS4zNzMgLTEyLDEyYzAsNi42MjcgNS4zNzI2LDEyIDEyLDEyem03MiwtMTJjMCw2LjYyNyAtNS4zNzMsMTIgLTEyLDEyYy02LjYyNywwIC0xMiwtNS4zNzMgLTEyLC0xMmMwLC02LjYyNyA1LjM3MywtMTIgMTIsLTEyYzYuNjI3LDAgMTIsNS4zNzMgMTIsMTJ6bTk2LDM2YzAsNi42MjcgLTUuMzczLDEyIC0xMiwxMmMtNi42MjcsMCAtMTIsLTUuMzczIC0xMiwtMTJjMCwtNi42MjcgNS4zNzMsLTEyIDEyLC0xMmM2LjYyNywwIDEyLDUuMzczIDEyLDEyeiIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz4KICA8cGF0aCBpZD0ic3ZnXzIiIGZpbGw9IiMxMDEzMzAiIGQ9Im00MDcuMDE3LDg2Ljg4N2wwLC0wLjU3MWM0LjE4NywtMi4wOTcgOC4zNzQsLTUuNzE5IDguMzc0LC0xMi44NjdjMCwtMTAuMjk0IC04LjQ2OSwtMTYuNDg5IC0yMC4xNzMsLTE2LjQ4OWMtMTEuOTksMCAtMjAuNTU0LDYuNTc2IC0yMC41NTQsMTYuNjc5YzAsNi44NjMgMy45OTYsMTAuNTggOC4zNzQsMTIuNjc3bDAsMC41NzFjLTQuODUzLDEuNzE2IC0xMC42NTgsNi44NjMgLTEwLjY1OCwxNS40NDFjMCwxMC4zODggOC41NjQsMTcuNjMyIDIyLjc0MywxNy42MzJjMTQuMTc4LDAgMjIuNDU3LC03LjI0NCAyMi40NTcsLTE3LjYzMmMwLC04LjU3OCAtNS43MSwtMTMuNjMgLTEwLjU2MywtMTUuNDQxem0tMTEuODk0LC0yMS4xNThjNC43NTgsMCA4LjI3OCwzLjA0OSA4LjI3OCw4LjE5NmMwLDUuMTQ3IC0zLjYxNiw4LjE5NyAtOC4yNzgsOC4xOTdjLTQuNjYzLDAgLTguNTY1LC0zLjA1IC04LjU2NSwtOC4xOTdjMCwtNS4yNDIgMy43MTIsLTguMTk2IDguNTY1LC04LjE5NnptMCw0NS4wODFjLTUuNTIsMCAtOS45OTIsLTMuNTI2IC05Ljk5MiwtOS41MzFjMCwtNS40MzIgMy43MTEsLTkuNTMxIDkuODk2LC05LjUzMWM2LjA5MSwwIDkuODAyLDQuMDAzIDkuODAyLDkuNzIyYzAsNS44MTQgLTQuMjgyLDkuMzQgLTkuNzA2LDkuMzR6IiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPgogIDxwYXRoIGlkPSJzdmdfMyIgZmlsbD0iIzEwMTMzMCIgZD0ibTQzMi4yNiwxMTkuMDA3bDEyLjE4LDBsMCwtMjUuODI5YzAsLTguNDgzIDUuMTM5LC0xMi4yIDEwLjk0MywtMTIuMmM1LjcxLDAgMTAuMTgyLDMuODEzIDEwLjE4MiwxMS42MjhsMCwyNi40MDFsMTIuMTgsMGwwLC0yOC44NzljMCwtMTIuNDg2IC03LjIzMiwtMTkuNzI5IC0xOC41NTUsLTE5LjcyOWMtNy4xMzcsMCAtMTEuMTM0LDIuODU5IC0xMy45ODksNi41NzZsLTAuNzYxLDBsLTEuMDQ3LC01LjYyM2wtMTEuMTMzLDBsMCw0Ny42NTV6Ii8+CiAgPHBhdGggaWQ9InN2Z180IiBmaWxsPSIjMTAxMzMwIiBkPSJtMzI0LjQ0LDExOS4wMDdsLTEyLjE4LDBsMCwtNDcuNjU1bDExLjEzMywwbDEuMDQ3LDUuNjIzbDAuNzYxLDBjMi44NTUsLTMuNzE3IDYuODUyLC02LjU3NiAxMy45ODksLTYuNTc2YzExLjMyMywwIDE4LjU1NSw3LjI0MyAxOC41NTUsMTkuNzI5bDAsMjguODc5bC0xMi4xOCwwbDAsLTI2LjQwMWMwLC03LjgxNSAtNC40NzIsLTExLjYyOCAtMTAuMTgyLC0xMS42MjhjLTUuODA0LDAgLTEwLjk0MywzLjcxNyAtMTAuOTQzLDEyLjJsMCwyNS44Mjl6Ii8+CiA8L2c+Cjwvc3ZnPg==" alt="n8n" style="max-width:52px;max-height:40px;object-fit:contain;" /></div>
+        <div>
+          <div class="partner-card-title">n8n</div>
+          <div class="partner-card-cat">Workflow Automatisering</div>
+        </div>
+      </div>
+      <div class="partner-card-body">
+        <p>
+          n8n is een open-source workflow automatiseringsplatform waarmee systemen, apps en diensten visueel met elkaar worden verbonden. Met meer dan 400 integraties en native AI-mogelijkheden maakt n8n het mogelijk om complexe bedrijfsprocessen te automatiseren. Synomic gebruikt n8n voor het bouwen van geautomatiseerde workflows die handmatig werk elimineren en systemen naadloos laten samenwerken.
+        </p>
+        <a href="https://n8n.io" target="_blank" rel="noopener" class="partner-link">
+          Meer over n8n <span class="partner-link-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Moneybird -->
+    <div class="partner-card reveal">
+      <div class="partner-card-header">
+        <div style="width:64px;height:64px;min-width:64px;border-radius:16px;background:#fff;border:1px solid #e8edf3;padding:6px;overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><img src="data:image/png;base64,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" alt="Moneybird" style="max-width:52px;max-height:52px;object-fit:contain;" /></div>
+        <div>
+          <div class="partner-card-title">Moneybird</div>
+          <div class="partner-card-cat">Financiële Administratie</div>
+        </div>
+      </div>
+      <div class="partner-card-body">
+        <p>
+          Moneybird onderscheidt zich door een sterke technische basis die integraties met platforms zoals Claude en n8n eenvoudig maakt. Hierdoor worden finance gegevens automatisch verwerkt, facturen direct gekoppeld aan workflows en administratieve handelingen teruggebracht tot een minimum. Voor Synomic is Moneybird dan ook de finance ruggengraat van een volledig geautomatiseerde werkomgeving.
+        </p>
+        <a href="https://www.moneybird.nl" target="_blank" rel="noopener" class="partner-link">
+          Meer over Moneybird <span class="partner-link-arrow">→</span>
+        </a>
+        <div style="margin-top:20px;padding-top:16px;border-top:1px solid #f0f4f8;display:flex;align-items:center;gap:14px;">
+          <div style="background:#1DB8A4;border-radius:12px;padding:6px;width:52px;height:52px;min-width:52px;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;">
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjM4MCIgdmlld0JveD0iMCAwIDMwMCAzODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMF8zM180OSkiPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTMwMCAzMkMzMDAgMTQuMzI2OSAyODUuNjczIDAgMjY4IDBIMzRDMTYuMzI2OSAwIDIgMTQuMzI2OSAyIDMyVjE1Mi41MDFMMjUuNDQwNCAxNjEuMDM4SDI1LjQ0MTRDMjUuNzU1NSAxNjEuMTUgNDMuMzc5NSAxNjcuNDExIDYyLjgxNjQgMTY5LjU3N0g2Mi44MTc0QzgzLjk4OCAxNzEuOTM4IDkyLjg4OTkgMTcyLjQ2NiA5NiAxNzIuNTc5SDE5NS42NTVDMjI2LjMyMSAxNzIuNTc5IDI0OC4yNiAxODAuMTQ2IDI2My4yMDcgMTkzLjcwM0MyNzcuNzYzIDIwNi45MDcgMjg0IDIyNiAyODYuNjI0IDI0MC45MzJDMjkxLjAzNyAyNDIuMTY5IDI5Ni4wMjIgMjQ0LjMxMSAzMDAgMjQ2LjU0OFYzMlpNOTEuNzYwNyAxMDIuNjcyQzkzLjA1MTQgMTAxLjk5NyA5NC40NzQ2IDEwMS42NiA5Ni4wMjkzIDEwMS42NkM5Ny45MzU4IDEwMS42NiA5OS42NTE1IDEwMi4xNDQgMTAxLjE3NyAxMDMuMTEyQzEwMi43MzEgMTA0LjA4IDEwMy45NDkgMTA1LjM4NiAxMDQuODI5IDEwNy4wMjhDMTA1LjcwOSAxMDguNjcxIDEwNi4xNDkgMTEwLjUxOSAxMDYuMTQ5IDExMi41NzJDMTA2LjE0OSAxMTQuNjI1IDEwNS43MDkgMTE2LjQ3NCAxMDQuODI5IDExOC4xMTZDMTAzLjk0OSAxMTkuNzU5IDEwMi43MzEgMTIxLjA2NCAxMDEuMTc3IDEyMi4wMzJDOTkuNjUxNiAxMjIuOTcxIDk3LjkzNTcgMTIzLjQ0IDk2LjAyOTMgMTIzLjQ0Qzk0LjQ0NTMgMTIzLjQ0IDkzLjAwNzUgMTIzLjExNyA5MS43MTY4IDEyMi40NzJDOTAuNjE4NCAxMjEuODg0IDg5LjcwOTUgMTIxLjEwNyA4OC45ODkzIDEyMC4xNDJWMTMxLjc1Nkg4NS4wMjkzVjEwMi4xSDg4Ljk4OTNWMTA0Ljk3M0M4OS43MzM2IDEwNC4wMDQgOTAuNjU3MSAxMDMuMjM3IDkxLjc2MDcgMTAyLjY3MlpNMTE0LjU1NSAxMDMuMTEyQzExNi4xOTcgMTAyLjE0NCAxMTguMDMxIDEwMS42NiAxMjAuMDU1IDEwMS42NkMxMjEuOTkxIDEwMS42NiAxMjMuNjkyIDEwMi4xMDEgMTI1LjE1OCAxMDIuOThDMTI2LjY1NCAxMDMuODYgMTI3LjgxMyAxMDUuMDc3IDEyOC42MzUgMTA2LjYzMkMxMjkuNDg1IDEwOC4xODYgMTI5LjkxIDEwOS45NDcgMTI5LjkxIDExMS45MTJDMTI5LjkxIDExMi4yMDUgMTI5Ljg5NiAxMTIuNTI4IDEyOS44NjYgMTEyLjg4QzEyOS44MzcgMTEzLjIwMyAxMjkuNzc4IDExMy41ODQgMTI5LjY5IDExNC4wMjRIMTEzLjMyNEMxMTMuNDY0IDExNC44MzggMTEzLjcxMiAxMTUuNTg2IDExNC4wNyAxMTYuMjY4QzExNC42NTcgMTE3LjM1MyAxMTUuNDkzIDExOC4yMDQgMTE2LjU3OCAxMTguODJDMTE3LjY2MyAxMTkuNDA3IDExOC45MSAxMTkuNyAxMjAuMzE4IDExOS43QzEyMS40OTIgMTE5LjcgMTIyLjU2MiAxMTkuNDk1IDEyMy41MyAxMTkuMDg0QzEyNC41MjcgMTE4LjY3MyAxMjUuMzc4IDExOC4wNTcgMTI2LjA4MiAxMTcuMjM2TDEyOC42MzUgMTE5LjgzMkMxMjcuNjM3IDEyMS4wMDUgMTI2LjQwNSAxMjEuOSAxMjQuOTM4IDEyMi41MTZDMTIzLjUwMSAxMjMuMTMyIDEyMS45NjEgMTIzLjQ0IDEyMC4zMTggMTIzLjQ0QzExOC4yMzYgMTIzLjQ0IDExNi4zNTggMTIyLjk3MSAxMTQuNjg3IDEyMi4wMzJDMTEzLjAxNSAxMjEuMDY0IDExMS42OTUgMTE5Ljc1OSAxMTAuNzI3IDExOC4xMTZDMTA5Ljc1OSAxMTYuNDc0IDEwOS4yNzQgMTE0LjYxMSAxMDkuMjc0IDExMi41MjhDMTA5LjI3NCAxMTAuNDc1IDEwOS43NDQgMTA4LjYyNyAxMTAuNjgzIDEwNi45ODRDMTExLjY1MSAxMDUuMzQyIDExMi45NDEgMTA0LjA1MSAxMTQuNTU1IDEwMy4xMTJaTTM3LjYwODQgMTIzVjkyLjQ2MzlINTcuNzE1OFY5Ni4yNDhINDEuNzQ0MVYxMDUuNTc2SDU2LjQ4NDRWMTA5LjE4NEg0MS43NDQxVjExOS4yMTZINTcuOTM1NVYxMjNIMzcuNjA4NFpNNjguNjY5OSAxMTIuMjY1TDYxLjA5NjcgMTAyLjFINjUuODkzNkw3MS4yMjE3IDEwOS40MDJMNzYuMzY1MiAxMDIuMUg4MC45ODU0TDczLjU1MjcgMTEyLjE5N0w4MS4zODA5IDEyM0g3Ni41ODVMNzAuOTc3NSAxMTUuMTE4TDY1LjM2NTIgMTIzSDYwLjcwMTJMNjguNjY5OSAxMTIuMjY1Wk0xMzguNTQgMTA0LjAzNkMxMzkuNzcyIDEwMi40NTIgMTQxLjU0NyAxMDEuNjYgMTQzLjg2NCAxMDEuNjZDMTQ0LjkyIDEwMS42NiAxNDUuODc0IDEwMS44NTEgMTQ2LjcyNSAxMDIuMjMyQzE0Ny41NzUgMTAyLjU4NCAxNDguMzY3IDEwMy4xODYgMTQ5LjEwMSAxMDQuMDM2TDE0Ni41MDQgMTA2LjcyQzE0Ni4wNjQgMTA2LjI1MSAxNDUuNTggMTA1LjkxMyAxNDUuMDUyIDEwNS43MDhDMTQ0LjUyNCAxMDUuNTAzIDE0My45MDggMTA1LjQgMTQzLjIwNCAxMDUuNEMxNDEuNzM4IDEwNS40IDE0MC41MzUgMTA1Ljg2OSAxMzkuNTk3IDEwNi44MDhDMTM4LjY1OCAxMDcuNzQ2IDEzOC4xODggMTA5LjE3IDEzOC4xODggMTExLjA3NlYxMjNIMTM0LjIyOVYxMDIuMUgxMzguMTg4VjEwNC41MzJDMTM4LjMgMTA0LjM2MiAxMzguNDE2IDEwNC4xOTYgMTM4LjU0IDEwNC4wMzZaTTE1NS4wMTUgMTAyLjFWOTMuMzQzOEgxNTguOTc1VjEwMi4xSDE2NC4xMjJWMTA1LjcwOEgxNTguOTc1VjEyM0gxNTUuMDE1VjEwNS43MDhIMTQ5Ljg2NlYxMDIuMUgxNTUuMDE1Wk05OC44NDQ3IDEwNi4zMjRDOTcuODQ3NCAxMDUuNzA4IDk2LjcwMzcgMTA1LjQgOTUuNDEzMSAxMDUuNEM5NC4wOTMxIDEwNS40IDkyLjkzMzkgMTA1LjcwOCA5MS45MzY1IDEwNi4zMjRDOTAuOTM5NSAxMDYuOTExIDkwLjE2MjcgMTA3Ljc0NyA4OS42MDU1IDEwOC44MzJDODkuMDQ4MSAxMDkuOTE3IDg4Ljc2ODYgMTExLjE2NCA4OC43Njg2IDExMi41NzJDODguNzY4NiAxMTMuOTUxIDg5LjAzMjcgMTE1LjE4MiA4OS41NjA1IDExNi4yNjhDOTAuMTE3OSAxMTcuMzI0IDkwLjg5NTMgMTE4LjE2IDkxLjg5MjYgMTE4Ljc3NkM5Mi45MTkyIDExOS4zOTIgOTQuMDc4NSAxMTkuNyA5NS4zNjkxIDExOS43Qzk2LjY4ODkgMTE5LjcgOTcuODQ3NSAxMTkuMzkyIDk4Ljg0NDcgMTE4Ljc3NkM5OS44NDIxIDExOC4xNiAxMDAuNjM0IDExNy4zMjQgMTAxLjIyMSAxMTYuMjY4QzEwMS44MDcgMTE1LjE4MiAxMDIuMTAxIDExMy45MzYgMTAyLjEwMSAxMTIuNTI4QzEwMi4xMDEgMTExLjE1IDEwMS44MDcgMTA5LjkxNyAxMDEuMjIxIDEwOC44MzJDMTAwLjYzNCAxMDcuNzQ3IDk5Ljg0MiAxMDYuOTExIDk4Ljg0NDcgMTA2LjMyNFpNMTIzLjI2NyAxMDYuMTQ4QzEyMi4zNTcgMTA1LjU5MSAxMjEuMjU3IDEwNS4zMTIgMTE5Ljk2NyAxMDUuMzEyQzExOC42MTcgMTA1LjMxMiAxMTcuNDI5IDEwNS42MDYgMTE2LjQwMiAxMDYuMTkyQzExNS4zNzYgMTA2Ljc3OSAxMTQuNTg0IDEwNy42IDExNC4wMjYgMTA4LjY1NkMxMTMuNjk4IDEwOS4yNzkgMTEzLjQ2OSAxMDkuOTY4IDExMy4zMzQgMTEwLjcyNEgxMjYuMDQ4QzEyNS45NCAxMDkuODU5IDEyNS43MTggMTA5LjA5NiAxMjUuMzc4IDEwOC40MzZDMTI0Ljg3OSAxMDcuNDM5IDEyNC4xNzYgMTA2LjY3NiAxMjMuMjY3IDEwNi4xNDhaTTE1NC4zOTkgNzEuNTMxMkwxNDYuMjM4IDUxLjYxNjJIMTUzLjQ5OEwxNTcuNzYgNjQuNjAwNkwxNjIuMTIyIDUxLjYxNjJIMTY5LjM4M0wxNjAuMjMgNzMuMDg3OUwxNTYuNDQ2IDgyLjAxOTVIMTQ5LjUzOEwxNTQuMzk5IDcxLjUzMTJaTTc4LjQ1OCA1Mi42Mjc5QzgwLjIxNzkgNTEuNjMwOCA4Mi4yMTIzIDUxLjEzMTkgODQuNDQxNCA1MS4xMzE4Qzg2LjY3MDcgNTEuMTMxOCA4OC42NjU4IDUxLjYxNiA5MC40MjU4IDUyLjU4NEM5Mi4xODU3IDUzLjU1MiA5My41Nzg4IDU0Ljg4NjcgOTQuNjA1NSA1Ni41ODc5Qzk1LjYzMjEgNTguMjU5OCA5Ni4xNDU1IDYwLjE1MTggOTYuMTQ1NSA2Mi4yNjM3Qzk2LjE0NTUgNjQuMzc1NyA5NS42MzIxIDY2LjI4MyA5NC42MDU1IDY3Ljk4NDRDOTMuNTc4OCA2OS42ODU1IDkyLjE4NTYgNzEuMDM1IDkwLjQyNTggNzIuMDMyMkM4OC42NjU4IDczLjAwMDIgODYuNjcwNyA3My40ODQ0IDg0LjQ0MTQgNzMuNDg0NEM4Mi4yNDE2IDczLjQ4NDQgODAuMjQ3MiA3MyA3OC40NTggNzIuMDMyMkM3Ni42OTgxIDcxLjAzNDkgNzUuMzA0IDY5LjY4NTYgNzQuMjc3MyA2Ny45ODQ0QzczLjI1MDcgNjYuMjgzIDcyLjczNzMgNjQuMzc1NyA3Mi43MzczIDYyLjI2MzdDNzIuNzM3NCA2MC4xNTE4IDczLjI1MDcgNTguMjU5OCA3NC4yNzczIDU2LjU4NzlDNzUuMzA0IDU0LjkxNTkgNzYuNjk4IDUzLjU5NTkgNzguNDU4IDUyLjYyNzlaTTEyOC45IDUyLjU4NEMxMzAuNjMxIDUxLjYxNiAxMzIuNTgyIDUxLjEzMTggMTM0Ljc1MyA1MS4xMzE4QzEzNi44NjUgNTEuMTMxOSAxMzguNzI4IDUxLjU4NjggMTQwLjM0MSA1Mi40OTYxQzE0MS45NTQgNTMuNDA1NCAxNDMuMjE2IDU0LjY2NyAxNDQuMTI1IDU2LjI4MDNDMTQ1LjA2NCA1Ny44OTM1IDE0NS41MzMgNTkuNzQxNyAxNDUuNTMzIDYxLjgyNDJDMTQ1LjUzMyA2Mi4yMDU0IDE0NS41MDMgNjIuNjE1OSAxNDUuNDQ0IDYzLjA1NTdDMTQ1LjQxNSA2My40NjYzIDE0NS4zNDIgNjMuOTUwNSAxNDUuMjI1IDY0LjUwNzhMMTI5Ljg5NyA2NC41NDM5QzEyOS45OTYgNjQuODg4OCAxMzAuMTE3IDY1LjIxNDMgMTMwLjI2NSA2NS41MTk1QzEzMC43MzQgNjYuMzk5NSAxMzEuMzggNjcuMDg5MiAxMzIuMjAxIDY3LjU4NzlDMTMzLjA1MiA2OC4wNTcxIDEzNC4wNDkgNjguMjkxOSAxMzUuMTkyIDY4LjI5MkMxMzYuMjQ4IDY4LjI5MiAxMzcuMjAyIDY4LjExNTcgMTM4LjA1MyA2Ny43NjM3QzEzOC45MDMgNjcuMzgyMyAxMzkuNjUyIDY2LjgyNTEgMTQwLjI5NyA2Ni4wOTE4TDE0My45OTMgNjkuNzg4MUMxNDIuOTM3IDcxLjAyIDE0MS42NjEgNzEuOTQzNiAxNDAuMTY1IDcyLjU1OTZDMTM4LjY2OSA3My4xNzU2IDEzNy4wMjYgNzMuNDg0NCAxMzUuMjM2IDczLjQ4NDRDMTMyLjkxOSA3My40ODQzIDEzMC44NTIgNzMuMDE0NiAxMjkuMDMzIDcyLjA3NjJDMTI3LjI0NCA3MS4xMDgyIDEyNS44MzUgNjkuNzczNSAxMjQuODA5IDY4LjA3MjNDMTIzLjc4MiA2Ni4zNzA5IDEyMy4yNjkgNjQuNDQ5IDEyMy4yNjkgNjIuMzA3NkMxMjMuMjY5IDYwLjE2NjQgMTIzLjc2NyA1OC4yNTk4IDEyNC43NjUgNTYuNTg3OUMxMjUuNzkxIDU0Ljg4NjcgMTI3LjE3IDUzLjU1MiAxMjguOSA1Mi41ODRaTTE3MS40MjcgNzNWNDEuMDU1N0gxNzguMTU5VjUzLjAwMzlDMTc4LjY0OCA1Mi42MTkxIDE3OS4xOSA1Mi4yODgyIDE3OS43ODcgNTIuMDExN0MxODAuOTkgNTEuNDU0NSAxODIuMzEgNTEuMTc1OCAxODMuNzQ3IDUxLjE3NThDMTg1Ljc3MSA1MS4xNzU4IDE4Ny41NjEgNTEuNjYgMTg5LjExNSA1Mi42Mjc5QzE5MC42OTkgNTMuNTk1OSAxOTEuOTMxIDU0LjkxNjEgMTkyLjgxMSA1Ni41ODc5QzE5My43MiA1OC4yNTk4IDE5NC4xNzUgNjAuMTY2NCAxOTQuMTc1IDYyLjMwNzZDMTk0LjE3NSA2NC40NDkgMTkzLjcyIDY2LjM1NjMgMTkyLjgxMSA2OC4wMjgzQzE5MS45MzEgNjkuNzAwMSAxOTAuNjk5IDcxLjAyMDQgMTg5LjExNSA3MS45ODgzQzE4Ny41NjEgNzIuOTU2MiAxODUuNzcxIDczLjQ0MDQgMTgzLjc0NyA3My40NDA0QzE4Mi4zMSA3My40NDA0IDE4MC45OSA3My4xNDYyIDE3OS43ODcgNzIuNTU5NkMxNzkuMTUzIDcyLjIzNSAxNzguNTgyIDcxLjg1NjIgMTc4LjA3IDcxLjQyNThWNzNIMTcxLjQyN1pNMjQxLjkzOSA1My4wMDM5VjQxLjA1NTdIMjQ4LjY3MVY3M0gyNDIuMDcxVjcxLjQyNThDMjQxLjU2IDcxLjg1NjEgMjQwLjk4OSA3Mi4yMzUxIDI0MC4zNTUgNzIuNTU5NkMyMzkuMTUzIDczLjE0NjIgMjM3LjgxOCA3My40NDA0IDIzNi4zNTIgNzMuNDQwNEMyMzQuMzI4IDczLjQ0MDQgMjMyLjUyMyA3Mi45NTYyIDIzMC45MzkgNzEuOTg4M0MyMjkuMzg1IDcxLjAyMDMgMjI4LjE1MiA2OS43MDAyIDIyNy4yNDMgNjguMDI4M0MyMjYuMzYzIDY2LjM1NjMgMjI1LjkyMyA2NC40NDkgMjI1LjkyMyA2Mi4zMDc2QzIyNS45MjMgNjAuMTY2NCAyMjYuMzYzIDU4LjI1OTggMjI3LjI0MyA1Ni41ODc5QzIyOC4xNTIgNTQuOTE1OSAyMjkuMzg1IDUzLjU5NTkgMjMwLjkzOSA1Mi42Mjc5QzIzMi41MjMgNTEuNjYgMjM0LjMyOCA1MS4xNzU4IDIzNi4zNTIgNTEuMTc1OEMyMzcuODE4IDUxLjE3NTggMjM5LjEzOCA1MS40NTQ0IDI0MC4zMTIgNTIuMDExN0MyNDAuOTA4IDUyLjI4ODMgMjQxLjQ1MSA1Mi42MTkgMjQxLjkzOSA1My4wMDM5Wk0zNi45OTIyIDczVjQxLjkzNTVINDEuOTE5OUw1Mi44OTU1IDU5LjAzMDNMNjMuODMyIDQxLjkzNTVINjguODAzN1Y3M0g2MS44OTY1VjU1LjgyMjNMNTUuMTY0MSA2Ni4zMTE1SDUwLjU4NzlMNDMuODU2NCA1NS43NjU2VjczSDM2Ljk5MjJaTTEwNy43NyA1Mi4yMzI0QzEwOS4wODkgNTEuNTI4NSAxMTAuNTcgNTEuMTc1OCAxMTIuMjEzIDUxLjE3NThDMTEzLjc5NyA1MS4xNzU4IDExNS4xOTEgNTEuNTU3NiAxMTYuMzk0IDUyLjMyMDNDMTE3LjYyNSA1My4wNTM1IDExOC41OTMgNTQuMDM1OSAxMTkuMjk3IDU1LjI2NzZDMTIwLjAwMSA1Ni40OTk2IDEyMC4zNTQgNTcuODQ5NyAxMjAuMzU0IDU5LjMxNjRWNzNIMTEzLjYyMVY2MC44MTE1QzExMy42MjEgNTkuNjk3MiAxMTMuMjY5IDU4LjgwMjUgMTEyLjU2NSA1OC4xMjc5QzExMS44OTEgNTcuNDIzOSAxMTEuMDI1IDU3LjA3MjMgMTA5Ljk2OSA1Ny4wNzIzQzEwOS4yMzYgNTcuMDcyMyAxMDguNTkgNTcuMjMzMSAxMDguMDMzIDU3LjU1NTdDMTA3LjQ3NiA1Ny44NDkgMTA3LjAzNiA1OC4yODkzIDEwNi43MTMgNTguODc2QzEwNi4zOSA1OS40MzMyIDEwNi4yMyA2MC4wNzg0IDEwNi4yMjkgNjAuODExNVY3M0g5OS40OTcxVjUxLjYxNjJIMTA2LjIyOVY1My4yOTFDMTA2LjY4OSA1Mi44ODE0IDEwNy4yMDMgNTIuNTI4OCAxMDcuNzcgNTIuMjMyNFpNMTk3LjU5NSA3M1Y1MS42MTYySDIwNC4zMjdWNzNIMTk3LjU5NVpNMjE1LjggNTMuMjQ0MUMyMTcuMTIgNTEuODY1NiAyMTguOTUzIDUxLjE3NTggMjIxLjMgNTEuMTc1OEMyMjIuMzI2IDUxLjE3NTggMjIzLjIyMSA1MS4zMzc1IDIyMy45ODMgNTEuNjYwMkMyMjQuNzc1IDUxLjk1MzUgMjI1LjQ2NSA1Mi40MjMgMjI2LjA1MiA1My4wNjg0TDIyMi4wNDggNTguMTI3OUMyMjEuNzU1IDU3LjgwNTMgMjIxLjM4NyA1Ny41NTU5IDIyMC45NDcgNTcuMzc5OUMyMjAuNTA3IDU3LjIwMzkgMjIwLjAwOCA1Ny4xMTYyIDIxOS40NTEgNTcuMTE2MkMyMTguMzM3IDU3LjExNjMgMjE3LjQ0MiA1Ny40NjggMjE2Ljc2OCA1OC4xNzE5QzIxNi4xMjIgNTguODQ2NSAyMTUuOCA1OS44NzMzIDIxNS44IDYxLjI1MlY3M0gyMDkuMDY3VjUxLjYxNjJIMjE1LjhWNTMuMjQ0MVpNODYuOTQ5MiA1Ny45MDgyQzg2LjI0NTIgNTcuNDY4MyA4NS40MDkzIDU3LjI0OCA4NC40NDE0IDU3LjI0OEM4My41MDI4IDU3LjI0ODEgODIuNjY2OSA1Ny40NjgyIDgxLjkzMzYgNTcuOTA4MkM4MS4yMDAzIDU4LjMxODggODAuNjI4NCA1OC45MDU0IDgwLjIxNzggNTkuNjY4Qzc5LjgwNzIgNjAuNDMwNSA3OS42MDE2IDYxLjMxMDQgNzkuNjAxNiA2Mi4zMDc2Qzc5LjYwMTYgNjMuMjc1NiA3OS44MDcxIDY0LjE1NjIgODAuMjE3OCA2NC45NDgyQzgwLjYyODQgNjUuNzEwOCA4MS4yMDA0IDY2LjMxMiA4MS45MzM2IDY2Ljc1MkM4Mi42NjY5IDY3LjE2MjYgODMuNTAyOCA2Ny4zNjgxIDg0LjQ0MTQgNjcuMzY4MkM4NS40MDkzIDY3LjM2ODIgODYuMjU5OSA2Ny4xNjI1IDg2Ljk5MzIgNjYuNzUyQzg3LjcyNjUgNjYuMzEyIDg4LjI4NDcgNjUuNzEwOSA4OC42NjYgNjQuOTQ4MkM4OS4wNzY3IDY0LjE1NjIgODkuMjgxMiA2My4yNjEgODkuMjgxMiA2Mi4yNjM3Qzg5LjI4MTIgNjEuMjY2NiA4OS4wNzY2IDYwLjQwMTIgODguNjY2IDU5LjY2OEM4OC4yNTUzIDU4LjkwNTMgODcuNjgyNSA1OC4zMTg5IDg2Ljk0OTIgNTcuOTA4MlpNMTg1LjAyMiA1Ny45MDgyQzE4NC4zMTggNTcuNDY4MyAxODMuNDk3IDU3LjI0OCAxODIuNTU5IDU3LjI0OEMxODEuNjIgNTcuMjQ4MSAxODAuNzg0IDU3LjQ2ODIgMTgwLjA1MSA1Ny45MDgyQzE3OS4zMTggNTguMzE4OSAxNzguNzQ2IDU4LjkwNTQgMTc4LjMzNSA1OS42NjhDMTc3Ljk1NCA2MC40MzA1IDE3Ny43NjMgNjEuMzEwNCAxNzcuNzYzIDYyLjMwNzZDMTc3Ljc2MyA2My4zMDUgMTc3Ljk2OCA2NC4xODU2IDE3OC4zNzkgNjQuOTQ4MkMxNzguNzkgNjUuNzEwOCAxNzkuMzQ3IDY2LjMxMiAxODAuMDUxIDY2Ljc1MkMxODAuNzg0IDY3LjE2MjYgMTgxLjYyIDY3LjM2ODEgMTgyLjU1OSA2Ny4zNjgyQzE4My40OTcgNjcuMzY4MiAxODQuMzE5IDY3LjE0NzkgMTg1LjAyMiA2Ni43MDhDMTg1Ljc1NiA2Ni4yNjggMTg2LjMyOSA2NS42NjY5IDE4Ni43MzkgNjQuOTA0M0MxODcuMTUgNjQuMTQxNiAxODcuMzU0IDYzLjI3NTYgMTg3LjM1NCA2Mi4zMDc2QzE4Ny4zNTQgNjEuMzEwNSAxODcuMTUgNjAuNDMwNSAxODYuNzM5IDU5LjY2OEMxODYuMzI5IDU4LjkwNTMgMTg1Ljc1NiA1OC4zMTg5IDE4NS4wMjIgNTcuOTA4MlpNMjQwLjA0NyA1Ny45MDgyQzIzOS4zNDMgNTcuNDY4MyAyMzguNTIyIDU3LjI0OCAyMzcuNTgzIDU3LjI0OEMyMzYuNjQ0IDU3LjI0ODEgMjM1LjgwOCA1Ny40NjgyIDIzNS4wNzUgNTcuOTA4MkMyMzQuMzcxIDU4LjM0ODIgMjMzLjc5OSA1OC45NDkzIDIzMy4zNTkgNTkuNzExOUMyMzIuOTQ5IDYwLjQ3NDUgMjMyLjc0MyA2MS4zMzk4IDIzMi43NDMgNjIuMzA3NkMyMzIuNzQzIDYzLjI3NTYgMjMyLjk0OSA2NC4xNDE2IDIzMy4zNTkgNjQuOTA0M0MyMzMuNzcgNjUuNjY2OCAyMzQuMzQyIDY2LjI2ODEgMjM1LjA3NSA2Ni43MDhDMjM1LjgwOCA2Ny4xNDggMjM2LjYzIDY3LjM2ODEgMjM3LjUzOSA2Ny4zNjgyQzIzOC41MDcgNjcuMzY4MiAyMzkuMzQzIDY3LjE2MjUgMjQwLjA0NyA2Ni43NTJDMjQwLjc1MSA2Ni4zMTIgMjQxLjMwOCA2NS43MTA3IDI0MS43MTkgNjQuOTQ4MkMyNDIuMTI5IDY0LjE4NTYgMjQyLjMzNSA2My4zMDUgMjQyLjMzNSA2Mi4zMDc2QzI0Mi4zMzUgNjEuMzEwNCAyNDIuMTI5IDYwLjQ0NTIgMjQxLjcxOSA1OS43MTE5QzI0MS4zMzcgNTguOTQ5NCAyNDAuNzggNTguMzQ4MiAyNDAuMDQ3IDU3LjkwODJaTTEzNy4zMDUgNTYuOTQwNEMxMzYuNjMgNTYuNTAwNCAxMzUuNzk0IDU2LjI4MDMgMTM0Ljc5NyA1Ni4yODAzQzEzMy43NDEgNTYuMjgwMyAxMzIuODE2IDU2LjUyOTcgMTMyLjAyNCA1Ny4wMjgzQzEzMS4yNjIgNTcuNDk3NiAxMzAuNjYxIDU4LjE3MiAxMzAuMjIxIDU5LjA1MThDMTMwLjA5NCA1OS4zMjM2IDEyOS45ODkgNTkuNjE0NiAxMjkuOTAxIDU5LjkyMjlMMTM5LjI0MyA1OS44OTY1QzEzOS4xNTIgNTkuNDg4OCAxMzkuMDM2IDU5LjExOSAxMzguODg5IDU4Ljc4ODFDMTM4LjUzNyA1Ny45NjY4IDEzOC4wMDkgNTcuMzUxMSAxMzcuMzA1IDU2Ljk0MDRaTTE5OC4zNDMgNDIuMzMyQzE5OS4wNDcgNDEuNjI4MSAxOTkuOTI3IDQxLjI3NjQgMjAwLjk4MiA0MS4yNzY0QzIwMi4wMzggNDEuMjc2NCAyMDIuOTA0IDQxLjYyOCAyMDMuNTc5IDQyLjMzMkMyMDQuMjU0IDQzLjAzNTkgMjA0LjU5MSA0My45MTU5IDIwNC41OTEgNDQuOTcxN0MyMDQuNTkxIDQ1Ljk5ODMgMjA0LjI1NCA0Ni44NzkgMjAzLjU3OSA0Ny42MTIzQzIwMi45MDQgNDguMzE2MyAyMDIuMDM4IDQ4LjY2OCAyMDAuOTgyIDQ4LjY2OEMxOTkuOTI3IDQ4LjY2NzkgMTk5LjA0NyA0OC4zMTYxIDE5OC4zNDMgNDcuNjEyM0MxOTcuNjY4IDQ2Ljg3OSAxOTcuMzMxIDQ1Ljk5ODMgMTk3LjMzMSA0NC45NzE3QzE5Ny4zMzEgNDMuOTE1OCAxOTcuNjY4IDQzLjAzNiAxOTguMzQzIDQyLjMzMlpNNjIuNjA5NCAyODUuNjJDNjguMDI2NyAzMDguNzA3IDg3LjQzMjUgMzQyLjA4MiAxNDcuMTc1IDM0Ni43NkMyMzIuMjY3IDM0Ni4xODIgMjQ1LjA1MSAyOTYuMzY5IDI0NS4wNTEgMjY2LjU5N0MyNDUuMDUxIDIyMy45NjIgMjI5LjgxMiAyMTYuNzY4IDE5NS42NTYgMjE2Ljc2OEM5OS45MzYxIDIxOS4xOTYgNzEuMDU4NyAyMTMuMDEzIDQyLjE4MzMgMjA2LjgzQzM3Ljc4NjUgMjA1Ljg4OSAzMy4zODk2IDIwNC45NDcgMjguNzU2OCAyMDQuMDM2QzI4Ljc1NjggMjA0LjAzNiAyOS41NTI3IDIyNS45MSA0Mi42MTkgMjQ4LjcxOUM1NS4yNTU0IDI3MC43OCA3OC4wMzcxIDI4Mi4wOTQgODguMzg1NSAyODcuMjMzQzkxLjc0OSAyODguOTAzIDkzLjc5OSAyODkuOTIxIDkzLjc2MDIgMjkwLjQ0NEM5My42NzczIDI5MS41NTEgODkuNTkxMSAyOTAuOTczIDg5LjU0OTYgMjkwLjk2N0M3NC4yOTEyIDI4OC44MzggNjIuNjA5NCAyODUuNjIgNjIuNjA5NCAyODUuNjJaTTI4Ny4wMTcgMjUzLjU1MUMyOTQuMTk2IDI1NS44NDYgMzAwIDI1OS40MjUgMzAwIDI2NS4wMDVDMzAwIDI3MC41NDcgMjk0LjI3MyAyNzQuNDE2IDI4Ny4xNjEgMjc3LjA4NkwyODcuMTU3IDI3Ny4wODhDMjg0Ljk1NyAyNzcuOTEzIDI4Mi42MjggMjc4LjYyMyAyODAuMjkyIDI3OS4yMzVDMjc5LjQxOSAyNzkuNzQ2IDI3OC41ODIgMjgwLjM2OSAyNzcuODc1IDI4MS4xNDVDMjc2LjI0NyAyODIuOTM2IDI3NS4zMTMgMjg1LjI2MSAyNzQuNzg4IDI4Ny4xNDVDMjcxLjE3NiAzMDkuNzg0IDI2MC43MyAzMjguNjQ5IDI0Ni4xNjUgMzQ0LjYyM0MyMjIuODk0IDM3MC4xNCAxMzEuOTI0IDQwNi41NTUgNjQuOTg5NCAzNDguNTQ0QzM0LjExMTEgMzIxLjc4MSAyOC40MTczIDI4OC42OTggMjkuNzgyIDI3My41MzJMMjkuODExNiAyNzMuMTk5Qy01LjcyOTUxIDI0NC41MzIgMC4yNjg0MDQgMTg4LjA0IDAuNTQ2ODcyIDE4NS42MDdMMi44NDU3MSAxNjUuNThMMjEuMzU2OSAxNzIuMzIyQzIxLjUzMDcgMTcyLjM4NSA0MC4zOTkzIDE3OS4xNTMgNjEuNDg3OCAxODEuNTAzQzgzLjIzMTkgMTgzLjkyOCA5Mi40MDk1IDE4NC40NjUgOTUuNzkwNiAxODQuNTc5SDE5NS42NTZDMjUzLjE1NiAxODQuNTc5IDI3MC4zNyAyMTIuODczIDI3NC45MjIgMjQzLjc5OEMyNzUuNDY5IDI0NS41OTMgMjc2LjM3NiAyNDcuNjkzIDI3Ny44NzUgMjQ5LjM0MkMyNzkuMTcyIDI1MC43NzEgMjgwLjkwMiAyNTEuNyAyODIuNTE4IDI1Mi4zMDZDMjgzLjcxNSAyNTIuNTkyIDI4NC44OTggMjUyLjkwNiAyODYuMDUxIDI1My4yNTNDMjg2LjczMiAyNTMuMzY3IDI4Ny4xNjEgMjUzLjQwMSAyODcuMTYxIDI1My40MDFMMjg3LjAxNyAyNTMuNTUxWk0xOTkuNTA1IDI1MC4wMDdDMTk5LjUwNSAyNDAuOTc4IDIwNC43MjEgMjM2LjA4MSAyMTIuNDcgMjM2LjA4MUMyMjAuOTY3IDIzNi4wODEgMjI1LjU4OCAyNDAuODI2IDIyNS41ODggMjQ5Ljg1NUMyMjUuNTg4IDI1OC4xMTcgMjIwLjA3NCAyNjMuMTY4IDIxMi40NyAyNjMuMTY4QzIwNC43MjEgMjYzLjE2OCAxOTkuNTA1IDI1OC40MjQgMTk5LjUwNSAyNTAuMDA3WiIgZmlsbD0id2hpdGUiLz4KPC9nPgo8ZGVmcz4KPGNsaXBQYXRoIGlkPSJjbGlwMF8zM180OSI+CjxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzgwIiBmaWxsPSJ3aGl0ZSIvPgo8L2NsaXBQYXRoPgo8L2RlZnM+Cjwvc3ZnPgo=" alt="Moneybird Expert" style="width:40px;height:40px;object-fit:contain;" />
+          </div>
+          <div>
+            <div style="font-size:.75rem;font-weight:700;color:#1DB8A4;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px;">Gecertificeerd</div>
+            <div style="font-size:.9rem;font-weight:700;color:#1B3A5C;font-family:'Syne',sans-serif;">Moneybird Expert</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-off" style="padding:72px 6vw;">
+  <div style="max-width:640px;margin:0 auto;text-align:center;" class="reveal">
+    <div class="section-label">Samenwerken</div>
+    <h2 class="section-title">Interesse in een samenwerking?</h2>
+    <p style="color:var(--muted);margin-bottom:32px;">Neem contact op voor een vrijblijvend gesprek over de mogelijkheden.</p>
+    <a href="contact.html" class="btn-primary">Neem contact op →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="logo-white.png" alt="Synomic" />
+      <div style="margin-top:14px;">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:#fff;margin-bottom:8px;">Synomic</div>
+        <div style="font-size:.87rem;color:rgba(255,255,255,.6);line-height:1.7;">
+          Koornbeursweg 73<br>
+          8442 DJ Heerenveen<br>
+          KVK: 94705569
+        </div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigatie</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="over-ons.html">Over ons</a></li>
+        <li><a href="diensten.html">Diensten</a></li>
+        <li><a href="projecten.html">Projecten</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Diensten</h4>
+      <ul>
+        <li><a href="diensten.html">Finance & Data</a></li>
+        <li><a href="diensten.html">IT Automatisering</a></li>
+        <li><a href="diensten.html">AI Toepassingen</a></li>
+        <li><a href="diensten.html">Procesoptimalisatie</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Synomic – KVK 94705569. Alle rechten voorbehouden.</span>
+    <span>Gebouwd met ♥ in Nederland</span>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 30));
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

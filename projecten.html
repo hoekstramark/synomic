@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projecten – Synomic</title>
+  <meta name="description" content="Bekijk voorbeeldprojecten van Synomic op het gebied van finance, IT en AI-automatisering." />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="nav-logo" href="index.html">
+    <img src="logo.png" alt="Synomic" />
+  </a>
+  <button class="hamburger" id="hamburger" aria-label="Menu openen">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="over-ons.html">Over ons</a></li>
+    <li><a href="diensten.html">Diensten</a></li>
+    <li><a href="projecten.html" class="active">Projecten</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Home</a><span>/</span>Projecten</div>
+  <h1>Projecten & <span style="color:var(--cyan)">Cases</span></h1>
+  <p>Een selectie van opdrachten en resultaten die laten zien wat Synomic voor de organisatie kan betekenen.</p>
+</div>
+
+<!-- ===== FILTER ===== -->
+<section>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:48px;" class="reveal">
+    <button class="filter-btn active" data-cat="all">Alle projecten</button>
+    <button class="filter-btn" data-cat="finance">Finance</button>
+    <button class="filter-btn" data-cat="it">IT & Automatisering</button>
+    <button class="filter-btn" data-cat="ai">AI</button>
+  </div>
+
+  <!-- Project cards grid -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;" id="projectGrid">
+
+    <div class="project-card card reveal" data-cat="finance">
+      <div style="background:linear-gradient(135deg,var(--navy),#1a4d6e);border-radius:10px;height:160px;display:flex;align-items:center;justify-content:center;font-size:3rem;margin-bottom:20px;">📊</div>
+      <span class="tag" style="margin-bottom:12px;display:inline-block;">Finance</span>
+      <h3 style="margin-bottom:10px;">Financieel dashboard MKB</h3>
+      <p>Real-time Power BI dashboard gekoppeld aan boekhoudpakket. Management heeft nu altijd up-to-date inzicht in kasstromen, marges en KPI's.</p>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap;">
+        <span style="font-size:.78rem;color:var(--muted);">Power BI</span>
+        <span style="color:var(--border);">·</span>
+        <span style="font-size:.78rem;color:var(--muted);">Excel</span>
+        <span style="color:var(--border);">·</span>
+        <span style="font-size:.78rem;color:var(--muted);">API-koppeling</span>
+      </div>
+    </div>
+
+    <div class="project-card card reveal" data-cat="it">
+      <div style="background:linear-gradient(135deg,var(--navy),#1a4d6e);border-radius:10px;height:160px;display:flex;align-items:center;justify-content:center;font-size:3rem;margin-bottom:20px;">⚙️</div>
+      <span class="tag" style="margin-bottom:12px;display:inline-block;">IT Automatisering</span>
+      <h3 style="margin-bottom:10px;">Factuurverwerking geautomatiseerd</h3>
+      <p>Handmatige factuurverwerking geautomatiseerd met Python en OCR. Verwerkingstijd teruggebracht van 3 uur naar 10 minuten per dag.</p>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap;">
+        <span style="font-size:.78rem;color:var(--muted);">Python</span>
+        <span style="color:var(--border);">·</span>
+        <span style="font-size:.78rem;color:var(--muted);">OCR</span>
+        <span style="color:var(--border);">·</span>
+        <span style="font-size:.78rem;color:var(--muted);">RPA</span>
+      </div>
+    </div>
+
+    <div class="project-card card reveal" data-cat="ai">
+      <div style="background:linear-gradient(135deg,var(--navy),#1a4d6e);border-radius:10px;height:160px;display:flex;align-items:center;justify-content:center;font-size:3rem;margin-bottom:20px;">🤖</div>
+      <span class="tag" style="margin-bottom:12px;display:inline-block;">AI</span>
+      <h3 style="margin-bottom:10px;">AI-assistent voor klantenservice</h3>
+      <p>Geïmplementeerde AI-chatbot die 60% van terugkerende vragen zelfstandig beantwoordt, gekoppeld aan interne kennisbank.</p>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap;">
+        <span style="font-size:.78rem;color:var(--muted);">LLM</span>
+        <span style="color:var(--border);">·</span>
+        <span style="font-size:.78rem;color:var(--muted);">RAG</span>
+        <span style="color:var(--border);">·</span>
+        <span style="font-size:.78rem;color:var(--muted);">Integratie</span>
+      </div>
+    </div>
+
+    <div class="project-card card reveal" data-cat="finance">
+      <div style="background:linear-gradient(135deg,var(--navy),#1a4d6e);border-radius:10px;height:160px;display:flex;align-items:center;justify-content:center;font-size:3rem;margin-bottom:20px;">📈</div>
+      <span class="tag" style="margin-bottom:12px;display:inline-block;">Finance</span>
+      <h3 style="margin-bottom:10px;">Forecasting-model retail</h3>
+      <p>Machine learning model voor omzetvoorspelling met 94% nauwkeurigheid. Helpt bij inkoop- en personeelsplanning.</p>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap;">
+        <span style="font-size:.78rem;color:var(--muted);">Python</span>
+        <span style="color:var(--border);">·</span>
+        <span style="font-size:.78rem;color:var(--muted);">ML</span>
+        <span style="color:var(--border);">·</span>
+        <span style="font-size:.78rem;color:var(--muted);">Visualisatie</span>
+      </div>
+    </div>
+
+    <div class="project-card card reveal" data-cat="it">
+      <div style="background:linear-gradient(135deg,var(--navy),#1a4d6e);border-radius:10px;height:160px;display:flex;align-items:center;justify-content:center;font-size:3rem;margin-bottom:20px;">🔗</div>
+      <span class="tag" style="margin-bottom:12px;display:inline-block;">IT Automatisering</span>
+      <h3 style="margin-bottom:10px;">Systeemintegratie ERP & CRM</h3>
+      <p>Tweerichtingsintegratie tussen ERP en CRM opgezet. Dubbele invoer geëlimineerd, datakwaliteit verbeterd met 40%.</p>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap;">
+        <span style="font-size:.78rem;color:var(--muted);">REST API</span>
+        <span style="color:var(--border);">·</span>
+        <span style="font-size:.78rem;color:var(--muted);">Middleware</span>
+        <span style="color:var(--border);">·</span>
+        <span style="font-size:.78rem;color:var(--muted);">ERP/CRM</span>
+      </div>
+    </div>
+
+    <div class="project-card card reveal" data-cat="ai">
+      <div style="background:linear-gradient(135deg,var(--navy),#1a4d6e);border-radius:10px;height:160px;display:flex;align-items:center;justify-content:center;font-size:3rem;margin-bottom:20px;">🔍</div>
+      <span class="tag" style="margin-bottom:12px;display:inline-block;">AI</span>
+      <h3 style="margin-bottom:10px;">Slimme documentanalyse</h3>
+      <p>AI-gedreven tool voor het automatisch extraheren en samenvatten van contracten en rapporten — tijdsbesparing van 70%.</p>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap;">
+        <span style="font-size:.78rem;color:var(--muted);">NLP</span>
+        <span style="color:var(--border);">·</span>
+        <span style="font-size:.78rem;color:var(--muted);">Document AI</span>
+        <span style="color:var(--border);">·</span>
+        <span style="font-size:.78rem;color:var(--muted);">Python</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="bg-off">
+  <div style="max-width:640px;margin:0 auto;text-align:center;" class="reveal">
+    <div class="section-label">Uw project</div>
+    <h2 class="section-title">Wat kan Synomic<br>voor organisaties betekenen?</h2>
+    <p style="color:var(--muted);margin-bottom:32px;">Elk project begint met een gesprek. Beschrijf de uitdaging en ontdek wat mogelijk is.</p>
+    <a href="contact.html" class="btn-primary">Neem contact op →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="logo-white.png" alt="Synomic" />
+      <div style="margin-top:14px;">
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:#fff;margin-bottom:8px;">Synomic</div>
+        <div style="font-size:.87rem;color:rgba(255,255,255,.6);line-height:1.7;">
+          Koornbeursweg 73<br>
+          8442 DJ Heerenveen<br>
+          KVK: 94705569
+        </div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Navigatie</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="over-ons.html">Over ons</a></li>
+        <li><a href="diensten.html">Diensten</a></li>
+        <li><a href="projecten.html">Projecten</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Diensten</h4>
+      <ul>
+        <li><a href="diensten.html">Finance & Data</a></li>
+        <li><a href="diensten.html">IT Automatisering</a></li>
+        <li><a href="diensten.html">AI Toepassingen</a></li>
+        <li><a href="diensten.html">Procesoptimalisatie</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Synomic – KVK 94705569. Alle rechten voorbehouden.</span>
+    <span>Gebouwd met ♥ in Nederland</span>
+  </div>
+</footer>
+
+<style>
+.filter-btn {
+  padding: 9px 22px;
+  border-radius: 40px;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  color: var(--navy);
+  font-family: 'DM Sans', sans-serif;
+  font-size: .88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+}
+
+.project-card {
+  transition: transform .25s, box-shadow .25s, opacity .3s;
+}
+
+.project-card.hidden {
+  display: none;
+}
+</style>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 30));
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      projectCards.forEach(card => {
+        if (cat === 'all' || card.dataset.cat === cat) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
