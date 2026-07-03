@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Synomic — Slimme oplossingen voor digitale groei</title>
-  <meta name="description" content="Synomic verbindt finance, IT en AI-automatisering. Technologie die werkt voor mensen, niet andersom." />
+  <title>Synomic — Slimmer werken. Sneller vooruit.</title>
+  <meta name="description" content="Synomic helpt ondernemers met minder handwerk, meer overzicht en slimme oplossingen. Een vertrouwde adviseur voor uw finance, automatisering en AI." />
   <link rel="icon" type="image/png" href="logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -37,7 +37,6 @@
       --shadow-cyan-rest: 0 4px 20px rgba(43,196,196,.30);
       --shadow-cyan-hover: 0 8px 28px rgba(43,196,196,.40);
       --gradient-hero: linear-gradient(135deg, #0E2136 0%, #1B3A5C 60%, #1A4D6E 100%);
-      --gradient-header: linear-gradient(135deg, #0E2136 0%, #1B3A5C 100%);
     }
 
     /* ===== Reset & base ===== */
@@ -67,12 +66,16 @@
     }
     .nav-logo img { height: 38px; }
     .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
-    .nav-links a {
+    .nav-links > li { position: relative; }
+    .nav-links a, .nav-links button {
+      background: none; border: none; cursor: pointer;
+      font-family: var(--font-body);
       font-weight: 500; font-size: .95rem; color: rgba(255,255,255,.8);
       letter-spacing: .02em; padding-bottom: 3px;
       border-bottom: 2px solid transparent; transition: color .2s;
+      display: inline-flex; align-items: center; gap: 6px;
     }
-    .nav-links a:hover { color: var(--color-cyan); }
+    .nav-links a:hover, .nav-links button:hover { color: var(--color-cyan); }
     .nav-links a.active { color: var(--color-cyan); border-bottom-color: var(--color-cyan); }
     .nav-cta {
       background: var(--color-cyan); color: #fff !important;
@@ -81,12 +84,65 @@
       border-bottom: none !important;
     }
     .nav-cta:hover { background: var(--color-cyan-dim); transform: translateY(-1px); }
+    .nav-caret {
+      width: 8px; height: 8px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg); margin-top: -3px;
+      transition: transform .2s;
+    }
+    .nav-dropdown-parent.open .nav-caret { transform: rotate(-135deg); margin-top: 3px; }
+
+    /* Dropdown menu */
+    .nav-dropdown {
+      position: absolute; top: calc(100% + 12px); left: -20px;
+      background: #fff; border: 1px solid var(--color-border);
+      border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,.20);
+      padding: 12px; min-width: 340px;
+      opacity: 0; visibility: hidden; transform: translateY(-8px);
+      transition: opacity .2s, transform .2s, visibility .2s;
+      z-index: 200;
+    }
+    .nav-dropdown-parent.open .nav-dropdown,
+    .nav-dropdown-parent:hover .nav-dropdown {
+      opacity: 1; visibility: visible; transform: translateY(0);
+    }
+    /* Bridge zodat de muis van link naar dropdown kan zonder te sluiten */
+    .nav-dropdown::before {
+      content: ''; position: absolute; top: -12px; left: 0; right: 0; height: 12px;
+    }
+    .nav-dropdown a {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 16px; border-radius: 10px;
+      color: var(--color-navy); border-bottom: none;
+      transition: background .15s;
+    }
+    .nav-dropdown a:hover { background: var(--cyan-04); color: var(--color-navy); }
+    .nav-dropdown a:hover .nav-dropdown-arrow { color: var(--color-cyan); transform: translateX(3px); }
+    .nav-dropdown-icon {
+      width: 42px; height: 42px; min-width: 42px;
+      border-radius: 10px; background: var(--cyan-10);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-cyan);
+    }
+    .nav-dropdown-title {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: .95rem; color: var(--color-navy); margin-bottom: 2px;
+    }
+    .nav-dropdown-desc {
+      font-size: .78rem; color: var(--color-muted); line-height: 1.4;
+    }
+    .nav-dropdown-arrow {
+      color: var(--color-muted); font-family: var(--font-display);
+      font-weight: 700; align-self: center; margin-left: auto;
+      transition: transform .2s, color .2s;
+    }
 
     /* ===== Hero ===== */
     .hero {
-      min-height: 100vh;
+      min-height: 92vh;
       display: flex; align-items: center;
-      padding: 100px 6vw 60px;
+      padding: 90px 6vw 60px;
       background: var(--gradient-hero);
       position: relative; overflow: hidden;
     }
@@ -106,7 +162,7 @@
       bottom: -80px; left: 10%; width: 360px; height: 360px;
       background: radial-gradient(circle, var(--cyan-10) 0%, transparent 70%);
     }
-    .hero-content { max-width: 720px; position: relative; z-index: 2; }
+    .hero-content { max-width: 780px; position: relative; z-index: 2; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
       background: var(--cyan-15); border: 1px solid var(--cyan-35);
@@ -123,15 +179,16 @@
       50% { opacity: .5; transform: scale(1.4); }
     }
     .hero h1 {
-      font-weight: 700; font-size: clamp(2.6rem, 5vw, 4rem);
-      color: #fff; margin-top: 28px; margin-bottom: 24px; line-height: 1.2;
+      font-weight: 800; font-size: clamp(2.8rem, 6vw, 4.4rem);
+      color: #fff; margin-top: 24px; margin-bottom: 20px; line-height: 1.1;
+      letter-spacing: -0.02em;
     }
     .hero h1 em { font-style: normal; color: var(--color-cyan); }
     .hero p {
-      font-size: 1.1rem; color: rgba(255,255,255,.75);
-      max-width: 520px; margin-bottom: 40px;
+      font-size: 1.15rem; color: rgba(255,255,255,.78);
+      max-width: 580px; margin-bottom: 36px;
     }
-    .btn-row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-row { display: flex; gap: 14px; flex-wrap: wrap; }
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       font-family: var(--font-display); font-weight: 600; font-size: .95rem;
@@ -150,11 +207,17 @@
     }
     .btn-outline:hover { border-color: var(--color-cyan); color: var(--color-cyan); transform: translateY(-2px); }
 
-    /* ===== Wie zijn wij section ===== */
-    .wiezijnwij {
-      padding: 64px 6vw;
-      display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 56px; align-items: stretch;
+    .hero-reassurance {
+      display: flex; gap: 24px; margin-top: 32px;
+      color: rgba(255,255,255,.6); font-size: .85rem; flex-wrap: wrap;
+    }
+    .hero-reassurance span { display: flex; align-items: center; gap: 8px; }
+    .hero-reassurance svg { color: var(--color-cyan); flex-shrink: 0; }
+
+    /* ===== Herkenning-section ===== */
+    .herkenning {
+      padding: 80px 6vw 40px;
+      text-align: center;
     }
     .section-label {
       font-size: .78rem; font-weight: 700;
@@ -162,11 +225,45 @@
       color: var(--color-cyan); margin-bottom: 12px;
     }
     .section-title {
-      font-weight: 700; font-size: clamp(1.8rem, 3vw, 2.6rem);
-      color: var(--color-navy); margin-bottom: 16px; line-height: 1.2;
+      font-weight: 700; font-size: clamp(1.9rem, 3vw, 2.6rem);
+      color: var(--color-navy); margin-bottom: 20px; line-height: 1.2;
+      max-width: 720px; margin-left: auto; margin-right: auto;
     }
     .section-sub {
-      font-size: 1rem; color: var(--color-muted); max-width: 540px;
+      font-size: 1.05rem; color: var(--color-muted);
+      max-width: 620px; margin: 0 auto 48px;
+    }
+    .herken-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .herken-tile {
+      background: var(--color-off-2);
+      border: 1px solid var(--color-border-soft);
+      border-radius: 14px;
+      padding: 24px 22px;
+      text-align: left;
+      transition: transform .2s, border-color .2s;
+    }
+    .herken-tile:hover { transform: translateY(-3px); border-color: var(--cyan-35); }
+    .herken-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--cyan-10); color: var(--color-cyan);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px;
+    }
+    .herken-quote {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 1.05rem; color: var(--color-navy); line-height: 1.35;
+    }
+
+    /* ===== Wie zijn wij section ===== */
+    .wiezijnwij {
+      padding: 64px 6vw;
+      display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 56px; align-items: stretch;
     }
     .diensten-card {
       background: var(--color-white); border: 1px solid var(--color-border);
@@ -258,11 +355,38 @@
       fill: var(--color-navy); pointer-events: none;
     }
 
-    /* ===== Partners strip ===== */
-    .partners {
-      padding: 48px 6vw; background: var(--color-off-1);
+    /* ===== Aanpak (3 stappen) ===== */
+    .aanpak {
+      padding: 80px 6vw; background: var(--color-off-1);
       border-top: 1px solid var(--color-border-soft);
       border-bottom: 1px solid var(--color-border-soft);
+    }
+    .aanpak-inner { max-width: 1100px; margin: 0 auto; }
+    .aanpak-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 32px; margin-top: 40px;
+      counter-reset: step;
+    }
+    .aanpak-step {
+      counter-increment: step;
+      position: relative; padding-top: 12px;
+    }
+    .aanpak-step::before {
+      content: counter(step, decimal-leading-zero);
+      display: block;
+      font-family: var(--font-display); font-weight: 800;
+      font-size: 3rem; color: var(--color-cyan);
+      line-height: 1; margin-bottom: 16px;
+      opacity: .9;
+    }
+    .aanpak-step h3 {
+      font-size: 1.15rem; margin-bottom: 10px;
+    }
+    .aanpak-step p { color: var(--color-muted); font-size: .95rem; line-height: 1.6; }
+
+    /* ===== Partners strip ===== */
+    .partners {
+      padding: 48px 6vw; background: var(--color-white);
     }
     .partners-head {
       display: flex; align-items: center; justify-content: space-between;
@@ -296,9 +420,8 @@
     .partner-role { font-size: .78rem; color: var(--color-muted); }
 
     /* ===== CTA banner ===== */
-    .cta-wrap { padding: 0 6vw 80px; }
+    .cta-wrap { padding: 40px 6vw 80px; }
     .cta {
-      margin-top: 80px;
       background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-mid) 100%);
       border-radius: 20px; padding: 56px 48px;
       display: flex; align-items: center; justify-content: space-between;
@@ -306,15 +429,21 @@
     }
     .cta::before {
       content: ''; position: absolute; right: -30px; top: -30px;
-      width: 200px; height: 200px; border-radius: 50%;
+      width: 240px; height: 240px; border-radius: 50%;
       background: radial-gradient(circle, var(--cyan-18) 0%, transparent 70%);
       pointer-events: none;
     }
-    .cta-content { position: relative; z-index: 2; }
+    .cta-content { position: relative; z-index: 2; max-width: 620px; }
+    .cta .cta-eyebrow {
+      color: rgba(255,255,255,.55); font-size: .8rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase; margin-bottom: 10px;
+    }
     .cta h2 {
       color: #fff; font-weight: 700;
-      font-size: clamp(1.5rem, 3vw, 2.2rem); line-height: 1.2;
+      font-size: clamp(1.55rem, 3vw, 2.15rem); line-height: 1.2;
+      margin-bottom: 10px;
     }
+    .cta p { color: rgba(255,255,255,.7); font-size: 1rem; }
     .cta .btn-primary { position: relative; z-index: 2; flex-shrink: 0; }
 
     /* ===== Footer ===== */
@@ -348,20 +477,25 @@
       font-size: .82rem; flex-wrap: wrap; gap: 12px;
     }
 
-    /* ===== Reveal ===== */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease-out, transform .65s ease-out; }
-    .reveal.visible { opacity: 1; transform: none; }
-
     /* ===== Responsive ===== */
     @media (max-width: 960px) {
       .wiezijnwij { grid-template-columns: 1fr; }
       .network-sticky { position: static; }
       .footer-top { grid-template-columns: 1fr; gap: 32px; }
-      .nav-links { gap: 18px; }
-      .nav-links a:not(.nav-cta) { display: none; }
+      .nav-links { gap: 14px; }
+      .nav-links a:not(.nav-cta), .nav-links button {
+        font-size: .82rem; padding-bottom: 2px;
+      }
+      .nav-dropdown { min-width: 280px; left: auto; right: -20px; }
+      .aanpak-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    @media (max-width: 640px) {
+      .nav { padding: 0 4vw; height: 64px; }
+      .nav-logo img { height: 30px; }
+      .nav-links a:not(.nav-cta), .nav-links button { display: none; }
+      .hero { padding: 60px 5vw 40px; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .reveal { opacity: 1; transform: none; transition: none; }
       *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
     }
   </style>
@@ -372,9 +506,57 @@
   <nav class="nav">
     <a class="nav-logo" href="index.html"><img src="logo-white.png" alt="Synomic" /></a>
     <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
       <li><a href="over-ons.html">Over ons</a></li>
-      <li><a href="diensten.html">Diensten</a></li>
+      <li class="nav-dropdown-parent" id="ddDiensten">
+        <button type="button" aria-haspopup="true" aria-expanded="false">
+          Diensten <span class="nav-caret"></span>
+        </button>
+        <div class="nav-dropdown" role="menu" aria-labelledby="ddDiensten">
+          <a href="diensten.html#finance" role="menuitem">
+            <span class="nav-dropdown-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 20h18"></path>
+                <rect x="5" y="12" width="3.2" height="6"></rect>
+                <rect x="10.4" y="8" width="3.2" height="10"></rect>
+                <rect x="15.8" y="4" width="3.2" height="14"></rect>
+              </svg>
+            </span>
+            <span>
+              <span class="nav-dropdown-title">Finance</span>
+              <span class="nav-dropdown-desc">Grip op uw cijfers, zonder Excel-chaos</span>
+            </span>
+            <span class="nav-dropdown-arrow">→</span>
+          </a>
+          <a href="diensten.html#automatisering" role="menuitem">
+            <span class="nav-dropdown-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12a9 9 0 0 0-15.5-6.3"></path>
+                <path d="M3 12a9 9 0 0 0 15.5 6.3"></path>
+                <polyline points="15 2 21 2 21 8"></polyline>
+                <polyline points="9 22 3 22 3 16"></polyline>
+              </svg>
+            </span>
+            <span>
+              <span class="nav-dropdown-title">Automatisering</span>
+              <span class="nav-dropdown-desc">Minder handwerk, meer overzicht</span>
+            </span>
+            <span class="nav-dropdown-arrow">→</span>
+          </a>
+          <a href="diensten.html#ai" role="menuitem">
+            <span class="nav-dropdown-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3 L13.4 9.4 L19.8 11 L13.4 12.6 L12 19 L10.6 12.6 L4.2 11 L10.6 9.4 Z"></path>
+                <path d="M19 17 L19.6 19.4 L22 20 L19.6 20.6 L19 23 L18.4 20.6 L16 20 L18.4 19.4 Z"></path>
+              </svg>
+            </span>
+            <span>
+              <span class="nav-dropdown-title">AI-toepassingen</span>
+              <span class="nav-dropdown-desc">Slimme oplossingen die passen bij uw bedrijf</span>
+            </span>
+            <span class="nav-dropdown-arrow">→</span>
+          </a>
+        </div>
+      </li>
       <li><a href="projecten.html">Projecten</a></li>
       <li><a href="partners.html">Partners</a></li>
       <li><a href="contact.html" class="nav-cta">Contact</a></li>
@@ -387,12 +569,59 @@
     <div class="hero-orb-1"></div>
     <div class="hero-orb-2"></div>
     <div class="hero-content">
-      <span class="hero-badge"><span class="hero-badge-dot"></span>Finance · IT · AI Automatisering</span>
-      <h1>Slimme oplossingen voor <em>digitale groei</em></h1>
-      <p>Technologie die werkt voor mensen, niet andersom. Synomic automatiseert, verbindt en optimaliseert — zodat bedrijven kunnen groeien zonder te verzanden in complexiteit.</p>
+      <span class="hero-badge"><span class="hero-badge-dot"></span>Voor ondernemers zonder IT-team</span>
+      <h1>Slimmer werken.<br /><em>Sneller vooruit.</em></h1>
+      <p>Uw bedrijf loopt goed. Alleen: de administratie loopt vol, cijfers zijn onoverzichtelijk en iedereen praat over AI. Synomic helpt u om weer grip te krijgen — zonder dat u er ingenieur voor hoeft te worden.</p>
       <div class="btn-row">
-        <a class="btn btn-primary" href="diensten.html">Bekijk diensten</a>
-        <a class="btn btn-outline" href="contact.html">Neem contact op</a>
+        <a class="btn btn-primary" href="contact.html">Plan een vrijblijvend gesprek →</a>
+        <a class="btn btn-outline" href="#hoe-werkt-het">Zo werkt het</a>
+      </div>
+      <div class="hero-reassurance">
+        <span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          30 minuten, geen verplichting
+        </span>
+        <span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Reactie binnen 1 werkdag
+        </span>
+        <span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          Uitleg in gewoon Nederlands
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Herkenning ===== -->
+  <section class="herkenning">
+    <div class="section-label">Herkent u dit?</div>
+    <h2 class="section-title">De meeste ondernemers lopen tegen dezelfde vier dingen aan</h2>
+    <p class="section-sub">Niet iedereen zit erop te wachten om zelf ICT'er te worden. Maar de klachten hieronder komen bij bijna elk gesprek terug — misschien ook bij u.</p>
+    <div class="herken-grid">
+      <div class="herken-tile">
+        <div class="herken-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        </div>
+        <div class="herken-quote">"Ik ben elke week uren kwijt aan dingen die het systeem zou moeten doen."</div>
+      </div>
+      <div class="herken-tile">
+        <div class="herken-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="M7 14l4-4 4 4 5-6"></path></svg>
+        </div>
+        <div class="herken-quote">"Ik heb cijfers genoeg, maar geen idee of het goed gaat."</div>
+      </div>
+      <div class="herken-tile">
+        <div class="herken-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="7" height="12" rx="1"></rect><rect x="14" y="6" width="7" height="12" rx="1"></rect><path d="M10 12h4"></path></svg>
+        </div>
+        <div class="herken-quote">"Ik voer alles dubbel in. Programma's praten niet met elkaar."</div>
+      </div>
+      <div class="herken-tile">
+        <div class="herken-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L13.4 9.4 L19.8 11 L13.4 12.6 L12 19 L10.6 12.6 L4.2 11 L10.6 9.4 Z"></path></svg>
+        </div>
+        <div class="herken-quote">"Iedereen doet iets met AI. Ik weet niet waar ik moet beginnen."</div>
       </div>
     </div>
   </section>
@@ -400,12 +629,12 @@
   <!-- ===== Wie zijn wij — split layout ===== -->
   <section class="wiezijnwij" data-scroll-anchor="1">
     <div>
-      <div class="section-label">Wie zijn wij</div>
-      <h2 class="section-title">Verbinden van technologie en bedrijfsvoering</h2>
-      <p class="section-sub">Synomic combineert finance, IT en AI-automatisering. De drie pijlers komen samen in één werkwijze die meetbare uitkomsten oplevert — zonder overbodige complexiteit.</p>
+      <div class="section-label">Wat Synomic voor u doet</div>
+      <h2 class="section-title" style="text-align: left; margin-left: 0;">Drie werelden, één aanspreekpunt.</h2>
+      <p class="section-sub" style="margin-left: 0; text-align: left;">Finance, automatisering en AI horen bij elkaar. Meestal huurt u drie verschillende bureaus in — en dan raakt het pas echt in de knoop. Synomic pakt ze samen op.</p>
 
       <div class="diensten-card">
-        <a class="dienst-row" href="diensten.html">
+        <a class="dienst-row" href="diensten.html#finance">
           <span class="dienst-num">01</span>
           <span class="dienst-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -416,12 +645,12 @@
             </svg>
           </span>
           <div class="dienst-body">
-            <h3>Finance &amp; Data</h3>
-            <p>Rapportages, dashboards en data-analyse die direct inzicht geven.</p>
+            <h3>Finance</h3>
+            <p>Overzichtelijke rapportages en heldere dashboards. U ziet in één blik hoe uw bedrijf ervoor staat.</p>
           </div>
           <span class="dienst-arrow">→</span>
         </a>
-        <a class="dienst-row" href="diensten.html">
+        <a class="dienst-row" href="diensten.html#automatisering">
           <span class="dienst-num">02</span>
           <span class="dienst-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -432,12 +661,12 @@
             </svg>
           </span>
           <div class="dienst-body">
-            <h3>IT &amp; Automatisering</h3>
-            <p>Systemen koppelen, processen stroomlijnen, handmatig werk elimineren.</p>
+            <h3>Automatisering</h3>
+            <p>Terugkerend werk laten uw systemen voortaan zelf doen. U houdt tijd over voor wat er echt toe doet.</p>
           </div>
           <span class="dienst-arrow">→</span>
         </a>
-        <a class="dienst-row" href="diensten.html">
+        <a class="dienst-row" href="diensten.html#ai">
           <span class="dienst-num">03</span>
           <span class="dienst-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -446,8 +675,8 @@
             </svg>
           </span>
           <div class="dienst-body">
-            <h3>AI Toepassingen</h3>
-            <p>Praktische AI die direct waarde levert — geen hype, wel resultaat.</p>
+            <h3>AI-toepassingen</h3>
+            <p>Slimme hulpjes die passen bij uw manier van werken. Concreet inzetbaar, geen buzzwoorden.</p>
           </div>
           <span class="dienst-arrow">→</span>
         </a>
@@ -483,7 +712,6 @@
               </filter>
             </defs>
 
-            <!-- ambient particles -->
             <g opacity=".45">
               <circle cx="35" cy="180" r="1.6" fill="#2BC4C4">
                 <animate attributeName="cy" values="170;190;170" dur="5s" repeatCount="indefinite" />
@@ -511,7 +739,6 @@
               </circle>
             </g>
 
-            <!-- orbit rings -->
             <g opacity=".7">
               <animateTransform attributeName="transform" type="rotate" from="0 240 295" to="360 240 295" dur="60s" repeatCount="indefinite" />
               <circle cx="240" cy="295" r="64" fill="none" stroke="rgba(43,196,196,.45)" stroke-width="1" stroke-dasharray="2 6" />
@@ -536,10 +763,33 @@
     </div>
   </section>
 
+  <!-- ===== Zo werkt het — 3-stappen aanpak ===== -->
+  <section class="aanpak" id="hoe-werkt-het">
+    <div class="aanpak-inner">
+      <div class="section-label" style="text-align: center;">Zo werkt het</div>
+      <h2 class="section-title">In drie stappen weet u waar u aan toe bent.</h2>
+      <p class="section-sub">Geen dikke offertes vooraf, geen lange trajecten. Eerst duidelijkheid — dan pas actie.</p>
+      <div class="aanpak-grid">
+        <div class="aanpak-step">
+          <h3>We drinken koffie.</h3>
+          <p>U vertelt over uw bedrijf en waar het knelt. Synomic luistert en stelt vragen. Duurt een half uur en kost u niets.</p>
+        </div>
+        <div class="aanpak-step">
+          <h3>U krijgt een helder plan.</h3>
+          <p>Concreet, in gewoon Nederlands: wat kan slimmer, wat het oplevert en wat het kost. U beslist zelf of u doorgaat.</p>
+        </div>
+        <div class="aanpak-step">
+          <h3>Wij gaan aan de slag.</h3>
+          <p>Synomic voert het uit — met korte stapjes, zodat u onderweg ziet dat het werkt. Geen verrassingen achteraf.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== Partners strip ===== -->
   <section class="partners">
     <div class="partners-head">
-      <span class="partners-label">Technologieën &amp; tools</span>
+      <span class="partners-label">Wij werken samen met</span>
       <a class="partners-link" href="partners.html">Bekijk alle partners →</a>
     </div>
     <div class="partner-row">
@@ -547,21 +797,21 @@
         <span class="partner-swatch"><img src="partner-claude.png" alt="Claude AI" /></span>
         <span>
           <span class="partner-name">Claude AI</span><br>
-          <span class="partner-role">Kunstmatige intelligentie</span>
+          <span class="partner-role">Slimme AI-assistent</span>
         </span>
       </a>
       <a class="partner-pill" href="partners.html">
         <span class="partner-swatch"><img src="partner-n8n.svg" alt="n8n" style="width:36px;height:36px" /></span>
         <span>
           <span class="partner-name">n8n</span><br>
-          <span class="partner-role">Workflow automatisering</span>
+          <span class="partner-role">Systemen aan elkaar knopen</span>
         </span>
       </a>
       <a class="partner-pill" href="partners.html">
         <span class="partner-swatch"><img src="partner-moneybird.png" alt="Moneybird" /></span>
         <span>
           <span class="partner-name">Moneybird</span><br>
-          <span class="partner-role">Finance administratie</span>
+          <span class="partner-role">Boekhouding zonder gedoe</span>
         </span>
       </a>
     </div>
@@ -571,9 +821,11 @@
   <div class="cta-wrap">
     <div class="cta">
       <div class="cta-content">
-        <h2>Beschrijf uw vraag. Wij denken gelijk met u mee.</h2>
+        <div class="cta-eyebrow">Vrijblijvend kennismaken</div>
+        <h2>Een goed gesprek kost een half uur. De inzichten gaan langer mee.</h2>
+        <p>Beschrijf uw vraag of loop uw situatie door. Synomic denkt gelijk met u mee — zonder verplichting.</p>
       </div>
-      <a class="btn btn-primary" href="contact.html">Stel uw vraag →</a>
+      <a class="btn btn-primary" href="contact.html">Plan een gesprek →</a>
     </div>
   </div>
 
@@ -599,31 +851,55 @@
       <div class="footer-col">
         <h4>Diensten</h4>
         <ul>
-          <li><a href="diensten.html">Finance &amp; Data</a></li>
-          <li><a href="diensten.html">IT Automatisering</a></li>
-          <li><a href="diensten.html">AI Toepassingen</a></li>
-          <li><a href="diensten.html">Procesoptimalisatie</a></li>
+          <li><a href="diensten.html#finance">Finance</a></li>
+          <li><a href="diensten.html#automatisering">Automatisering</a></li>
+          <li><a href="diensten.html#ai">AI-toepassingen</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Synomic – KVK 94705569. Alle rechten voorbehouden.</span>
+      <span>© 2026 Synomic – KVK 94705569. Alle rechten voorbehouden.</span>
       <span>Gebouwd met ♥ in Nederland</span>
     </div>
   </footer>
 
   <script>
+  // ===== Dropdown click-toggle (voor touch / mobile) =====
+  (function () {
+    const dd = document.getElementById('ddDiensten');
+    if (!dd) return;
+    const btn = dd.querySelector('button');
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = dd.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    document.addEventListener('click', (e) => {
+      if (!dd.contains(e.target)) {
+        dd.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        dd.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.focus();
+      }
+    });
+  })();
+
   // ===== Scroll-driven network widget =====
   (function () {
     const SVG_NS = 'http://www.w3.org/2000/svg';
     const nodes = [
       { id: 'finance', x: 90,  y: 92,  r: 19, lines: ['Finance'],              lit: 0.00 },
-      { id: 'it',      x: 240, y: 74,  r: 19, lines: ['IT'],                   lit: 0.03 },
+      { id: 'it',      x: 240, y: 74,  r: 19, lines: ['Automatisering'],       lit: 0.03 },
       { id: 'ai',      x: 390, y: 92,  r: 19, lines: ['AI'],                   lit: 0.06 },
       { id: 'hub',     x: 240, y: 295, r: 32, lines: ['Synomic'],              lit: 0.18, central: true },
-      { id: 'impact',  x: 90,  y: 478, r: 17, lines: ['Meetbare','impact'],    lit: 0.36, slideIn: true },
-      { id: 'groei',   x: 240, y: 496, r: 17, lines: ['Schaalbare','groei'],   lit: 0.42, slideIn: true },
-      { id: 'proces',  x: 390, y: 478, r: 17, lines: ['Slimmere','processen'], lit: 0.48, slideIn: true },
+      { id: 'impact',  x: 90,  y: 478, r: 17, lines: ['Meer','overzicht'],     lit: 0.36, slideIn: true },
+      { id: 'groei',   x: 240, y: 496, r: 17, lines: ['Minder','handwerk'],    lit: 0.42, slideIn: true },
+      { id: 'proces',  x: 390, y: 478, r: 17, lines: ['Slimmer','beslissen'],  lit: 0.48, slideIn: true },
     ];
     const edges = [
       { from: 'finance', to: 'hub',    s: 0.04, e: 0.18 },
@@ -643,14 +919,14 @@
     };
 
     const anchor = document.querySelector('[data-scroll-anchor="1"]');
-    const widget = document.getElementById('synNetwork');
     const edgesG = document.getElementById('snEdges');
     const nodesG = document.getElementById('snNodes');
     const bar = document.getElementById('snBar');
     const progressEl = document.getElementById('snProgress');
+    if (!anchor || !edgesG) return;
     let hover = null;
+    let lastP = 0;
 
-    // Build nodes
     const nodeEls = {};
     nodes.forEach(n => {
       const g = document.createElementNS(SVG_NS, 'g');
@@ -710,7 +986,6 @@
       nodeEls[n.id] = { g, text };
     });
 
-    // Build edges
     const edgeEls = edges.map(e => {
       const g = document.createElementNS(SVG_NS, 'g');
       const glow = document.createElementNS(SVG_NS, 'path');
@@ -730,7 +1005,6 @@
       return { e, g, glow, ghost, line, spark: null };
     });
 
-    let lastP = 0;
     function update(progress) {
       lastP = progress;
       bar.style.width = (progress * 100) + '%';
@@ -774,7 +1048,6 @@
         er.line.setAttribute('stroke-dasharray', len);
         er.line.setAttribute('stroke-dashoffset', (1 - p) * len);
 
-        // travelling spark — only once edge is essentially drawn
         if (p > 0.97 && !er.spark) {
           const s = document.createElementNS(SVG_NS, 'circle');
           s.setAttribute('r', '2.5'); s.setAttribute('fill', '#2BC4C4');
@@ -809,19 +1082,6 @@
     window.addEventListener('resize', onScroll);
     update(0);
     onScroll();
-  })();
-
-  // ===== Reveal on scroll =====
-  (function () {
-    const els = document.querySelectorAll('.reveal');
-    if (!('IntersectionObserver' in window)) {
-      els.forEach(el => el.classList.add('visible'));
-      return;
-    }
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); } });
-    }, { threshold: 0.12 });
-    els.forEach(el => io.observe(el));
   })();
   </script>
 
