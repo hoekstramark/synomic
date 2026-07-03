@@ -112,8 +112,8 @@
       content: ''; position: absolute; top: -12px; left: 0; right: 0; height: 12px;
     }
     .nav-dropdown a {
-      display: flex; align-items: flex-start; gap: 14px;
-      padding: 14px 16px; border-radius: 10px;
+      display: flex; align-items: center; gap: 14px;
+      padding: 12px 16px; border-radius: 10px;
       color: var(--color-navy); border-bottom: none;
       transition: background .15s;
     }
@@ -127,14 +127,15 @@
     }
     .nav-dropdown-title {
       font-family: var(--font-display); font-weight: 700;
-      font-size: .95rem; color: var(--color-navy); margin-bottom: 2px;
+      font-size: 1rem; color: var(--color-navy);
+      flex: 1;
     }
     .nav-dropdown-desc {
       font-size: .78rem; color: var(--color-muted); line-height: 1.4;
     }
     .nav-dropdown-arrow {
       color: var(--color-muted); font-family: var(--font-display);
-      font-weight: 700; align-self: center; margin-left: auto;
+      font-weight: 700;
       transition: transform .2s, color .2s;
     }
 
@@ -521,10 +522,7 @@
                 <rect x="15.8" y="4" width="3.2" height="14"></rect>
               </svg>
             </span>
-            <span>
-              <span class="nav-dropdown-title">Finance</span>
-              <span class="nav-dropdown-desc">Grip op uw cijfers, zonder Excel-chaos</span>
-            </span>
+            <span class="nav-dropdown-title">Finance</span>
             <span class="nav-dropdown-arrow">→</span>
           </a>
           <a href="diensten.html#automatisering" role="menuitem">
@@ -536,10 +534,7 @@
                 <polyline points="9 22 3 22 3 16"></polyline>
               </svg>
             </span>
-            <span>
-              <span class="nav-dropdown-title">Automatisering</span>
-              <span class="nav-dropdown-desc">Minder handwerk, meer overzicht</span>
-            </span>
+            <span class="nav-dropdown-title">Automatisering</span>
             <span class="nav-dropdown-arrow">→</span>
           </a>
           <a href="diensten.html#ai" role="menuitem">
@@ -549,10 +544,7 @@
                 <path d="M19 17 L19.6 19.4 L22 20 L19.6 20.6 L19 23 L18.4 20.6 L16 20 L18.4 19.4 Z"></path>
               </svg>
             </span>
-            <span>
-              <span class="nav-dropdown-title">AI-toepassingen</span>
-              <span class="nav-dropdown-desc">Slimme oplossingen die passen bij uw bedrijf</span>
-            </span>
+            <span class="nav-dropdown-title">AI-toepassingen</span>
             <span class="nav-dropdown-arrow">→</span>
           </a>
         </div>
@@ -571,7 +563,7 @@
     <div class="hero-content">
       <span class="hero-badge"><span class="hero-badge-dot"></span>Voor ondernemers zonder IT-team</span>
       <h1>Slimmer werken.<br /><em>Sneller vooruit.</em></h1>
-      <p>Uw bedrijf loopt goed. Alleen: de administratie loopt vol, cijfers zijn onoverzichtelijk en iedereen praat over AI. Synomic helpt u om weer grip te krijgen — zonder dat u er ingenieur voor hoeft te worden.</p>
+      <p>Synomic ondersteunt ondernemers bij het optimaliseren van hun bedrijfsvoering. Van financieel inzicht tot slimme automatisering en concrete AI-toepassingen — pragmatisch toegepast, aantoonbaar resultaat.</p>
       <div class="btn-row">
         <a class="btn btn-primary" href="contact.html">Plan een vrijblijvend gesprek →</a>
         <a class="btn btn-outline" href="#hoe-werkt-het">Zo werkt het</a>
@@ -583,8 +575,8 @@
   <section class="wiezijnwij" data-scroll-anchor="1">
     <div>
       <div class="section-label">Wat Synomic voor u doet</div>
-      <h2 class="section-title" style="text-align: left; margin-left: 0;">Drie werelden, één aanspreekpunt.</h2>
-      <p class="section-sub" style="margin-left: 0; text-align: left;">Finance, automatisering en AI horen bij elkaar. Meestal huurt u drie verschillende bureaus in — en dan raakt het pas echt in de knoop. Synomic pakt ze samen op.</p>
+      <h2 class="section-title" style="text-align: left; margin-left: 0;">Drie specialismen. Één aanspreekpunt.</h2>
+      <p class="section-sub" style="margin-left: 0; text-align: left;">Finance, automatisering en AI komen bij Synomic samen. Dat zorgt voor consistentie in aanpak en versnelling in uitvoering — zonder versnippering over meerdere partijen.</p>
 
       <div class="diensten-card">
         <a class="dienst-row" href="diensten.html#finance">
@@ -599,7 +591,7 @@
           </span>
           <div class="dienst-body">
             <h3>Finance</h3>
-            <p>Overzichtelijke rapportages en heldere dashboards. U ziet in één blik hoe uw bedrijf ervoor staat.</p>
+            <p>Rapportages en dashboards die direct inzicht geven in de bedrijfsvoering en onderbouwing bieden voor strategische beslissingen.</p>
           </div>
           <span class="dienst-arrow">→</span>
         </a>
@@ -615,7 +607,7 @@
           </span>
           <div class="dienst-body">
             <h3>Automatisering</h3>
-            <p>Terugkerend werk laten uw systemen voortaan zelf doen. U houdt tijd over voor wat er echt toe doet.</p>
+            <p>Terugkerende taken en werkstromen volledig geautomatiseerd. Uw organisatie behoudt focus op strategisch en waardevol werk.</p>
           </div>
           <span class="dienst-arrow">→</span>
         </a>
@@ -629,7 +621,7 @@
           </span>
           <div class="dienst-body">
             <h3>AI-toepassingen</h3>
-            <p>Slimme hulpjes die passen bij uw manier van werken. Concreet inzetbaar, geen buzzwoorden.</p>
+            <p>AI-oplossingen die aansluiten op uw bestaande processen. Praktisch inzetbaar en met meetbaar resultaat.</p>
           </div>
           <span class="dienst-arrow">→</span>
         </a>
@@ -742,7 +734,7 @@
   <!-- ===== Partners strip ===== -->
   <section class="partners">
     <div class="partners-head">
-      <span class="partners-label">Wij werken samen met</span>
+      <span class="partners-label">Onze partners</span>
       <a class="partners-link" href="partners.html">Bekijk alle partners →</a>
     </div>
     <div class="partner-row">
@@ -750,21 +742,21 @@
         <span class="partner-swatch"><img src="partner-claude.png" alt="Claude AI" /></span>
         <span>
           <span class="partner-name">Claude AI</span><br>
-          <span class="partner-role">Slimme AI-assistent</span>
+          <span class="partner-role">AI-assistent</span>
         </span>
       </a>
       <a class="partner-pill" href="partners.html">
         <span class="partner-swatch"><img src="partner-n8n.svg" alt="n8n" style="width:36px;height:36px" /></span>
         <span>
           <span class="partner-name">n8n</span><br>
-          <span class="partner-role">Systemen aan elkaar knopen</span>
+          <span class="partner-role">Automatiseringsplatform</span>
         </span>
       </a>
       <a class="partner-pill" href="partners.html">
         <span class="partner-swatch"><img src="partner-moneybird.png" alt="Moneybird" /></span>
         <span>
           <span class="partner-name">Moneybird</span><br>
-          <span class="partner-role">Boekhouding zonder gedoe</span>
+          <span class="partner-role">Boekhoudpakket</span>
         </span>
       </a>
     </div>
@@ -775,8 +767,8 @@
     <div class="cta">
       <div class="cta-content">
         <div class="cta-eyebrow">Vrijblijvend kennismaken</div>
-        <h2>Een goed gesprek kost een half uur. De inzichten gaan langer mee.</h2>
-        <p>Beschrijf uw vraag of loop uw situatie door. Synomic denkt gelijk met u mee — zonder verplichting.</p>
+        <h2>Klaar voor de volgende stap in uw bedrijfsvoering?</h2>
+        <p>Plan een vrijblijvend gesprek. Binnen 30 minuten heeft u concreet inzicht in de kansen voor uw organisatie.</p>
       </div>
       <a class="btn btn-primary" href="contact.html">Plan een gesprek →</a>
     </div>
