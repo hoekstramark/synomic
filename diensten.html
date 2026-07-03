@@ -6,6 +6,15 @@
   <title>Diensten — Synomic</title>
   <meta name="description" content="Finance, Automatisering en AI-toepassingen. Drie specialismen die samen zorgen voor grip, tijdwinst en meetbaar resultaat." />
   <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="canonical" href="https://synomic.nl/diensten.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Synomic" />
+  <meta property="og:locale" content="nl_NL" />
+  <meta property="og:title" content="Diensten — Synomic" />
+  <meta property="og:description" content="Finance, Automatisering en AI-toepassingen. Drie specialismen die samen zorgen voor grip, tijdwinst en meetbaar resultaat." />
+  <meta property="og:url" content="https://synomic.nl/diensten.html" />
+  <meta property="og:image" content="https://synomic.nl/logo.png" />
+  <meta name="twitter:card" content="summary" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
@@ -42,6 +51,11 @@
     .nav-links a.active, .nav-links button.active { color: var(--color-cyan); border-bottom-color: var(--color-cyan); }
     .nav-cta { color: var(--color-cyan) !important; font-weight: 700; border-bottom: none !important; transition: color .2s; }
     .nav-cta:hover { color: var(--color-cyan-dim) !important; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 8px; }
+    .hamburger span { width: 24px; height: 2px; background: #fff; display: block; border-radius: 2px; transition: transform .25s, opacity .25s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .nav-caret { width: 8px; height: 8px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); margin-top: -3px; transition: transform .2s; }
     .nav-dropdown-parent.open .nav-caret { transform: rotate(-135deg); margin-top: 3px; }
     .nav-dropdown { position: absolute; top: calc(100% + 12px); left: -20px; background: #fff; border: 1px solid var(--color-border); border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,.20); padding: 12px; min-width: 260px; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity .2s, transform .2s, visibility .2s; z-index: 200; }
@@ -201,14 +215,20 @@
       .dienst-inner { grid-template-columns: 1fr; gap: 40px; }
       .dienst-inner.reverse .dienst-visual { order: 0; }
       .footer-top { grid-template-columns: 1fr; gap: 32px; }
-      .nav-links { gap: 14px; }
-      .nav-links a:not(.nav-cta), .nav-links button { font-size: .82rem; padding-bottom: 2px; }
-      .nav-dropdown { min-width: 240px; left: auto; right: -20px; }
+      .hamburger { display: flex; }
+      .nav-links { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: flex-start; background: var(--color-navy); border-bottom: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 40px rgba(0,0,0,.35); padding: 18px 6vw 26px; gap: 18px; display: none; }
+      .nav-links.open { display: flex; }
+      .nav-dropdown { position: static; min-width: 0; background: transparent; border: none; box-shadow: none; padding: 8px 0 0 8px; opacity: 1; visibility: visible; transform: none; display: none; }
+      .nav-dropdown-parent.open .nav-dropdown { display: block; }
+      .nav-dropdown::before { display: none; }
+      .nav-dropdown-title { color: #fff; }
+      .nav-dropdown a:hover { background: rgba(255,255,255,.06); }
+      .nav-dropdown-arrow { color: rgba(255,255,255,.4); }
+      .nav-dropdown-icon { background: rgba(43,196,196,.15); }
     }
     @media (max-width: 640px) {
       .nav { padding: 0 4vw; height: 64px; }
       .nav-logo img { height: 30px; }
-      .nav-links a:not(.nav-cta), .nav-links button { display: none; }
     }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
   </style>
@@ -217,7 +237,10 @@
 
   <nav class="nav">
     <a class="nav-logo" href="index.html"><img src="logo-white.png" alt="Synomic" /></a>
-    <ul class="nav-links">
+    <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="over-ons.html">Over ons</a></li>
       <li class="nav-dropdown-parent" id="ddDiensten">
         <button type="button" class="active" aria-haspopup="true" aria-expanded="false">
@@ -465,8 +488,8 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Synomic – KVK 94705569. Alle rechten voorbehouden.</span>
-      <span>Gebouwd met ♥ in Nederland</span>
+      <span>© <span class="jsYear">2026</span> Synomic – KVK 94705569. Alle rechten voorbehouden.</span>
+      <span><a href="privacy.html" style="color:inherit;text-decoration:underline;">Privacyverklaring</a> · Gebouwd met ♥ in Nederland</span>
     </div>
   </footer>
 
@@ -478,6 +501,23 @@
     btn.addEventListener('click', (e) => { e.stopPropagation(); const o = dd.classList.toggle('open'); btn.setAttribute('aria-expanded', o ? 'true' : 'false'); });
     document.addEventListener('click', (e) => { if (!dd.contains(e.target)) { dd.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { dd.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
+  })();
+  </script>
+  <script>
+  (function () {
+    var hb = document.getElementById('hamburger');
+    var links = document.getElementById('navLinks');
+    if (hb && links) {
+      hb.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        hb.classList.toggle('open', open);
+        hb.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      links.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { links.classList.remove('open'); hb.classList.remove('open'); hb.setAttribute('aria-expanded', 'false'); });
+      });
+    }
+    document.querySelectorAll('.jsYear').forEach(function (el) { el.textContent = new Date().getFullYear(); });
   })();
   </script>
 </body>

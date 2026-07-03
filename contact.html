@@ -6,6 +6,15 @@
   <title>Contact — Synomic</title>
   <meta name="description" content="Plan een vrijblijvend kennismakingsgesprek met Synomic. Binnen 1 werkdag ontvangt u een reactie." />
   <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="canonical" href="https://synomic.nl/contact.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Synomic" />
+  <meta property="og:locale" content="nl_NL" />
+  <meta property="og:title" content="Contact — Synomic" />
+  <meta property="og:description" content="Plan een vrijblijvend kennismakingsgesprek. Binnen 1 werkdag reactie." />
+  <meta property="og:url" content="https://synomic.nl/contact.html" />
+  <meta property="og:image" content="https://synomic.nl/logo.png" />
+  <meta name="twitter:card" content="summary" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
@@ -59,6 +68,11 @@
     .nav-links a.active, .nav-links button.active { color: var(--color-cyan); border-bottom-color: var(--color-cyan); }
     .nav-cta { color: var(--color-cyan) !important; font-weight: 700; border-bottom: none !important; transition: color .2s; }
     .nav-cta:hover { color: var(--color-cyan-dim) !important; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 8px; }
+    .hamburger span { width: 24px; height: 2px; background: #fff; display: block; border-radius: 2px; transition: transform .25s, opacity .25s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .nav-caret { width: 8px; height: 8px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); margin-top: -3px; transition: transform .2s; }
     .nav-dropdown-parent.open .nav-caret { transform: rotate(-135deg); margin-top: 3px; }
     .nav-dropdown { position: absolute; top: calc(100% + 12px); left: -20px; background: #fff; border: 1px solid var(--color-border); border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,.20); padding: 12px; min-width: 260px; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity .2s, transform .2s, visibility .2s; z-index: 200; }
@@ -207,15 +221,21 @@
       .contact-grid { grid-template-columns: 1fr; gap: 40px; }
       .field-row { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; gap: 32px; }
-      .nav-links { gap: 14px; }
-      .nav-links a:not(.nav-cta), .nav-links button { font-size: .82rem; padding-bottom: 2px; }
-      .nav-dropdown { min-width: 240px; left: auto; right: -20px; }
+      .hamburger { display: flex; }
+      .nav-links { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: flex-start; background: var(--color-navy); border-bottom: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 40px rgba(0,0,0,.35); padding: 18px 6vw 26px; gap: 18px; display: none; }
+      .nav-links.open { display: flex; }
+      .nav-dropdown { position: static; min-width: 0; background: transparent; border: none; box-shadow: none; padding: 8px 0 0 8px; opacity: 1; visibility: visible; transform: none; display: none; }
+      .nav-dropdown-parent.open .nav-dropdown { display: block; }
+      .nav-dropdown::before { display: none; }
+      .nav-dropdown-title { color: #fff; }
+      .nav-dropdown a:hover { background: rgba(255,255,255,.06); }
+      .nav-dropdown-arrow { color: rgba(255,255,255,.4); }
+      .nav-dropdown-icon { background: rgba(43,196,196,.15); }
       .form-card { padding: 32px 24px; }
     }
     @media (max-width: 640px) {
       .nav { padding: 0 4vw; height: 64px; }
       .nav-logo img { height: 30px; }
-      .nav-links a:not(.nav-cta), .nav-links button { display: none; }
     }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
   </style>
@@ -225,7 +245,10 @@
   <!-- ===== Nav ===== -->
   <nav class="nav">
     <a class="nav-logo" href="index.html"><img src="logo-white.png" alt="Synomic" /></a>
-    <ul class="nav-links">
+    <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="over-ons.html">Over ons</a></li>
       <li class="nav-dropdown-parent" id="ddDiensten">
         <button type="button" aria-haspopup="true" aria-expanded="false">
@@ -326,6 +349,10 @@
             <p class="form-intro">Alle velden met <span class="req">*</span> zijn verplicht.</p>
 
             <form id="contactForm" novalidate>
+              <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+                <label for="website">Website (laat leeg)</label>
+                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+              </div>
               <div class="field-row">
                 <div class="field" id="f-naam">
                   <label for="naam">Naam <span class="req">*</span></label>
@@ -370,11 +397,14 @@
 
               <div class="checkbox" id="f-privacy">
                 <input id="privacy" name="privacy" type="checkbox" required />
-                <label for="privacy">Ik ga akkoord met het verwerken van mijn gegevens voor de behandeling van mijn vraag. Synomic deelt uw gegevens nooit met derden. <span class="req">*</span></label>
+                <label for="privacy">Ik ga akkoord met het verwerken van mijn gegevens voor de behandeling van mijn vraag, zoals beschreven in de <a href="privacy.html" style="color:var(--color-cyan);text-decoration:underline;" target="_blank">privacyverklaring</a>. Synomic deelt uw gegevens nooit met derden. <span class="req">*</span></label>
               </div>
               <div class="field-error" id="privacy-error" style="margin-top: -14px; margin-bottom: 18px; margin-left: 30px;">U dient akkoord te gaan met de privacyverklaring.</div>
 
               <button type="submit" class="btn btn-primary">Verstuur bericht</button>
+              <div id="sendError" style="display:none;background:rgba(220,50,50,.08);border:1.5px solid rgba(220,50,50,.3);border-radius:12px;padding:16px 20px;margin-top:16px;font-size:.9rem;color:#C0392B;">
+                Het bericht kon niet worden verzonden. Probeer het later opnieuw.
+              </div>
 
               <div class="form-note">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
@@ -426,8 +456,8 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 Synomic – KVK 94705569. Alle rechten voorbehouden.</span>
-      <span>Gebouwd met ♥ in Nederland</span>
+      <span>© <span class="jsYear">2026</span> Synomic – KVK 94705569. Alle rechten voorbehouden.</span>
+      <span><a href="privacy.html" style="color:inherit;text-decoration:underline;">Privacyverklaring</a> · Gebouwd met ♥ in Nederland</span>
     </div>
   </footer>
 
@@ -446,16 +476,43 @@
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { dd.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
   })();
 
-  // Form validation (client-side demo — vervang met echte submit voor productie)
+  // Form validation + Formspree verzending
   (function () {
     const form = document.getElementById('contactForm');
     if (!form) return;
+    const formLoadTime = Date.now();
     const showError = (id, show) => {
       const el = document.getElementById(id);
       if (el) el.classList.toggle('is-invalid', !!show);
     };
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      const sendError = document.getElementById('sendError');
+      sendError.style.display = 'none';
+
+      // Bot check 1: honeypot ingevuld → stil laten slagen
+      if (form.website && form.website.value) {
+        document.getElementById('formView').style.display = 'none';
+        document.getElementById('successView').style.display = 'block';
+        return;
+      }
+      // Bot check 2: sneller dan 3 seconden ingevuld
+      if (Date.now() - formLoadTime < 3000) {
+        sendError.textContent = 'Formulier te snel ingevuld. Probeer het opnieuw.';
+        sendError.style.display = 'block';
+        return;
+      }
+      // Rate limit: max 3 berichten per 15 minuten
+      try {
+        const now = Date.now();
+        let subs = JSON.parse(sessionStorage.getItem('synomic_form_subs') || '[]').filter(t => now - t < 900000);
+        if (subs.length >= 3) {
+          sendError.textContent = 'U heeft te veel berichten verstuurd. Probeer het over 15 minuten opnieuw.';
+          sendError.style.display = 'block';
+          return;
+        }
+      } catch (err) {}
+
       let ok = true;
       const naam = form.naam.value.trim();
       const email = form.email.value.trim();
@@ -475,10 +532,61 @@
       if (form.querySelector('.field.is-invalid')) ok = false;
       if (!ok) return;
 
-      document.getElementById('formView').style.display = 'none';
-      document.getElementById('successView').style.display = 'block';
-      window.scrollTo({ top: document.getElementById('formCard').offsetTop - 100, behavior: 'smooth' });
+      const btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = 'Versturen...';
+
+      let sent = false;
+      try {
+        const resp = await fetch('https://formspree.io/f/xbdwaekq', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            naam: naam,
+            bedrijf: form.bedrijf.value.trim(),
+            email: email,
+            telefoon: form.telefoon.value.trim(),
+            onderwerp: onderwerp,
+            bericht: bericht,
+          })
+        });
+        sent = resp.ok;
+      } catch (err) { sent = false; }
+
+      if (sent) {
+        try {
+          const now = Date.now();
+          const subs = JSON.parse(sessionStorage.getItem('synomic_form_subs') || '[]').filter(t => now - t < 900000);
+          subs.push(now);
+          sessionStorage.setItem('synomic_form_subs', JSON.stringify(subs));
+        } catch (err) {}
+        document.getElementById('formView').style.display = 'none';
+        document.getElementById('successView').style.display = 'block';
+        window.scrollTo({ top: document.getElementById('formCard').offsetTop - 100, behavior: 'smooth' });
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Verstuur bericht';
+        sendError.textContent = 'Het bericht kon niet worden verzonden. Probeer het later opnieuw.';
+        sendError.style.display = 'block';
+      }
     });
+  })();
+  </script>
+  <script>
+  (function () {
+    var hb = document.getElementById('hamburger');
+    var links = document.getElementById('navLinks');
+    if (hb && links) {
+      hb.addEventListener('click', function () {
+        var open = links.classList.toggle('open');
+        hb.classList.toggle('open', open);
+        hb.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      links.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () { links.classList.remove('open'); hb.classList.remove('open'); hb.setAttribute('aria-expanded', 'false'); });
+      });
+    }
+    document.querySelectorAll('.jsYear').forEach(function (el) { el.textContent = new Date().getFullYear(); });
   })();
   </script>
 </body>
