@@ -3,455 +3,483 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact – Synomic</title>
-  <meta name="description" content="Neem contact op met Synomic voor een vrijblijvend gesprek over finance, IT of AI-automatisering." />
+  <title>Contact — Synomic</title>
+  <meta name="description" content="Plan een vrijblijvend kennismakingsgesprek met Synomic. Binnen 1 werkdag ontvangt u een reactie." />
   <link rel="icon" type="image/png" href="logo.png" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --color-navy: #1B3A5C;
+      --color-navy-deep: #0E2136;
+      --color-navy-mid: #1A4D6E;
+      --color-cyan: #2BC4C4;
+      --color-cyan-dim: #1A9E9E;
+      --color-white: #ffffff;
+      --color-off-1: #F8FAFC;
+      --color-off-2: #F5F7FA;
+      --color-border: #DDE3EC;
+      --color-border-soft: #E8EDF3;
+      --color-muted: #6B7A8D;
+      --status-error: #C0392B;
+      --cyan-04: rgba(43,196,196,.04);
+      --cyan-08: rgba(43,196,196,.08);
+      --cyan-10: rgba(43,196,196,.10);
+      --cyan-15: rgba(43,196,196,.15);
+      --cyan-18: rgba(43,196,196,.18);
+      --cyan-35: rgba(43,196,196,.35);
+      --font-display: 'Syne', system-ui, sans-serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --shadow-sm: 0 2px 20px rgba(27,58,92,.06);
+      --shadow-md: 0 4px 32px rgba(27,58,92,.10);
+      --shadow-cyan-rest: 0 4px 20px rgba(43,196,196,.30);
+      --shadow-cyan-hover: 0 8px 28px rgba(43,196,196,.40);
+      --gradient-hero: linear-gradient(135deg, #0E2136 0%, #1B3A5C 60%, #1A4D6E 100%);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-body); font-weight: 400; font-size: 1rem;
+      line-height: 1.65; color: var(--color-navy);
+      background: var(--color-white); overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.2; color: var(--color-navy); }
+
+    /* ===== Nav (identiek aan homepage) ===== */
+    .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 6vw; height: 72px; background: var(--color-navy); border-bottom: 1px solid rgba(255,255,255,.08); box-shadow: 0 4px 30px rgba(0,0,0,.25); }
+    .nav-logo img { height: 38px; }
+    .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
+    .nav-links > li { position: relative; }
+    .nav-links a, .nav-links button { background: none; border: none; cursor: pointer; font-family: var(--font-body); font-weight: 500; font-size: .95rem; color: rgba(255,255,255,.8); letter-spacing: .02em; padding-bottom: 3px; border-bottom: 2px solid transparent; transition: color .2s; display: inline-flex; align-items: center; gap: 6px; }
+    .nav-links a:hover, .nav-links button:hover { color: var(--color-cyan); }
+    .nav-links a.active, .nav-links button.active { color: var(--color-cyan); border-bottom-color: var(--color-cyan); }
+    .nav-cta { background: var(--color-cyan); color: #fff !important; padding: 10px 22px; border-radius: 8px; font-weight: 700; transition: transform .2s, background .2s; border-bottom: none !important; }
+    .nav-cta:hover { background: var(--color-cyan-dim); transform: translateY(-1px); }
+    .nav-caret { width: 8px; height: 8px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); margin-top: -3px; transition: transform .2s; }
+    .nav-dropdown-parent.open .nav-caret { transform: rotate(-135deg); margin-top: 3px; }
+    .nav-dropdown { position: absolute; top: calc(100% + 12px); left: -20px; background: #fff; border: 1px solid var(--color-border); border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,.20); padding: 12px; min-width: 260px; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity .2s, transform .2s, visibility .2s; z-index: 200; }
+    .nav-dropdown-parent.open .nav-dropdown, .nav-dropdown-parent:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown::before { content: ''; position: absolute; top: -12px; left: 0; right: 0; height: 12px; }
+    .nav-dropdown a { display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-radius: 10px; color: var(--color-navy); border-bottom: none; transition: background .15s; }
+    .nav-dropdown a:hover { background: var(--cyan-04); color: var(--color-navy); }
+    .nav-dropdown a:hover .nav-dropdown-arrow { color: var(--color-cyan); transform: translateX(3px); }
+    .nav-dropdown-icon { width: 42px; height: 42px; min-width: 42px; border-radius: 10px; background: var(--cyan-10); display: flex; align-items: center; justify-content: center; color: var(--color-cyan); }
+    .nav-dropdown-title { font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: var(--color-navy); flex: 1; }
+    .nav-dropdown-arrow { color: var(--color-muted); font-family: var(--font-display); font-weight: 700; transition: transform .2s, color .2s; }
+
+    /* ===== Page header ===== */
+    .page-header { padding: 120px 6vw 60px; background: var(--gradient-hero); position: relative; overflow: hidden; }
+    .page-header::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(43,196,196,.15) 1px, transparent 1px); background-size: 48px 48px; pointer-events: none; }
+    .page-header::after { content: ''; position: absolute; top: -50px; right: -50px; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, var(--cyan-18) 0%, transparent 70%); pointer-events: none; }
+    .page-header-inner { position: relative; z-index: 2; max-width: 780px; }
+    .page-breadcrumb { display: flex; gap: 10px; font-size: .82rem; color: rgba(255,255,255,.6); margin-bottom: 20px; align-items: center; }
+    .page-breadcrumb a { color: var(--color-cyan); }
+    .page-breadcrumb a:hover { text-decoration: underline; }
+    .page-breadcrumb span.sep { color: rgba(255,255,255,.3); }
+    .page-header h1 { font-weight: 800; font-size: clamp(2.4rem, 5vw, 3.6rem); color: #fff; margin-bottom: 20px; line-height: 1.1; letter-spacing: -0.02em; }
+    .page-header h1 em { font-style: normal; color: var(--color-cyan); }
+    .page-header .lead { font-size: 1.15rem; color: rgba(255,255,255,.78); max-width: 620px; }
+
+    /* ===== Contact layout ===== */
+    .contact-section { padding: 80px 6vw; }
+    .contact-grid {
+      display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+      gap: 60px; align-items: start; max-width: 1200px; margin: 0 auto;
+    }
+    .info-column { }
+    .section-label { font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--color-cyan); margin-bottom: 12px; }
+    .info-title { font-size: 2rem; margin-bottom: 16px; font-weight: 700; }
+    .info-sub { color: var(--color-muted); font-size: 1rem; line-height: 1.7; margin-bottom: 36px; }
+
+    .info-block { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
+    .info-icon {
+      width: 44px; height: 44px; min-width: 44px; border-radius: 10px;
+      background: var(--cyan-10); color: var(--color-cyan);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .info-content strong { display: block; font-family: var(--font-display); font-weight: 700; font-size: .95rem; color: var(--color-navy); margin-bottom: 2px; }
+    .info-content span { font-size: .95rem; color: var(--color-muted); }
+
+    .privacy-box {
+      margin-top: 40px; padding: 24px;
+      background: var(--color-off-2); border-radius: 14px;
+    }
+    .privacy-title { font-family: var(--font-display); font-weight: 700; font-size: .95rem; margin-bottom: 14px; color: var(--color-navy); }
+    .privacy-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .privacy-list li { display: flex; gap: 10px; align-items: center; font-size: .9rem; color: var(--color-muted); }
+    .privacy-list svg { color: var(--color-cyan); flex-shrink: 0; }
+
+    /* ===== Form card ===== */
+    .form-card {
+      background: var(--color-white); border: 1px solid var(--color-border);
+      border-radius: 20px; padding: 44px 40px; box-shadow: var(--shadow-md);
+    }
+    .form-card h3 { font-size: 1.3rem; margin-bottom: 6px; }
+    .form-intro { color: var(--color-muted); font-size: .92rem; margin-bottom: 28px; }
+    .form-intro .req { color: var(--color-cyan); }
+
+    .field { margin-bottom: 22px; }
+    .field label {
+      display: block; font-size: .88rem; font-weight: 600;
+      color: var(--color-navy); margin-bottom: 8px;
+    }
+    .field label .req { color: var(--color-cyan); margin-left: 4px; }
+    .field label .opt { color: var(--color-muted); font-weight: 400; margin-left: 6px; }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: 12px 16px;
+      border: 1.5px solid var(--color-border); border-radius: 10px;
+      font-family: var(--font-body); font-size: .95rem; color: var(--color-navy);
+      background: var(--color-white); outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .field textarea { min-height: 130px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--color-cyan);
+      box-shadow: 0 0 0 3px rgba(43,196,196,.12);
+    }
+    .field.is-invalid input, .field.is-invalid select, .field.is-invalid textarea {
+      border-color: var(--status-error);
+      box-shadow: 0 0 0 3px rgba(231,76,60,.10);
+    }
+    .field-error { font-size: .78rem; color: var(--status-error); margin-top: 5px; display: none; }
+    .field.is-invalid .field-error { display: block; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    .field select {
+      appearance: none;
+      background-image: linear-gradient(45deg, transparent 50%, var(--color-muted) 50%), linear-gradient(135deg, var(--color-muted) 50%, transparent 50%);
+      background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%;
+      background-size: 5px 5px, 5px 5px;
+      background-repeat: no-repeat;
+      padding-right: 36px;
+    }
+
+    .checkbox { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 22px; }
+    .checkbox input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--color-cyan); cursor: pointer; flex-shrink: 0; }
+    .checkbox label { font-size: .88rem; color: var(--color-muted); cursor: pointer; line-height: 1.5; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      font-family: var(--font-display); font-weight: 600; font-size: .95rem;
+      letter-spacing: .02em; border-radius: 10px;
+      cursor: pointer; text-decoration: none; white-space: nowrap; border: none;
+      transition: background .2s, color .2s, border-color .2s, transform .2s, box-shadow .2s;
+    }
+    .btn-primary {
+      padding: 14px 30px; background: var(--color-navy); color: #fff;
+      box-shadow: var(--shadow-cyan-rest); width: 100%;
+    }
+    .btn-primary:hover { background: var(--color-navy-mid); transform: translateY(-2px); box-shadow: var(--shadow-cyan-hover); }
+
+    .form-note {
+      display: flex; gap: 6px; align-items: center; justify-content: center;
+      font-size: .78rem; color: var(--color-muted); margin-top: 14px;
+    }
+    .form-note svg { color: var(--color-cyan); }
+
+    .success-box {
+      display: flex; gap: 14px; align-items: center;
+      padding: 20px; background: var(--cyan-10);
+      border: 1.5px solid var(--color-cyan); border-radius: 12px;
+    }
+    .success-box svg { color: var(--color-cyan); flex-shrink: 0; }
+    .success-box strong { font-family: var(--font-display); color: var(--color-navy); display: block; margin-bottom: 4px; }
+    .success-box span { font-size: .9rem; color: var(--color-muted); }
+
+    /* ===== Footer ===== */
+    .footer { background: var(--color-navy-deep); color: rgba(255,255,255,.75); padding: 64px 6vw 36px; }
+    .footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.12); margin-bottom: 32px; }
+    .footer-brand img { height: 34px; filter: brightness(0) invert(1); }
+    .footer-brand-name { font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: #fff; margin: 14px 0 8px; }
+    .footer-brand-lines { font-size: .87rem; color: rgba(255,255,255,.55); line-height: 1.7; }
+    .footer-col h4 { font-size: .9rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #fff; margin-bottom: 18px; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 10px; }
+    .footer-col a { font-size: .88rem; color: rgba(255,255,255,.75); transition: color .2s; }
+    .footer-col a:hover { color: var(--color-cyan); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: .82rem; flex-wrap: wrap; gap: 12px; }
+
+    @media (max-width: 960px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .field-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .nav-links { gap: 14px; }
+      .nav-links a:not(.nav-cta), .nav-links button { font-size: .82rem; padding-bottom: 2px; }
+      .nav-dropdown { min-width: 240px; left: auto; right: -20px; }
+      .form-card { padding: 32px 24px; }
+    }
+    @media (max-width: 640px) {
+      .nav { padding: 0 4vw; height: 64px; }
+      .nav-logo img { height: 30px; }
+      .nav-links a:not(.nav-cta), .nav-links button { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+  </style>
 </head>
 <body>
 
-<nav id="navbar">
-  <a class="nav-logo" href="index.html">
-    <img src="logo.png" alt="Synomic" />
-  </a>
-  <button class="hamburger" id="hamburger" aria-label="Menu openen">
-    <span></span><span></span><span></span>
-  </button>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="over-ons.html">Over ons</a></li>
-    <li><a href="diensten.html">Diensten</a></li>
-    <li><a href="projecten.html">Projecten</a></li>
-    <li><a href="contact.html" class="active nav-cta">Contact</a></li>
-  </ul>
-</nav>
+  <!-- ===== Nav ===== -->
+  <nav class="nav">
+    <a class="nav-logo" href="index.html"><img src="logo-white.png" alt="Synomic" /></a>
+    <ul class="nav-links">
+      <li><a href="over-ons.html">Over ons</a></li>
+      <li class="nav-dropdown-parent" id="ddDiensten">
+        <button type="button" aria-haspopup="true" aria-expanded="false">
+          Diensten <span class="nav-caret"></span>
+        </button>
+        <div class="nav-dropdown" role="menu">
+          <a href="diensten.html#finance" role="menuitem">
+            <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"></path><rect x="5" y="12" width="3.2" height="6"></rect><rect x="10.4" y="8" width="3.2" height="10"></rect><rect x="15.8" y="4" width="3.2" height="14"></rect></svg></span>
+            <span class="nav-dropdown-title">Finance</span>
+            <span class="nav-dropdown-arrow">→</span>
+          </a>
+          <a href="diensten.html#automatisering" role="menuitem">
+            <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-15.5-6.3"></path><path d="M3 12a9 9 0 0 0 15.5 6.3"></path><polyline points="15 2 21 2 21 8"></polyline><polyline points="9 22 3 22 3 16"></polyline></svg></span>
+            <span class="nav-dropdown-title">Automatisering</span>
+            <span class="nav-dropdown-arrow">→</span>
+          </a>
+          <a href="diensten.html#ai" role="menuitem">
+            <span class="nav-dropdown-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L13.4 9.4 L19.8 11 L13.4 12.6 L12 19 L10.6 12.6 L4.2 11 L10.6 9.4 Z"></path><path d="M19 17 L19.6 19.4 L22 20 L19.6 20.6 L19 23 L18.4 20.6 L16 20 L18.4 19.4 Z"></path></svg></span>
+            <span class="nav-dropdown-title">AI-toepassingen</span>
+            <span class="nav-dropdown-arrow">→</span>
+          </a>
+        </div>
+      </li>
+      <li><a href="projecten.html">Projecten</a></li>
+      <li><a href="partners.html">Partners</a></li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+  </nav>
 
-<div class="page-header">
-  <div class="breadcrumb"><a href="index.html">Home</a><span>/</span>Contact</div>
-  <h1>Neem <span style="color:var(--cyan)">contact</span> op</h1>
-  <p>Heeft u een vraag of wilt u een vrijblijvend gesprek? Berichten worden binnen 1 werkdag beantwoord.</p>
-</div>
+  <!-- ===== Header ===== -->
+  <section class="page-header">
+    <div class="page-header-inner">
+      <div class="page-breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="sep">/</span>
+        <span>Contact</span>
+      </div>
+      <h1>Plan een <em>kennismaking</em></h1>
+      <p class="lead">Een vrijblijvend gesprek van 30 minuten. Vul het formulier in en ontvang binnen 1 werkdag een reactie.</p>
+    </div>
+  </section>
 
-<!-- ===== CONTACT ===== -->
-<section>
-  <div class="contact-grid">
+  <!-- ===== Contact ===== -->
+  <section class="contact-section">
+    <div class="contact-grid">
+      <div class="info-column">
+        <div class="section-label">Contact opnemen</div>
+        <h2 class="info-title">Vertel ons over uw vraagstuk</h2>
+        <p class="info-sub">Elke samenwerking begint met een goed gesprek. Beschrijf uw situatie en Synomic denkt vrijblijvend met u mee — over welke oplossingsrichting het beste past bij uw organisatie.</p>
 
-    <!-- Links: info -->
-    <div>
-      <div class="section-label reveal">Bereikbaarheid</div>
-      <h2 class="section-title reveal">Neem contact op</h2>
-      <p class="reveal" style="color:var(--muted);margin-bottom:36px;">
-        Iedere samenwerking begint met een goed gesprek. Beschrijf de uitdaging en Synomic denkt graag mee — geheel vrijblijvend.
-      </p>
+        <div class="info-block">
+          <div class="info-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <div class="info-content">
+            <strong>Vestigingsadres</strong>
+            <span>Koornbeursweg 73, 8442 DJ Heerenveen</span>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          </div>
+          <div class="info-content">
+            <strong>Bereikbaarheid</strong>
+            <span>Via het contactformulier — reactie binnen 1 werkdag</span>
+          </div>
+        </div>
+        <div class="info-block">
+          <div class="info-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <div class="info-content">
+            <strong>Reactietijd</strong>
+            <span>Uw bericht wordt binnen 1 werkdag beantwoord</span>
+          </div>
+        </div>
 
-      <div class="contact-detail reveal">
-        <div class="contact-detail-icon">📍</div>
-        <div class="contact-detail-text">
-          <strong>Adres</strong>
-          <span>Koornbeursweg 73, 8442 DJ Heerenveen</span>
+        <div class="privacy-box">
+          <div class="privacy-title">Veilig en vertrouwd</div>
+          <ul class="privacy-list">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              Uw gegevens worden nooit gedeeld met derden
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              Beveiligd formulier en versleutelde verwerking
+            </li>
+          </ul>
         </div>
       </div>
 
-      <div class="contact-detail reveal">
-        <div class="contact-detail-icon">💬</div>
-        <div class="contact-detail-text">
-          <strong>Contact</strong>
-          <span>Via het contactformulier</span>
+      <div>
+        <div class="form-card" id="formCard">
+          <div id="formView">
+            <h3>Stuur een bericht</h3>
+            <p class="form-intro">Alle velden met <span class="req">*</span> zijn verplicht.</p>
+
+            <form id="contactForm" novalidate>
+              <div class="field-row">
+                <div class="field" id="f-naam">
+                  <label for="naam">Naam <span class="req">*</span></label>
+                  <input id="naam" name="naam" type="text" placeholder="Jan de Vries" autocomplete="name" required />
+                  <div class="field-error">Vul uw naam in (minimaal 2 tekens).</div>
+                </div>
+                <div class="field">
+                  <label for="bedrijf">Bedrijf <span class="opt">(optioneel)</span></label>
+                  <input id="bedrijf" name="bedrijf" type="text" placeholder="Bedrijfsnaam" autocomplete="organization" />
+                </div>
+              </div>
+
+              <div class="field-row">
+                <div class="field" id="f-email">
+                  <label for="email">E-mailadres <span class="req">*</span></label>
+                  <input id="email" name="email" type="email" placeholder="jan@bedrijf.nl" autocomplete="email" required />
+                  <div class="field-error">Vul een geldig e-mailadres in.</div>
+                </div>
+                <div class="field">
+                  <label for="telefoon">Telefoonnummer <span class="opt">(optioneel)</span></label>
+                  <input id="telefoon" name="telefoon" type="tel" placeholder="+31 6 12345678" autocomplete="tel" />
+                </div>
+              </div>
+
+              <div class="field" id="f-onderwerp">
+                <label for="onderwerp">Onderwerp <span class="req">*</span></label>
+                <select id="onderwerp" name="onderwerp" required>
+                  <option value="">Selecteer een onderwerp...</option>
+                  <option value="finance">Finance</option>
+                  <option value="automatisering">Automatisering</option>
+                  <option value="ai">AI-toepassingen</option>
+                  <option value="overig">Overig / anders</option>
+                </select>
+                <div class="field-error">Selecteer een onderwerp.</div>
+              </div>
+
+              <div class="field" id="f-bericht">
+                <label for="bericht">Bericht <span class="req">*</span></label>
+                <textarea id="bericht" name="bericht" placeholder="Beschrijf kort uw vraag of het vraagstuk waar u tegenaan loopt..." required></textarea>
+                <div class="field-error">Beschrijf uw vraag (minimaal 20 tekens).</div>
+              </div>
+
+              <div class="checkbox" id="f-privacy">
+                <input id="privacy" name="privacy" type="checkbox" required />
+                <label for="privacy">Ik ga akkoord met het verwerken van mijn gegevens voor de behandeling van mijn vraag. Synomic deelt uw gegevens nooit met derden. <span class="req">*</span></label>
+              </div>
+              <div class="field-error" id="privacy-error" style="margin-top: -14px; margin-bottom: 18px; margin-left: 30px;">U dient akkoord te gaan met de privacyverklaring.</div>
+
+              <button type="submit" class="btn btn-primary">Verstuur bericht</button>
+
+              <div class="form-note">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                Dit formulier is beveiligd. Uw gegevens worden vertrouwelijk behandeld.
+              </div>
+            </form>
+          </div>
+
+          <div id="successView" style="display: none;">
+            <div class="success-box">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <div>
+                <strong>Bericht verzonden</strong>
+                <span>Bedankt voor uw bericht. Synomic neemt binnen 1 werkdag contact met u op.</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="contact-detail reveal">
-        <div class="contact-detail-icon">⏰</div>
-        <div class="contact-detail-text">
-          <strong>Reactietijd</strong>
-          <span>Binnen 1 werkdag</span>
-        </div>
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="logo-white.png" alt="Synomic" />
+        <div class="footer-brand-name">Synomic</div>
+        <div class="footer-brand-lines">Koornbeursweg 73<br>8442 DJ Heerenveen<br>KVK: 94705569</div>
       </div>
-
-      <!-- Trust indicators -->
-      <div style="margin-top:40px;padding:24px;background:var(--off);border-radius:14px;" class="reveal">
-        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:14px;">Veilig en vertrouwd</div>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
-          <li style="display:flex;gap:10px;align-items:center;font-size:.88rem;color:var(--muted);">
-            <span style="color:var(--cyan);font-size:1rem;">🔒</span> Uw gegevens worden nooit gedeeld met derden
-          </li>
-          <li style="display:flex;gap:10px;align-items:center;font-size:.88rem;color:var(--muted);">
-            <span style="color:var(--cyan);font-size:1rem;">✉️</span> Versleuteld contactformulier
-          </li>
+      <div class="footer-col">
+        <h4>Navigatie</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="over-ons.html">Over ons</a></li>
+          <li><a href="diensten.html">Diensten</a></li>
+          <li><a href="projecten.html">Projecten</a></li>
+          <li><a href="partners.html">Partners</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Diensten</h4>
+        <ul>
+          <li><a href="diensten.html#finance">Finance</a></li>
+          <li><a href="diensten.html#automatisering">Automatisering</a></li>
+          <li><a href="diensten.html#ai">AI-toepassingen</a></li>
         </ul>
       </div>
     </div>
-
-    <!-- Rechts: formulier -->
-    <div class="reveal">
-      <div class="form-card">
-        <h3 style="margin-bottom:6px;font-size:1.3rem;">Stuur een bericht</h3>
-        <p style="color:var(--muted);font-size:.9rem;margin-bottom:28px;">Alle velden met <span style="color:var(--cyan)">*</span> zijn verplicht.</p>
-
-        <form id="contactForm" novalidate>
-
-          <!-- Honeypot veld (verborgen voor mensen, zichtbaar voor bots) -->
-          <div class="hp-field" aria-hidden="true">
-            <label for="website">Website (laat leeg)</label>
-            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="naam">Naam <span>*</span></label>
-              <input type="text" id="naam" name="naam" placeholder="Jan de Vries" autocomplete="name" required minlength="2" maxlength="80" />
-              <div class="field-error" id="naam-error"></div>
-            </div>
-            <div class="form-group">
-              <label for="bedrijf">Bedrijf</label>
-              <input type="text" id="bedrijf" name="bedrijf" placeholder="Bedrijfsnaam (optioneel)" maxlength="80" />
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email">E-mailadres <span>*</span></label>
-              <input type="email" id="email" name="email" placeholder="jan@bedrijf.nl" autocomplete="email" required maxlength="120" />
-              <div class="field-error" id="email-error"></div>
-            </div>
-            <div class="form-group">
-              <label for="telefoon">Telefoonnummer</label>
-              <input type="tel" id="telefoon" name="telefoon" placeholder="+31 6 12345678" autocomplete="tel" maxlength="20" />
-              <div class="field-error" id="telefoon-error"></div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="onderwerp">Onderwerp <span>*</span></label>
-            <select id="onderwerp" name="onderwerp" required>
-              <option value="">Selecteer een onderwerp...</option>
-              <option value="finance">Finance & Data-analyse</option>
-              <option value="it">IT & Automatisering</option>
-              <option value="ai">AI Toepassingen</option>
-              <option value="proces">Procesoptimalisatie</option>
-              <option value="anders">Overig</option>
-            </select>
-            <div class="field-error" id="onderwerp-error"></div>
-          </div>
-
-          <div class="form-group">
-            <label for="bericht">Bericht <span>*</span></label>
-            <textarea id="bericht" name="bericht" placeholder="Beschrijf kort de vraag of uitdaging..." required minlength="20" maxlength="2000"></textarea>
-            <div style="display:flex;justify-content:flex-end;margin-top:4px;">
-              <span id="charCount" style="font-size:.75rem;color:var(--muted);">0 / 2000</span>
-            </div>
-            <div class="field-error" id="bericht-error"></div>
-          </div>
-
-          <!-- Privacy checkbox -->
-          <div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:24px;">
-            <input type="checkbox" id="privacy" name="privacy" required
-              style="width:18px;height:18px;margin-top:2px;accent-color:var(--cyan);cursor:pointer;flex-shrink:0;" />
-            <label for="privacy" style="font-size:.88rem;color:var(--muted);cursor:pointer;line-height:1.5;">
-              Ik ga akkoord met het verwerken van mijn gegevens voor het beantwoorden van mijn vraag.
-              Synomic deelt uw gegevens nooit met derden. <span style="color:var(--cyan)">*</span>
-            </label>
-          </div>
-          <div class="field-error" id="privacy-error"></div>
-
-          <button type="submit" class="form-submit" id="submitBtn">
-            <span id="btnText">Verstuur bericht</span>
-            <span id="btnLoader" style="display:none;">⏳ Versturen...</span>
-          </button>
-
-          <p class="form-notice">
-            <span>🔒</span> Dit formulier is beveiligd. Uw gegevens worden vertrouwelijk behandeld.
-          </p>
-        </form>
-
-        <!-- Success message -->
-        <div class="success-msg" id="successMsg">
-          <span style="font-size:1.5rem;">✅</span>
-          <div>
-            <strong>Bericht verzonden!</strong><br>
-            <span style="font-size:.9rem;color:var(--muted);">Bedankt voor uw bericht. Ik neem zo snel mogelijk contact met u op, uiterlijk binnen 1 werkdag.</span>
-          </div>
-        </div>
-
-        <!-- Error message -->
-        <div id="errorMsg" style="display:none;background:rgba(220,50,50,.08);border:1.5px solid rgba(220,50,50,.3);border-radius:12px;padding:20px 24px;margin-top:20px;font-size:.92rem;color:#c0392b;">
-          ⚠️ Er ging iets mis. Controleer de velden en probeer het opnieuw.
-        </div>
-
-      </div>
+    <div class="footer-bottom">
+      <span>© 2026 Synomic – KVK 94705569. Alle rechten voorbehouden.</span>
+      <span>Gebouwd met ♥ in Nederland</span>
     </div>
-  </div>
-</section>
+  </footer>
 
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <img src="logo-white.png" alt="Synomic" />
-      <div style="margin-top:14px;">
-        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;color:#fff;margin-bottom:8px;">Synomic</div>
-        <div style="font-size:.87rem;color:rgba(255,255,255,.6);line-height:1.7;">
-          Koornbeursweg 73<br>
-          8442 DJ Heerenveen<br>
-          KVK: 94705569
-        </div>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>Navigatie</h4>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="over-ons.html">Over ons</a></li>
-        <li><a href="diensten.html">Diensten</a></li>
-        <li><a href="projecten.html">Projecten</a></li>
-        <li><a href="partners.html">Partners</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Diensten</h4>
-      <ul>
-        <li><a href="diensten.html">Finance & Data</a></li>
-        <li><a href="diensten.html">IT Automatisering</a></li>
-        <li><a href="diensten.html">AI Toepassingen</a></li>
-        <li><a href="diensten.html">Procesoptimalisatie</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2025 Synomic – KVK 94705569. Alle rechten voorbehouden.</span>
-    <span>Gebouwd met ♥ in Nederland</span>
-  </div>
-</footer>
-
-<style>
-.field-error {
-  font-size: .8rem;
-  color: #c0392b;
-  margin-top: 5px;
-  min-height: 18px;
-}
-
-.form-group input.invalid,
-.form-group textarea.invalid,
-.form-group select.invalid {
-  border-color: #e74c3c;
-  box-shadow: 0 0 0 3px rgba(231,76,60,.1);
-}
-
-.form-group input.valid,
-.form-group textarea.valid,
-.form-group select.valid {
-  border-color: var(--cyan);
-}
-</style>
-
-<script>
-  // ===== NAV =====
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 30));
-  const hamburger = document.getElementById('hamburger');
-  const navLinks = document.getElementById('navLinks');
-  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-
-  // ===== SCROLL REVEAL =====
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // ===== CHAR COUNTER =====
-  const berichtField = document.getElementById('bericht');
-  const charCount = document.getElementById('charCount');
-  berichtField.addEventListener('input', () => {
-    const len = berichtField.value.length;
-    charCount.textContent = `${len} / 2000`;
-    charCount.style.color = len > 1800 ? '#e74c3c' : 'var(--muted)';
-  });
-
-  // ===== FORM VALIDATION =====
-  function sanitize(str) {
-    return str.replace(/[<>&"']/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&#39;'}[c]));
-  }
-
-  function validateEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
-  }
-
-  function validatePhone(phone) {
-    if (!phone) return true; // optioneel
-    return /^[+\d\s\-().]{7,20}$/.test(phone);
-  }
-
-  function setError(fieldId, msg) {
-    const field = document.getElementById(fieldId);
-    const error = document.getElementById(fieldId + '-error');
-    if (field) field.classList.add('invalid');
-    if (field) field.classList.remove('valid');
-    if (error) error.textContent = msg;
-  }
-
-  function clearError(fieldId) {
-    const field = document.getElementById(fieldId);
-    const error = document.getElementById(fieldId + '-error');
-    if (field) field.classList.remove('invalid');
-    if (field) field.classList.add('valid');
-    if (error) error.textContent = '';
-  }
-
-  // Real-time validation
-  ['naam','email','telefoon','bericht','onderwerp'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.addEventListener('blur', () => validateField(id));
-    if (el) el.addEventListener('input', () => {
-      if (el.classList.contains('invalid')) validateField(id);
+  <script>
+  // Dropdown
+  (function () {
+    const dd = document.getElementById('ddDiensten');
+    if (!dd) return;
+    const btn = dd.querySelector('button');
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = dd.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     });
-  });
+    document.addEventListener('click', (e) => { if (!dd.contains(e.target)) { dd.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { dd.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
+  })();
 
-  function validateField(id) {
-    const el = document.getElementById(id);
-    if (!el) return true;
-    const val = el.value.trim();
-
-    if (id === 'naam') {
-      if (!val || val.length < 2) { setError('naam', 'Naam invullen (minimaal 2 tekens).'); return false; }
-    }
-    if (id === 'email') {
-      if (!val) { setError('email', 'E-mailadres invullen.'); return false; }
-      if (!validateEmail(val)) { setError('email', 'Geldig e-mailadres invullen.'); return false; }
-    }
-    if (id === 'telefoon') {
-      if (val && !validatePhone(val)) { setError('telefoon', 'Vul een geldig telefoonnummer in.'); return false; }
-    }
-    if (id === 'onderwerp') {
-      if (!val) { setError('onderwerp', 'Selecteer een onderwerp.'); return false; }
-    }
-    if (id === 'bericht') {
-      if (!val || val.length < 20) { setError('bericht', 'Beschrijf de vraag (minimaal 20 tekens).'); return false; }
-    }
-    clearError(id);
-    return true;
-  }
-
-  // ===== RATE LIMITING (client-side) =====
-  function checkRateLimit() {
-    const key = 'synomic_form_submissions';
-    const now = Date.now();
-    const window_ms = 15 * 60 * 1000; // 15 min
-    const max = 3;
-
-    let submissions = [];
-    try { submissions = JSON.parse(sessionStorage.getItem(key) || '[]'); } catch(e) {}
-    submissions = submissions.filter(t => now - t < window_ms);
-
-    if (submissions.length >= max) {
-      return false;
-    }
-    submissions.push(now);
-    try { sessionStorage.setItem(key, JSON.stringify(submissions)); } catch(e) {}
-    return true;
-  }
-
-  // ===== FORM SUBMIT =====
-  const form = document.getElementById('contactForm');
-  const submitBtn = document.getElementById('submitBtn');
-  const btnText = document.getElementById('btnText');
-  const btnLoader = document.getElementById('btnLoader');
-  const successMsg = document.getElementById('successMsg');
-  const errorMsg = document.getElementById('errorMsg');
-
-  // Time-based bot detection: too-fast submissions are likely bots
-  const formLoadTime = Date.now();
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    errorMsg.style.display = 'none';
-
-    // === Bot check 1: honeypot ===
-    const honeypot = document.getElementById('website').value;
-    if (honeypot) {
-      // Silently fail for bots
-      successMsg.classList.add('show');
-      form.style.display = 'none';
-      return;
-    }
-
-    // === Bot check 2: too fast (under 3 seconds) ===
-    if (Date.now() - formLoadTime < 3000) {
-      errorMsg.style.display = 'block';
-      errorMsg.textContent = '⚠️ Formulier te snel ingevuld. Probeer het opnieuw.';
-      return;
-    }
-
-    // === Rate limiting ===
-    if (!checkRateLimit()) {
-      errorMsg.style.display = 'block';
-      errorMsg.textContent = '⚠️ U heeft te veel berichten verstuurd. Probeer het over 15 minuten opnieuw.';
-      return;
-    }
-
-    // === Validate all fields ===
-    const fields = ['naam', 'email', 'telefoon', 'onderwerp', 'bericht'];
-    let valid = true;
-    fields.forEach(id => { if (!validateField(id)) valid = false; });
-
-    const privacy = document.getElementById('privacy');
-    if (!privacy.checked) {
-      document.getElementById('privacy-error').textContent = 'U dient akkoord te gaan met de privacyverklaring.';
-      valid = false;
-    } else {
-      document.getElementById('privacy-error').textContent = '';
-    }
-
-    if (!valid) {
-      errorMsg.style.display = 'block';
-      errorMsg.textContent = '⚠️ Controleer de gemarkeerde velden en probeer het opnieuw.';
-      // Scroll to first error
-      const firstInvalid = form.querySelector('.invalid');
-      if (firstInvalid) firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      return;
-    }
-
-    // === Submit ===
-    submitBtn.disabled = true;
-    btnText.style.display = 'none';
-    btnLoader.style.display = 'inline';
-
-    // Sanitize data
-    const formData = {
-      naam: sanitize(document.getElementById('naam').value.trim()),
-      bedrijf: sanitize(document.getElementById('bedrijf').value.trim()),
-      email: document.getElementById('email').value.trim().toLowerCase(),
-      telefoon: sanitize(document.getElementById('telefoon').value.trim()),
-      onderwerp: sanitize(document.getElementById('onderwerp').value),
-      bericht: sanitize(document.getElementById('bericht').value.trim()),
+  // Form validation (client-side demo — vervang met echte submit voor productie)
+  (function () {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+    const showError = (id, show) => {
+      const el = document.getElementById(id);
+      if (el) el.classList.toggle('is-invalid', !!show);
     };
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let ok = true;
+      const naam = form.naam.value.trim();
+      const email = form.email.value.trim();
+      const onderwerp = form.onderwerp.value;
+      const bericht = form.bericht.value.trim();
+      const privacy = form.privacy.checked;
 
-    // Formspree verzending
-    let submitSuccess = false;
-    try {
-      const response = await fetch('https://formspree.io/f/xbdwaekq', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-      submitSuccess = response.ok;
-    } catch(err) {
-      submitSuccess = false;
-    }
+      showError('f-naam', naam.length < 2);
+      showError('f-email', !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email));
+      showError('f-onderwerp', !onderwerp);
+      showError('f-bericht', bericht.length < 20);
+      const privBox = document.getElementById('f-privacy');
+      const privErr = document.getElementById('privacy-error');
+      if (!privacy) { privBox.classList.add('is-invalid'); privErr.style.display = 'block'; ok = false; }
+      else { privBox.classList.remove('is-invalid'); privErr.style.display = 'none'; }
 
-    if (submitSuccess) {
-      form.style.display = 'none';
-      successMsg.classList.add('show');
-    } else {
-      submitBtn.disabled = false;
-      btnText.style.display = 'inline';
-      btnLoader.style.display = 'none';
-      errorMsg.style.display = 'block';
-      errorMsg.textContent = '⚠️ Het bericht kon niet worden verzonden. Probeer het later opnieuw of stuur een e-mail.';
-    }
-  });
-</script>
+      if (form.querySelector('.field.is-invalid')) ok = false;
+      if (!ok) return;
+
+      document.getElementById('formView').style.display = 'none';
+      document.getElementById('successView').style.display = 'block';
+      window.scrollTo({ top: document.getElementById('formCard').offsetTop - 100, behavior: 'smooth' });
+    });
+  })();
+  </script>
 </body>
 </html>
