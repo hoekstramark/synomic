@@ -57,8 +57,8 @@
     .nav-links a, .nav-links button { background: none; border: none; cursor: pointer; font-family: var(--font-body); font-weight: 500; font-size: .95rem; color: rgba(255,255,255,.8); letter-spacing: .02em; padding-bottom: 3px; border-bottom: 2px solid transparent; transition: color .2s; display: inline-flex; align-items: center; gap: 6px; }
     .nav-links a:hover, .nav-links button:hover { color: var(--color-cyan); }
     .nav-links a.active, .nav-links button.active { color: var(--color-cyan); border-bottom-color: var(--color-cyan); }
-    .nav-cta { background: var(--color-cyan); color: #fff !important; padding: 10px 22px; border-radius: 8px; font-weight: 700; transition: transform .2s, background .2s; border-bottom: none !important; }
-    .nav-cta:hover { background: var(--color-cyan-dim); transform: translateY(-1px); }
+    .nav-cta { color: var(--color-cyan) !important; font-weight: 700; border-bottom: none !important; transition: color .2s; }
+    .nav-cta:hover { color: var(--color-cyan-dim) !important; }
     .nav-caret { width: 8px; height: 8px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); margin-top: -3px; transition: transform .2s; }
     .nav-dropdown-parent.open .nav-caret { transform: rotate(-135deg); margin-top: 3px; }
     .nav-dropdown { position: absolute; top: calc(100% + 12px); left: -20px; background: #fff; border: 1px solid var(--color-border); border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,.20); padding: 12px; min-width: 260px; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity .2s, transform .2s, visibility .2s; z-index: 200; }
