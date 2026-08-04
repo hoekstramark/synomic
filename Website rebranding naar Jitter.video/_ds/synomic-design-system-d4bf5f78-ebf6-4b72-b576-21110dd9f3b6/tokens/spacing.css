@@ -1,0 +1,58 @@
+/* Synomic — Spacing
+   Sections breathe — 80–96px vertical padding desktop, 56–44px mobile.
+   Horizontal padding uses 6vw on all section edges (4vw mobile).
+   The internal grid stays on 4px/8px increments for tight UI. */
+
+:root {
+  /* ===== Spacing scale (4-/8-px base) ===== */
+  --space-0:   0;
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-7:   28px;
+  --space-8:   32px;
+  --space-9:   36px;
+  --space-10:  40px;
+  --space-11:  44px;
+  --space-12:  48px;
+  --space-14:  56px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-32:  128px;
+
+  /* ===== Section paddings (vertical) ===== */
+  --section-pad-y:        80px;   /* default section */
+  --section-pad-y-clean:  96px;   /* generous section */
+  --section-pad-y-mobile: 56px;
+  --section-pad-y-small:  44px;
+
+  /* ===== Page edges (horizontal) ===== */
+  --page-pad-x:        6vw;
+  --page-pad-x-mobile: 5vw;
+  --page-pad-x-small:  4vw;
+
+  /* ===== Container widths ===== */
+  --container-narrow:  600px;   /* CTA copy, KVK block */
+  --container-prose:   640px;   /* lead paragraphs */
+  --container-content: 1240px;  /* effective body max — derived from 6vw on 1440 */
+
+  /* ===== Component-internal paddings ===== */
+  --pad-card:      36px 32px;    /* default card */
+  --pad-card-form: 44px 40px;    /* contact form card */
+  --pad-input:     12px 16px;
+  --pad-btn-primary: 14px 30px;
+  --pad-btn-outline: 13px 28px;
+  --pad-btn-sm:    10px 22px;    /* nav CTA, filter button */
+  --pad-tag:       4px 12px;     /* small uppercase tag */
+  --pad-pill:      6px 16px;     /* hero badge */
+
+  /* ===== Stack & inline gaps ===== */
+  --gap-cards:     28px;
+  --gap-cluster:   12px;         /* tag rows, nav clusters */
+  --gap-nav:       36px;
+  --gap-form-row:  20px;
+}

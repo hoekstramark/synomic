@@ -1,0 +1,62 @@
+/* Synomic — Motion
+   Motion is restrained and purposeful: gentle fade-up reveals on scroll,
+   small (2–5px) translateY lifts on hover, soft 200–250ms easing.
+   No bounce, no overshoot. The brand reads competent, not playful. */
+
+:root {
+  /* ===== Durations ===== */
+  --dur-instant: 150ms;   /* @kind other */
+  --dur-fast:    200ms;   /* @kind other */
+  --dur-base:    250ms;   /* @kind other */
+  --dur-slow:    350ms;   /* @kind other */
+  --dur-reveal:  650ms;   /* @kind other */
+  --dur-hero:    700ms;   /* @kind other */
+
+  /* ===== Easings ===== */
+  --ease-base:   ease;                              /* @kind other */
+  --ease-out:    ease-out;                          /* @kind other */
+  --ease-smooth: cubic-bezier(.22, .61, .36, 1);    /* @kind other */
+
+  /* ===== Common transforms ===== */
+  --lift-1: translateY(-1px);  /* @kind other */
+  --lift-2: translateY(-2px);  /* @kind other */
+  --lift-3: translateY(-3px);  /* @kind other */
+  --lift-4: translateY(-4px);  /* @kind other */
+  --lift-5: translateY(-5px);  /* @kind other */
+}
+
+/* ===== Reveal pattern — drop this class on any element + wire IO ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity   var(--dur-reveal) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ===== Keyframes ===== */
+@keyframes synomic-fade-up {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes synomic-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes synomic-pulse-dot {
+  0%, 100% { opacity: 1;  transform: scale(1); }
+  50%      { opacity: .5; transform: scale(1.4); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}

@@ -1,0 +1,20 @@
+/* Synomic — Radii
+   Synomic uses three radii consistently:
+   • 10px  — inputs, buttons, small CTAs (slightly soft)
+   • 14px  — partner pills, contact-detail icons
+   • 16px  — cards (main container shape)
+   • 20px  — large feature blocks, form card, banner CTAs
+   Pills/tags/badges use 40px (effectively a capsule).
+   Avatars / dots are 50% (full circle). */
+
+:root {
+  --radius-xs:   4px;    /* bar top-corner only */
+  --radius-sm:   8px;    /* nav CTA */
+  --radius-md:   10px;   /* inputs, buttons, small project tile inner */
+  --radius-lg:   12px;   /* card icon container, tool logos */
+  --radius-xl:   14px;   /* partner pill, contact icon */
+  --radius-2xl:  16px;   /* default card */
+  --radius-3xl:  20px;   /* feature block, form card */
+  --radius-pill: 40px;   /* tag, hero badge */
+  --radius-full: 9999px; /* avatar */
+}

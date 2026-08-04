@@ -1,0 +1,25 @@
+/* Synomic — Shadows
+   Shadows are tinted navy — never black — so they read on the cool white surface.
+   Cyan shadows appear ONLY behind cyan CTAs (the "glow" pattern). */
+
+:root {
+  /* ===== Base navy shadow scale ===== */
+  --shadow-xs:  0 2px 12px rgba(27, 58, 92, .04);
+  --shadow-sm:  0 2px 20px rgba(27, 58, 92, .06);     /* nav */
+  --shadow-md:  0 4px 32px rgba(27, 58, 92, .10);     /* form card, --shadow original */
+  --shadow-lg:  0 12px 60px rgba(27, 58, 92, .16);    /* card hover lift */
+  --shadow-xl:  0 12px 40px rgba(27, 58, 92, .09);    /* light card hover */
+
+  /* ===== Scroll affordances ===== */
+  --shadow-nav-scrolled: 0 4px 30px rgba(27, 58, 92, .12);
+  --shadow-nav-dark:     0 4px 30px rgba(0, 0, 0, .25);
+
+  /* ===== Cyan glow (primary buttons only) ===== */
+  --shadow-cyan-rest:   0 4px 20px rgba(43, 196, 196, .30);
+  --shadow-cyan-hover:  0 8px 28px rgba(43, 196, 196, .40);
+  --shadow-cyan-press:  0 6px 24px rgba(43, 196, 196, .30);
+
+  /* ===== Focus ring (cyan, used on inputs) ===== */
+  --ring-focus:   0 0 0 3px rgba(43, 196, 196, .12);
+  --ring-error:   0 0 0 3px rgba(231, 76, 60, .10);
+}

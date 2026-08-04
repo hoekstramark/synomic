@@ -1,0 +1,63 @@
+/* Synomic — Colors
+   The brand runs on a small palette: a deep navy that carries authority,
+   a single cyan accent that signals digital connection, and a stack of
+   neutral surfaces. Cyan is used sparingly — for accents and small highlights,
+   never as the dominant background. */
+
+:root {
+  /* ===== Brand ===== */
+  --color-navy:        #1B3A5C;   /* primary brand */
+  --color-navy-deep:   #0e2136;   /* dark hero backgrounds, footer */
+  --color-navy-mid:    #1a4d6e;   /* secondary in navy gradients */
+  --color-cyan:        #2BC4C4;   /* accent — single hero accent */
+  --color-cyan-dim:    #1a9e9e;   /* pressed / hover-darker on cyan CTAs */
+
+  /* ===== Neutrals ===== */
+  --color-white:       #ffffff;
+  --color-off-1:       #f8fafc;   /* lighter alt section */
+  --color-off-2:       #f5f7fa;   /* off-white surface */
+  --color-border:      #dde3ec;   /* default 1px hairline */
+  --color-border-soft: #e8edf3;   /* lighter card border */
+  --color-muted:       #6b7a8d;   /* body-muted text */
+
+  /* ===== Semantic — text ===== */
+  --text-strong:       var(--color-navy);
+  --text-body:         var(--color-navy);
+  --text-muted:        var(--color-muted);
+  --text-on-dark:      var(--color-white);
+  --text-on-dark-mid:  rgba(255, 255, 255, .75);
+  --text-on-dark-low:  rgba(255, 255, 255, .55);
+  --text-accent:       var(--color-cyan);
+
+  /* ===== Semantic — surfaces ===== */
+  --surface-page:      var(--color-white);
+  --surface-alt:       var(--color-off-2);
+  --surface-card:      var(--color-white);
+  --surface-dark:      var(--color-navy-deep);
+  --surface-brand:     var(--color-navy);
+
+  /* ===== Semantic — borders & lines ===== */
+  --border-default:    var(--color-border);
+  --border-soft:       var(--color-border-soft);
+  --border-on-dark:    rgba(255, 255, 255, .12);
+
+  /* ===== Cyan tints (used for badges, hover-glows, focus rings) ===== */
+  --cyan-04:           rgba(43, 196, 196, .04);
+  --cyan-08:           rgba(43, 196, 196, .08);
+  --cyan-10:           rgba(43, 196, 196, .10);
+  --cyan-12:           rgba(43, 196, 196, .12);
+  --cyan-15:           rgba(43, 196, 196, .15);
+  --cyan-18:           rgba(43, 196, 196, .18);
+  --cyan-35:           rgba(43, 196, 196, .35);
+
+  /* ===== Brand gradients ===== */
+  --gradient-hero:     linear-gradient(135deg, #0e2136 0%, #1B3A5C 60%, #1a4d6e 100%);   /* @kind color */
+  --gradient-header:   linear-gradient(135deg, #0e2136 0%, #1B3A5C 100%);                /* @kind color */
+  --gradient-accent:   linear-gradient(90deg, #2BC4C4, #1B3A5C);                          /* @kind color */
+  --gradient-dotgrid-cyan: radial-gradient(circle, rgba(43,196,196,.15) 1px, transparent 1px); /* @kind color */
+
+  /* ===== Status (used inside forms only) ===== */
+  --status-error:      #c0392b;
+  --status-error-soft: rgba(220, 50, 50, .08);
+  --status-error-ring: rgba(231, 76, 60, .10);
+}

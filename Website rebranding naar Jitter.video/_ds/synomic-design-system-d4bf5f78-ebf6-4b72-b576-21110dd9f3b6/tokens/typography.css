@@ -1,0 +1,76 @@
+/* Synomic — Typography
+   Two faces only:
+   • Syne — geometric, slightly quirky display. Used for ALL headings,
+     button labels, footer column headers, large numbers. Weights 600–800.
+   • DM Sans — clean humanist sans. Body, UI, paragraphs. Weights 300–500.
+   The display is set bold and tight (1.2 line-height), body is loose (1.65). */
+
+:root {
+  /* ===== Families ===== */
+  --font-display: 'Syne', 'Segoe UI', system-ui, sans-serif;
+  --font-body:    'DM Sans', 'Segoe UI', system-ui, sans-serif;
+
+  /* ===== Weights ===== */
+  --fw-light:     300; /* @kind font */
+  --fw-regular:   400; /* @kind font */
+  --fw-medium:    500; /* @kind font */
+  --fw-semibold:  600; /* @kind font */
+  --fw-bold:      700; /* @kind font */
+  --fw-heavy:     800; /* @kind font */
+
+  /* ===== Sizes — base scale (body sits at 16px) ===== */
+  --fz-0:    .72rem;   /* micro caps, char-count */
+  --fz-1:    .78rem;   /* tags, section-label, breadcrumb */
+  --fz-2:    .82rem;   /* footer bottom */
+  --fz-3:    .85rem;   /* stat label */
+  --fz-4:    .88rem;   /* footer link, form helper */
+  --fz-5:    .92rem;   /* button, secondary body */
+  --fz-6:    1rem;     /* body, page-header sub */
+  --fz-7:    1.05rem;  /* page-header lede */
+  --fz-8:    1.1rem;   /* hero lede */
+
+  /* ===== Sizes — display ===== */
+  --fz-h4:   1.15rem;                          /* @kind font */ /* card title */
+  --fz-h3:   1.3rem;                           /* @kind font */ /* form-card title */
+  --fz-h3-l: 1.8rem;                           /* @kind font */ /* dienst-row title */
+  --fz-h2:   clamp(1.8rem, 3vw,   2.6rem);     /* @kind font */ /* section title */
+  --fz-h1:   clamp(2rem,   4vw,   3rem);       /* @kind font */ /* page header */
+  --fz-hero: clamp(2.6rem, 5vw,   4rem);       /* @kind font */ /* hero h1 */
+  --fz-xl:   clamp(2.4rem, 4.5vw, 3.6rem);     /* @kind font */ /* headline-xl */
+  --fz-stat: 2rem;                             /* @kind font */ /* hero stat number */
+  --fz-stat-l: 2.8rem;                         /* @kind font */ /* stat-block number */
+
+  /* ===== Leading ===== */
+  --lh-display:       1.2;  /* @kind font */
+  --lh-display-tight: 1.1;  /* @kind font */
+  --lh-body:          1.65; /* @kind font */
+  --lh-body-tight:    1.5;  /* @kind font */
+  --lh-loose:         1.7;  /* @kind font */
+
+  /* ===== Letter-spacing ===== */
+  --ls-tight:     -.02em; /* @kind font */
+  --ls-snug:       .02em; /* @kind font */
+  --ls-mid:        .04em; /* @kind font */
+  --ls-wide:       .06em; /* @kind font */
+  --ls-wider:      .08em; /* @kind font */
+  --ls-widest:     .10em; /* @kind font */
+  --ls-uppercase:  .14em; /* @kind font */
+}
+
+/* Base body type — components should NOT redeclare these */
+html { font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  font-weight: var(--fw-regular);
+  font-size: var(--fz-6);
+  line-height: var(--lh-body);
+  color: var(--text-body);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-display);
+  color: var(--text-strong);
+}
