@@ -1,840 +1,305 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Synomic — Slimmer werken. Sneller vooruit.</title>
-  <meta name="description" content="Synomic helpt ondernemers met minder handwerk, meer overzicht en slimme oplossingen. Een vertrouwde adviseur voor uw finance, automatisering en AI." />
-  <link rel="icon" type="image/png" href="logo.png" />
-  <link rel="canonical" href="https://synomic.nl/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Synomic" />
-  <meta property="og:locale" content="nl_NL" />
-  <meta property="og:title" content="Synomic — Slimmer werken. Sneller vooruit." />
-  <meta property="og:description" content="Synomic ondersteunt ondernemers bij het optimaliseren van hun bedrijfsvoering. Finance, automatisering en AI — pragmatisch toegepast, aantoonbaar resultaat." />
-  <meta property="og:url" content="https://synomic.nl/" />
-  <meta property="og:image" content="https://synomic.nl/logo.png" />
-  <meta name="twitter:card" content="summary" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Synomic",
-    "description": "Advies en uitvoering op het snijvlak van finance, automatisering en AI voor MKB en ZZP.",
-    "url": "https://synomic.nl",
-    "logo": "https://synomic.nl/logo.png",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Koornbeursweg 73",
-      "postalCode": "8442 DJ",
-      "addressLocality": "Heerenveen",
-      "addressCountry": "NL"
-    },
-    "identifier": { "@type": "PropertyValue", "propertyID": "KVK", "value": "94705569" },
-    "areaServed": ["Nederland", "België", "Polen"],
-    "knowsAbout": ["Finance", "Automatisering", "AI-toepassingen", "Procesoptimalisatie"]
-  }
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
-
-  <style>
-    /* ===== Tokens ===== */
-    :root {
-      --color-navy: #1B3A5C;
-      --color-navy-deep: #0E2136;
-      --color-navy-mid: #1A4D6E;
-      --color-cyan: #2BC4C4;
-      --color-cyan-dim: #1A9E9E;
-      --color-white: #ffffff;
-      --color-off-1: #F8FAFC;
-      --color-off-2: #F5F7FA;
-      --color-border: #DDE3EC;
-      --color-border-soft: #E8EDF3;
-      --color-muted: #6B7A8D;
-      --cyan-04: rgba(43,196,196,.04);
-      --cyan-08: rgba(43,196,196,.08);
-      --cyan-10: rgba(43,196,196,.10);
-      --cyan-15: rgba(43,196,196,.15);
-      --cyan-18: rgba(43,196,196,.18);
-      --cyan-35: rgba(43,196,196,.35);
-      --font-display: 'Syne', system-ui, sans-serif;
-      --font-body: 'DM Sans', system-ui, sans-serif;
-      --shadow-sm: 0 2px 20px rgba(27,58,92,.06);
-      --shadow-lg: 0 12px 60px rgba(27,58,92,.16);
-      --shadow-cyan-rest: 0 4px 20px rgba(43,196,196,.30);
-      --shadow-cyan-hover: 0 8px 28px rgba(43,196,196,.40);
-      --gradient-hero: linear-gradient(135deg, #0E2136 0%, #1B3A5C 60%, #1A4D6E 100%);
-    }
-
-    /* ===== Reset & base ===== */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body {
-      font-family: var(--font-body);
-      font-weight: 400;
-      font-size: 1rem;
-      line-height: 1.65;
-      color: var(--color-navy);
-      background: var(--color-white);
-      overflow-x: hidden;
-    }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.2; color: var(--color-navy); }
-
-    /* ===== Nav ===== */
-    .nav {
-      position: sticky; top: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 6vw; height: 72px;
-      background: var(--color-navy);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      box-shadow: 0 4px 30px rgba(0,0,0,.25);
-    }
-    .nav-logo img { height: 38px; }
-    .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
-    .nav-links > li { position: relative; }
-    .nav-links a, .nav-links button {
-      background: none; border: none; cursor: pointer;
-      font-family: var(--font-body);
-      font-weight: 500; font-size: .95rem; color: rgba(255,255,255,.8);
-      letter-spacing: .02em; padding-bottom: 3px;
-      border-bottom: 2px solid transparent; transition: color .2s;
-      display: inline-flex; align-items: center; gap: 6px;
-    }
-    .nav-links a:hover, .nav-links button:hover { color: var(--color-cyan); }
-    .nav-links a.active { color: var(--color-cyan); border-bottom-color: var(--color-cyan); }
-    .nav-cta {
-      color: var(--color-cyan) !important;
-      font-weight: 700;
-      border-bottom: none !important;
-      transition: color .2s;
-    }
-    .nav-cta:hover { color: var(--color-cyan-dim) !important; }
-    .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 8px; }
-    .hamburger span { width: 24px; height: 2px; background: #fff; display: block; border-radius: 2px; transition: transform .25s, opacity .25s; }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .nav-caret {
-      width: 8px; height: 8px;
-      border-right: 1.5px solid currentColor;
-      border-bottom: 1.5px solid currentColor;
-      transform: rotate(45deg); margin-top: -3px;
-      transition: transform .2s;
-    }
-    .nav-dropdown-parent.open .nav-caret { transform: rotate(-135deg); margin-top: 3px; }
-
-    /* Dropdown menu */
-    .nav-dropdown {
-      position: absolute; top: calc(100% + 12px); left: -20px;
-      background: #fff; border: 1px solid var(--color-border);
-      border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,.20);
-      padding: 12px; min-width: 340px;
-      opacity: 0; visibility: hidden; transform: translateY(-8px);
-      transition: opacity .2s, transform .2s, visibility .2s;
-      z-index: 200;
-    }
-    .nav-dropdown-parent.open .nav-dropdown,
-    .nav-dropdown-parent:hover .nav-dropdown {
-      opacity: 1; visibility: visible; transform: translateY(0);
-    }
-    /* Bridge zodat de muis van link naar dropdown kan zonder te sluiten */
-    .nav-dropdown::before {
-      content: ''; position: absolute; top: -12px; left: 0; right: 0; height: 12px;
-    }
-    .nav-dropdown a {
-      display: flex; align-items: center; gap: 14px;
-      padding: 12px 16px; border-radius: 10px;
-      color: var(--color-navy); border-bottom: none;
-      transition: background .15s;
-    }
-    .nav-dropdown a:hover { background: var(--cyan-04); color: var(--color-navy); }
-    .nav-dropdown a:hover .nav-dropdown-arrow { color: var(--color-cyan); transform: translateX(3px); }
-    .nav-dropdown-icon {
-      width: 42px; height: 42px; min-width: 42px;
-      border-radius: 10px; background: var(--cyan-10);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--color-cyan);
-    }
-    .nav-dropdown-title {
-      font-family: var(--font-display); font-weight: 700;
-      font-size: 1rem; color: var(--color-navy);
-      flex: 1;
-    }
-    .nav-dropdown-desc {
-      font-size: .78rem; color: var(--color-muted); line-height: 1.4;
-    }
-    .nav-dropdown-arrow {
-      color: var(--color-muted); font-family: var(--font-display);
-      font-weight: 700;
-      transition: transform .2s, color .2s;
-    }
-
-    /* ===== Hero ===== */
-    .hero {
-      min-height: 92vh;
-      display: flex; align-items: center;
-      padding: 90px 6vw 60px;
-      background: var(--gradient-hero);
-      position: relative; overflow: hidden;
-    }
-    .hero-dots {
-      position: absolute; inset: 0;
-      background-image: radial-gradient(circle, rgba(43,196,196,.15) 1px, transparent 1px);
-      background-size: 48px 48px; pointer-events: none;
-    }
-    .hero-orb-1, .hero-orb-2 {
-      position: absolute; border-radius: 50%; pointer-events: none;
-    }
-    .hero-orb-1 {
-      top: -60px; right: -60px; width: 520px; height: 520px;
-      background: radial-gradient(circle, var(--cyan-18) 0%, transparent 70%);
-    }
-    .hero-orb-2 {
-      bottom: -80px; left: 10%; width: 360px; height: 360px;
-      background: radial-gradient(circle, var(--cyan-10) 0%, transparent 70%);
-    }
-    .hero-content { max-width: 780px; position: relative; z-index: 2; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--cyan-15); border: 1px solid var(--cyan-35);
-      border-radius: 40px; padding: 6px 16px;
-      font-size: .78rem; font-weight: 600; color: var(--color-cyan);
-      letter-spacing: .08em; text-transform: uppercase;
-    }
-    .hero-badge-dot {
-      width: 7px; height: 7px; border-radius: 50%; background: var(--color-cyan);
-      animation: pulse-dot 2s infinite;
-    }
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: .5; transform: scale(1.4); }
-    }
-    .hero h1 {
-      font-weight: 800; font-size: clamp(2.8rem, 6vw, 4.4rem);
-      color: #fff; margin-top: 24px; margin-bottom: 20px; line-height: 1.1;
-      letter-spacing: -0.02em;
-    }
-    .hero h1 em { font-style: normal; color: var(--color-cyan); }
-    .hero p {
-      font-size: 1.15rem; color: rgba(255,255,255,.78);
-      max-width: 580px; margin-bottom: 36px;
-    }
-    .btn-row { display: flex; gap: 14px; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      font-family: var(--font-display); font-weight: 600; font-size: .95rem;
-      letter-spacing: .02em; border-radius: 10px;
-      cursor: pointer; text-decoration: none; white-space: nowrap; border: none;
-      transition: background .2s, color .2s, border-color .2s, transform .2s, box-shadow .2s;
-    }
-    .btn-primary {
-      padding: 14px 30px; background: var(--color-cyan); color: #fff;
-      box-shadow: var(--shadow-cyan-rest);
-    }
-    .btn-primary:hover { background: var(--color-cyan-dim); transform: translateY(-2px); box-shadow: var(--shadow-cyan-hover); }
-    .btn-outline {
-      padding: 13px 28px; background: transparent; color: #fff;
-      border: 2px solid rgba(255,255,255,.35);
-    }
-    .btn-outline:hover { border-color: var(--color-cyan); color: var(--color-cyan); transform: translateY(-2px); }
-
-    .hero-reassurance {
-      display: flex; gap: 24px; margin-top: 32px;
-      color: rgba(255,255,255,.6); font-size: .85rem; flex-wrap: wrap;
-    }
-    .hero-reassurance span { display: flex; align-items: center; gap: 8px; }
-    .hero-reassurance svg { color: var(--color-cyan); flex-shrink: 0; }
-
-    /* ===== Herkenning-section ===== */
-    .herkenning {
-      padding: 80px 6vw 40px;
-      text-align: center;
-    }
-    .section-label {
-      font-size: .78rem; font-weight: 700;
-      letter-spacing: .14em; text-transform: uppercase;
-      color: var(--color-cyan); margin-bottom: 12px;
-    }
-    .section-title {
-      font-weight: 700; font-size: clamp(1.9rem, 3vw, 2.6rem);
-      color: var(--color-navy); margin-bottom: 20px; line-height: 1.2;
-      max-width: 720px; margin-left: auto; margin-right: auto;
-    }
-    .section-sub {
-      font-size: 1.05rem; color: var(--color-muted);
-      max-width: 620px; margin: 0 auto 48px;
-    }
-    .herken-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
-      max-width: 1100px; margin: 0 auto;
-    }
-    .herken-tile {
-      background: var(--color-off-2);
-      border: 1px solid var(--color-border-soft);
-      border-radius: 14px;
-      padding: 24px 22px;
-      text-align: left;
-      transition: transform .2s, border-color .2s;
-    }
-    .herken-tile:hover { transform: translateY(-3px); border-color: var(--cyan-35); }
-    .herken-icon {
-      width: 44px; height: 44px; border-radius: 10px;
-      background: var(--cyan-10); color: var(--color-cyan);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 14px;
-    }
-    .herken-quote {
-      font-family: var(--font-display); font-weight: 700;
-      font-size: 1.05rem; color: var(--color-navy); line-height: 1.35;
-    }
-
-    /* ===== Wie zijn wij section ===== */
-    .wiezijnwij {
-      padding: 64px 6vw;
-      display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 56px; align-items: stretch;
-    }
-    .diensten-card {
-      background: var(--color-white); border: 1px solid var(--color-border);
-      border-radius: 16px; overflow: hidden; margin-top: 32px;
-    }
-    .dienst-row {
-      display: grid; grid-template-columns: 32px 54px 1fr 20px;
-      gap: 18px; align-items: center;
-      padding: 22px 26px; color: inherit;
-      border-bottom: 1px solid var(--color-border-soft);
-      transition: background .2s;
-    }
-    .dienst-row:hover { background: var(--cyan-04); }
-    .dienst-row:last-of-type { border-bottom: none; }
-    .dienst-num {
-      font-family: var(--font-display); font-weight: 700;
-      font-size: .82rem; letter-spacing: .14em; color: var(--color-cyan);
-    }
-    .dienst-icon {
-      width: 54px; height: 54px; border-radius: 14px;
-      background: var(--cyan-10);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .dienst-icon svg { stroke: var(--color-cyan); }
-    .dienst-body h3 { font-size: 1.05rem; margin-bottom: 4px; }
-    .dienst-body p { font-size: .9rem; color: var(--color-muted); line-height: 1.5; }
-    .dienst-arrow {
-      color: var(--color-cyan); font-family: var(--font-display);
-      font-size: 1.1rem; font-weight: 700; justify-self: end;
-    }
-    .diensten-footer {
-      display: flex; justify-content: center; align-items: center; gap: 8px;
-      padding: 16px; background: var(--color-off-2);
-      border-top: 1px solid var(--color-border-soft);
-      font-weight: 700; font-size: .88rem; letter-spacing: .04em;
-      color: var(--color-navy); transition: background .2s;
-    }
-    .diensten-footer:hover { background: var(--cyan-08); }
-
-    .network-wrap { position: relative; }
-    .network-sticky { position: sticky; top: 96px; }
-
-    /* ===== Network widget ===== */
-    .syn-network {
-      position: relative; width: 100%; height: 560px;
-      background: var(--color-white); border: 1px solid var(--color-border);
-      border-radius: 20px; overflow: hidden;
-    }
-    .syn-network-bg {
-      position: absolute; inset: 0;
-      background-image: radial-gradient(circle, rgba(43,196,196,.16) 1px, transparent 1px);
-      background-size: 22px 22px; opacity: .5;
-    }
-    .syn-network-orb-1, .syn-network-orb-2 {
-      position: absolute; border-radius: 50%; pointer-events: none;
-    }
-    .syn-network-orb-1 {
-      top: -60px; right: -60px; width: 260px; height: 260px;
-      background: radial-gradient(circle, rgba(43,196,196,.18) 0%, transparent 70%);
-    }
-    .syn-network-orb-2 {
-      bottom: -70px; left: -50px; width: 240px; height: 240px;
-      background: radial-gradient(circle, rgba(43,196,196,.12) 0%, transparent 70%);
-    }
-    .syn-network svg { position: relative; width: 100%; height: 100%; display: block; overflow: visible; }
-    .syn-network-caption {
-      position: absolute; top: 22px; left: 24px; right: 24px;
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 10px; font-weight: 700;
-      letter-spacing: .18em; text-transform: uppercase;
-      color: var(--color-muted); pointer-events: none;
-    }
-    .syn-network-caption span:last-child { color: var(--color-cyan); }
-    .syn-network-bar {
-      position: absolute; bottom: 20px; left: 24px; right: 24px;
-      height: 2px; background: rgba(27,58,92,.10);
-      border-radius: 999px; overflow: hidden;
-    }
-    .syn-network-bar-fill {
-      height: 100%; width: 0%;
-      background: linear-gradient(90deg, transparent, var(--color-cyan) 30%, var(--color-cyan-dim));
-      box-shadow: 0 0 8px rgba(43,196,196,.4);
-      transition: width .12s linear;
-    }
-    .syn-node g { transition: transform .25s, opacity .35s; cursor: pointer; }
-    .syn-node text {
-      font-family: var(--font-display); font-weight: 700;
-      font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase;
-      fill: var(--color-navy); pointer-events: none;
-    }
-
-    /* ===== Aanpak (3 stappen) ===== */
-    .aanpak {
-      padding: 80px 6vw; background: var(--color-off-1);
-      border-top: 1px solid var(--color-border-soft);
-      border-bottom: 1px solid var(--color-border-soft);
-    }
-    .aanpak-inner { max-width: 1100px; margin: 0 auto; }
-    .aanpak-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 32px; margin-top: 40px;
-      counter-reset: step;
-    }
-    .aanpak-step {
-      counter-increment: step;
-      position: relative; padding-top: 12px;
-    }
-    .aanpak-step::before {
-      content: counter(step, decimal-leading-zero);
-      display: block;
-      font-family: var(--font-display); font-weight: 800;
-      font-size: 3rem; color: var(--color-cyan);
-      line-height: 1; margin-bottom: 16px;
-      opacity: .9;
-    }
-    .aanpak-step h3 {
-      font-size: 1.15rem; margin-bottom: 10px;
-    }
-    .aanpak-step p { color: var(--color-muted); font-size: .95rem; line-height: 1.6; }
-
-    /* ===== Partners strip ===== */
-    .partners {
-      padding: 48px 6vw; background: var(--color-white);
-    }
-    .partners-head {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 28px; flex-wrap: wrap; gap: 12px;
-    }
-    .partners-label {
-      font-size: .75rem; font-weight: 700; letter-spacing: .14em;
-      text-transform: uppercase; color: var(--color-muted);
-    }
-    .partners-link {
-      font-size: .88rem; font-weight: 700; color: var(--color-navy);
-    }
-    .partners-link:hover { color: var(--color-cyan); }
-    .partner-row { display: flex; gap: 16px; flex-wrap: wrap; }
-    .partner-pill {
-      display: flex; align-items: center; gap: 14px;
-      background: var(--color-white); border: 1px solid var(--color-border-soft);
-      border-radius: 14px; padding: 14px 20px;
-      flex: 1; min-width: 220px; max-width: 320px;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .partner-pill:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
-    .partner-swatch {
-      width: 44px; height: 44px; min-width: 44px;
-      border-radius: 10px; background: #fff;
-      border: 1px solid var(--color-border-soft);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .partner-swatch img { width: 32px; height: 32px; object-fit: contain; }
-    .partner-name { font-family: var(--font-display); font-weight: 700; font-size: .92rem; }
-    .partner-role { font-size: .78rem; color: var(--color-muted); }
-
-    /* ===== CTA banner ===== */
-    .cta-wrap { padding: 40px 6vw 80px; }
-    .cta {
-      background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-mid) 100%);
-      border-radius: 20px; padding: 56px 48px;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 32px; flex-wrap: wrap; position: relative; overflow: hidden;
-    }
-    .cta::before {
-      content: ''; position: absolute; right: -30px; top: -30px;
-      width: 240px; height: 240px; border-radius: 50%;
-      background: radial-gradient(circle, var(--cyan-18) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .cta-content { position: relative; z-index: 2; max-width: 620px; }
-    .cta .cta-eyebrow {
-      color: rgba(255,255,255,.55); font-size: .8rem; font-weight: 700;
-      letter-spacing: .14em; text-transform: uppercase; margin-bottom: 10px;
-    }
-    .cta h2 {
-      color: #fff; font-weight: 700;
-      font-size: clamp(1.55rem, 3vw, 2.15rem); line-height: 1.2;
-      margin-bottom: 10px;
-    }
-    .cta p { color: rgba(255,255,255,.7); font-size: 1rem; }
-    .cta .btn-primary { position: relative; z-index: 2; flex-shrink: 0; }
-
-    /* ===== Footer ===== */
-    .footer {
-      background: var(--color-navy-deep); color: rgba(255,255,255,.75);
-      padding: 64px 6vw 36px;
-    }
-    .footer-top {
-      display: grid; grid-template-columns: 1.4fr 1fr 1fr;
-      gap: 48px; padding-bottom: 48px;
-      border-bottom: 1px solid rgba(255,255,255,.12);
-      margin-bottom: 32px;
-    }
-    .footer-brand img { height: 34px; filter: brightness(0) invert(1); }
-    .footer-brand-name {
-      font-family: var(--font-display); font-weight: 700; font-size: 1rem;
-      color: #fff; margin: 14px 0 8px;
-    }
-    .footer-brand-lines { font-size: .87rem; color: rgba(255,255,255,.55); line-height: 1.7; }
-    .footer-col h4 {
-      font-size: .9rem; font-weight: 700;
-      letter-spacing: .06em; text-transform: uppercase;
-      color: #fff; margin-bottom: 18px;
-    }
-    .footer-col ul { list-style: none; }
-    .footer-col li { margin-bottom: 10px; }
-    .footer-col a { font-size: .88rem; color: rgba(255,255,255,.75); transition: color .2s; }
-    .footer-col a:hover { color: var(--color-cyan); }
-    .footer-bottom {
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: .82rem; flex-wrap: wrap; gap: 12px;
-    }
-
-    /* ===== Responsive ===== */
-    @media (max-width: 960px) {
-      .wiezijnwij { grid-template-columns: 1fr; }
-      .network-sticky { position: static; }
-      .footer-top { grid-template-columns: 1fr; gap: 32px; }
-      .hamburger { display: flex; }
-      .nav-links { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: flex-start; background: var(--color-navy); border-bottom: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 40px rgba(0,0,0,.35); padding: 18px 6vw 26px; gap: 18px; display: none; }
-      .nav-links.open { display: flex; }
-      .nav-dropdown { position: static; min-width: 0; background: transparent; border: none; box-shadow: none; padding: 8px 0 0 8px; opacity: 1; visibility: visible; transform: none; display: none; }
-      .nav-dropdown-parent.open .nav-dropdown { display: block; }
-      .nav-dropdown::before { display: none; }
-      .nav-dropdown-title { color: #fff; }
-      .nav-dropdown a:hover { background: rgba(255,255,255,.06); }
-      .nav-dropdown-arrow { color: rgba(255,255,255,.4); }
-      .nav-dropdown-icon { background: rgba(43,196,196,.15); }
-      .aanpak-grid { grid-template-columns: 1fr; gap: 24px; }
-    }
-    @media (max-width: 640px) {
-      .nav { padding: 0 4vw; height: 64px; }
-      .nav-logo img { height: 30px; }
-      .hero { padding: 60px 5vw 40px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://formspree.io; form-action https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none'" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+<title>Synomic — Slimmer werken. Sneller vooruit.</title>
+<meta name="description" content="Synomic ondersteunt ondernemers bij het optimaliseren van hun bedrijfsvoering. Finance, automatisering en AI — pragmatisch toegepast, aantoonbaar resultaat." />
+<link rel="icon" type="image/png" href="logo.png" />
+<link rel="canonical" href="https://synomic.nl/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Synomic" />
+<meta property="og:locale" content="nl_NL" />
+<meta property="og:title" content="Synomic — Slimmer werken. Sneller vooruit." />
+<meta property="og:description" content="Synomic ondersteunt ondernemers bij het optimaliseren van hun bedrijfsvoering. Finance, automatisering en AI — pragmatisch toegepast, aantoonbaar resultaat." />
+<meta property="og:url" content="https://synomic.nl/" />
+<meta property="og:image" content="https://synomic.nl/logo.png" />
+<meta name="twitter:card" content="summary" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Synomic",
+  "description": "Advies en uitvoering op het snijvlak van finance, automatisering en AI voor MKB en ZZP.",
+  "url": "https://synomic.nl",
+  "logo": "https://synomic.nl/logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Koornbeursweg 73",
+    "postalCode": "8442 DJ",
+    "addressLocality": "Heerenveen",
+    "addressCountry": "NL"
+  },
+  "identifier": { "@type": "PropertyValue", "propertyID": "KVK", "value": "94705569" },
+  "areaServed": ["Nederland", "België", "Polen"],
+  "knowsAbout": ["Finance", "Automatisering", "AI-toepassingen", "Procesoptimalisatie"]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- ===== Navigation ===== -->
-  <nav class="nav">
-    <a class="nav-logo" href="index.html"><img src="logo-white.png" alt="Synomic" /></a>
-    <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html"><img src="logo.png" alt="Synomic" /></a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="over-ons.html">Over ons</a></li>
-      <li class="nav-dropdown-parent" id="ddDiensten">
-        <button type="button" aria-haspopup="true" aria-expanded="false">
-          Diensten <span class="nav-caret"></span>
-        </button>
-        <div class="nav-dropdown" role="menu" aria-labelledby="ddDiensten">
-          <a href="diensten.html#finance" role="menuitem">
-            <span class="nav-dropdown-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 20h18"></path>
-                <rect x="5" y="12" width="3.2" height="6"></rect>
-                <rect x="10.4" y="8" width="3.2" height="10"></rect>
-                <rect x="15.8" y="4" width="3.2" height="14"></rect>
-              </svg>
-            </span>
-            <span class="nav-dropdown-title">Finance</span>
-            <span class="nav-dropdown-arrow">→</span>
-          </a>
-          <a href="diensten.html#automatisering" role="menuitem">
-            <span class="nav-dropdown-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 12a9 9 0 0 0-15.5-6.3"></path>
-                <path d="M3 12a9 9 0 0 0 15.5 6.3"></path>
-                <polyline points="15 2 21 2 21 8"></polyline>
-                <polyline points="9 22 3 22 3 16"></polyline>
-              </svg>
-            </span>
-            <span class="nav-dropdown-title">Automatisering</span>
-            <span class="nav-dropdown-arrow">→</span>
-          </a>
-          <a href="diensten.html#ai" role="menuitem">
-            <span class="nav-dropdown-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 3 L13.4 9.4 L19.8 11 L13.4 12.6 L12 19 L10.6 12.6 L4.2 11 L10.6 9.4 Z"></path>
-                <path d="M19 17 L19.6 19.4 L22 20 L19.6 20.6 L19 23 L18.4 20.6 L16 20 L18.4 19.4 Z"></path>
-              </svg>
-            </span>
-            <span class="nav-dropdown-title">AI-toepassingen</span>
-            <span class="nav-dropdown-arrow">→</span>
-          </a>
-        </div>
-      </li>
+      <li><a href="diensten.html">Diensten</a></li>
       <li><a href="projecten.html">Projecten</a></li>
-      <li><a href="partners.html">Partners</a></li>
-      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+      <li><a href="over-ons.html">Over ons</a></li>
     </ul>
-  </nav>
+    <button class="burger" id="burger" aria-label="Menu openen" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+    <a class="pill pill-cyan pill-sm" href="contact.html">Plan een gesprek</a>
+  </div>
+</nav>
 
-  <!-- ===== Hero ===== -->
-  <section class="hero">
-    <div class="hero-dots"></div>
-    <div class="hero-orb-1"></div>
-    <div class="hero-orb-2"></div>
-    <div class="hero-content">
-      <span class="hero-badge"><span class="hero-badge-dot"></span>Finance · Automatisering · AI</span>
-      <h1>Slimmer werken.<br /><em>Sneller vooruit.</em></h1>
-      <p>Synomic ondersteunt ondernemers bij het versterken van hun bedrijfsvoering. Van financieel inzicht tot automatisering en AI-toepassingen — pragmatisch toegepast, met aantoonbaar resultaat.</p>
-      <div class="btn-row">
-        <a class="btn btn-primary" href="contact.html">Plan een vrijblijvend gesprek →</a>
-        <a class="btn btn-outline" href="#hoe-werkt-het">Zo werkt het</a>
-      </div>
+<header class="hero">
+  <div class="wrap">
+    <span class="badge"><span class="dot"></span>Finance · Automatisering · AI</span>
+    <h1>Slimmer werken.<br /><em>Sneller vooruit.</em></h1>
+    <p class="hero-sub">Synomic ondersteunt ondernemers bij het versterken van hun bedrijfsvoering. Van financieel inzicht tot automatisering en AI-toepassingen — pragmatisch toegepast, met aantoonbaar resultaat.</p>
+    <div class="hero-btns">
+      <a class="pill pill-cyan" href="contact.html">Plan een vrijblijvend gesprek →</a>
+      <a class="pill pill-ghost" href="#hoe-werkt-het">Zo werkt het</a>
     </div>
-  </section>
+    <p class="hero-note">Reactie binnen 1 werkdag · Vrijblijvend · Heerenveen</p>
 
-  <!-- ===== Wie zijn wij — split layout ===== -->
-  <section class="wiezijnwij" data-scroll-anchor="1">
-    <div>
-      <div class="section-label">Wat Synomic voor u doet</div>
-      <h2 class="section-title" style="text-align: left; margin-left: 0;">Drie specialismen. Één aanspreekpunt.</h2>
-      <p class="section-sub" style="margin-left: 0; text-align: left;">Finance, automatisering en AI komen bij Synomic samen. Dat zorgt voor consistentie in aanpak en versnelling in uitvoering — zonder versnippering over meerdere partijen.</p>
-
-      <div class="diensten-card">
-        <a class="dienst-row" href="diensten.html#finance">
-          <span class="dienst-num">01</span>
-          <span class="dienst-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M3 20h18"></path>
-              <rect x="5" y="12" width="3.2" height="6"></rect>
-              <rect x="10.4" y="8" width="3.2" height="10"></rect>
-              <rect x="15.8" y="4" width="3.2" height="14"></rect>
-            </svg>
-          </span>
-          <div class="dienst-body">
-            <h3>Finance</h3>
-            <p>Rapportages en dashboards die direct inzicht geven in de bedrijfsvoering en onderbouwing bieden voor strategische beslissingen.</p>
+    <div class="showcase">
+      <div class="showcase-col">
+      <div class="mock">
+        <div class="mock-head">
+          <div>
+            <div class="mock-eyebrow">Finance</div>
+            <div class="mock-title">Maandrapportage</div>
           </div>
-          <span class="dienst-arrow">→</span>
-        </a>
-        <a class="dienst-row" href="diensten.html#automatisering">
-          <span class="dienst-num">02</span>
-          <span class="dienst-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 12a9 9 0 0 0-15.5-6.3"></path>
-              <path d="M3 12a9 9 0 0 0 15.5 6.3"></path>
-              <polyline points="15 2 21 2 21 8"></polyline>
-              <polyline points="9 22 3 22 3 16"></polyline>
-            </svg>
-          </span>
-          <div class="dienst-body">
-            <h3>Automatisering</h3>
-            <p>Terugkerende taken en werkstromen volledig geautomatiseerd. Uw organisatie behoudt focus op strategisch en waardevol werk.</p>
-          </div>
-          <span class="dienst-arrow">→</span>
-        </a>
-        <a class="dienst-row" href="diensten.html#ai">
-          <span class="dienst-num">03</span>
-          <span class="dienst-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M12 3 L13.4 9.4 L19.8 11 L13.4 12.6 L12 19 L10.6 12.6 L4.2 11 L10.6 9.4 Z"></path>
-              <path d="M19 17 L19.6 19.4 L22 20 L19.6 20.6 L19 23 L18.4 20.6 L16 20 L18.4 19.4 Z"></path>
-            </svg>
-          </span>
-          <div class="dienst-body">
-            <h3>AI-toepassingen</h3>
-            <p>AI-oplossingen die aansluiten op uw bestaande processen. Praktisch inzetbaar en met meetbaar resultaat.</p>
-          </div>
-          <span class="dienst-arrow">→</span>
-        </a>
-        <a class="diensten-footer" href="diensten.html">Bekijk alle diensten →</a>
+          <span class="chip">Automatisch bijgewerkt</span>
+        </div>
+        <div class="kpis">
+          <div class="kpi"><div class="kpi-label">Omzet</div><div class="kpi-val">€ 248k</div><div class="kpi-delta">+12,4% vs. vorig jaar</div></div>
+          <div class="kpi"><div class="kpi-label">Brutomarge</div><div class="kpi-val">31,4%</div><div class="kpi-delta">+1,8 pt</div></div>
+          <div class="kpi"><div class="kpi-label">Debiteuren</div><div class="kpi-val">27 dg</div><div class="kpi-delta">−6 dagen</div></div>
+        </div>
+        <div class="chart">
+          <div class="bar" style="height:42%;animation-delay:0s"></div>
+          <div class="bar" style="height:56%;animation-delay:.08s"></div>
+          <div class="bar" style="height:48%;animation-delay:.16s"></div>
+          <div class="bar" style="height:68%;animation-delay:.24s"></div>
+          <div class="bar" style="height:60%;animation-delay:.32s"></div>
+          <div class="bar" style="height:78%;animation-delay:.4s"></div>
+          <div class="bar" style="height:70%;animation-delay:.48s"></div>
+          <div class="bar" style="height:88%;animation-delay:.56s"></div>
+          <div class="bar alt" style="height:96%;animation-delay:.64s"></div>
+          <div class="bar" style="height:74%;animation-delay:.72s"></div>
+          <div class="bar" style="height:84%;animation-delay:.8s"></div>
+          <div class="bar" style="height:92%;animation-delay:.88s"></div>
+        </div>
+        <div class="chart-x"><span>JAN</span><span>APR</span><span>JUL</span><span>OKT</span><span>DEC</span></div>
+        <div class="mock-foot"><span>Bron: Moneybird · dagelijkse synchronisatie</span><span>Forecasting op kwartaalbasis</span></div>
       </div>
-    </div>
 
-    <div class="network-wrap">
-      <div class="network-sticky">
-        <div class="syn-network" id="synNetwork">
-          <div class="syn-network-bg"></div>
-          <div class="syn-network-orb-1"></div>
-          <div class="syn-network-orb-2"></div>
-          <svg viewBox="0 0 480 620" preserveAspectRatio="xMidYMid meet">
-            <defs>
-              <radialGradient id="sn-node-grad" cx="50%" cy="38%" r="60%">
-                <stop offset="0%" stop-color="#A8F0F0" stop-opacity="1" />
-                <stop offset="55%" stop-color="#2BC4C4" stop-opacity="1" />
-                <stop offset="100%" stop-color="#1A9E9E" stop-opacity="1" />
-              </radialGradient>
-              <radialGradient id="sn-hub-grad" cx="50%" cy="38%" r="65%">
-                <stop offset="0%" stop-color="#1A4D6E" stop-opacity="1" />
-                <stop offset="60%" stop-color="#1B3A5C" stop-opacity="1" />
-                <stop offset="100%" stop-color="#0E2136" stop-opacity="1" />
-              </radialGradient>
-              <filter id="sn-glow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="2.4" result="blur" />
-                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-              <filter id="sn-glow-strong" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="4" result="blur" />
-                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-            </defs>
-
-            <g opacity=".45">
-              <circle cx="35" cy="180" r="1.6" fill="#2BC4C4">
-                <animate attributeName="cy" values="170;190;170" dur="5s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values=".2;.8;.2" dur="4s" repeatCount="indefinite" />
-              </circle>
-              <circle cx="445" cy="220" r="1.6" fill="#2BC4C4">
-                <animate attributeName="cy" values="210;230;210" dur="6s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values=".2;.8;.2" dur="5s" repeatCount="indefinite" />
-              </circle>
-              <circle cx="50" cy="360" r="1.6" fill="#2BC4C4">
-                <animate attributeName="cy" values="350;370;350" dur="7s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values=".2;.8;.2" dur="6s" repeatCount="indefinite" />
-              </circle>
-              <circle cx="430" cy="360" r="1.6" fill="#2BC4C4">
-                <animate attributeName="cy" values="350;370;350" dur="5s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values=".2;.8;.2" dur="4s" repeatCount="indefinite" />
-              </circle>
-              <circle cx="30" cy="250" r="1.6" fill="#2BC4C4">
-                <animate attributeName="cy" values="240;260;240" dur="6s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values=".2;.8;.2" dur="5s" repeatCount="indefinite" />
-              </circle>
-              <circle cx="455" cy="130" r="1.6" fill="#2BC4C4">
-                <animate attributeName="cy" values="120;140;120" dur="5s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values=".2;.8;.2" dur="4s" repeatCount="indefinite" />
-              </circle>
-            </g>
-
-            <g opacity=".7">
-              <animateTransform attributeName="transform" type="rotate" from="0 240 295" to="360 240 295" dur="60s" repeatCount="indefinite" />
-              <circle cx="240" cy="295" r="64" fill="none" stroke="rgba(43,196,196,.45)" stroke-width="1" stroke-dasharray="2 6" />
-              <circle cx="240" cy="295" r="92" fill="none" stroke="rgba(43,196,196,.22)" stroke-width="1" stroke-dasharray="3 11" />
-            </g>
-            <g opacity=".6">
-              <animateTransform attributeName="transform" type="rotate" from="360 240 295" to="0 240 295" dur="40s" repeatCount="indefinite" />
-              <circle cx="240" cy="295" r="46" fill="none" stroke="rgba(43,196,196,.18)" stroke-width="1" stroke-dasharray="1 7" />
-            </g>
-
-            <g id="snEdges"></g>
-            <g id="snNodes" class="syn-node"></g>
-          </svg>
-
-          <div class="syn-network-caption">
-            <span>Onze werkwijze</span>
-            <span id="snProgress">0%</span>
+      <div class="mock">
+        <div class="mock-head">
+          <div>
+            <div class="mock-eyebrow">Finance</div>
+            <div class="mock-title">Liquiditeitsprognose</div>
           </div>
-          <div class="syn-network-bar"><div class="syn-network-bar-fill" id="snBar"></div></div>
+          <span class="chip">12 weken vooruit</span>
+        </div>
+        <svg class="spark" viewBox="0 0 720 104" aria-hidden="true">
+          <line x1="4" y1="78" x2="716" y2="78" stroke="#E8EDF3" stroke-width="1"></line>
+          <line x1="4" y1="52" x2="716" y2="52" stroke="#E8EDF3" stroke-width="1"></line>
+          <line x1="4" y1="26" x2="716" y2="26" stroke="#E8EDF3" stroke-width="1"></line>
+          <path d="M6 70 L81 62 L162 66 L243 48 L324 54 L405 38" fill="none" stroke="#1B3A5C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M405 38 L486 42 L567 28 L648 30 L714 16" fill="none" stroke="#2BC4C4" stroke-width="2.6" stroke-dasharray="7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+          <line x1="405" y1="8" x2="405" y2="92" stroke="#DDE3EC" stroke-width="1" stroke-dasharray="3 4"></line>
+          <circle cx="405" cy="38" r="4" fill="#1B3A5C"></circle>
+          <circle cx="714" cy="16" r="4" fill="#2BC4C4" style="animation:ping 2.4s ease-in-out infinite"></circle>
+        </svg>
+        <div class="spark-legend">
+          <span><span class="key"></span>Gerealiseerd</span>
+          <span><span class="key dash"></span>Prognose</span>
+          <span style="margin-left:auto;font-weight:700;color:var(--cyan-dim)">Laagste stand € 41k · week 34</span>
+        </div>
+        <div class="mock-foot"><span>Openstaande facturen, vaste lasten en loonkosten meegerekend</span></div>
+      </div>
+      </div>
+
+      <div class="showcase-col">
+      <div class="mock">
+        <div class="mock-head">
+          <div>
+            <div class="mock-eyebrow">Automatisering</div>
+            <div class="mock-title">Factuurverwerking</div>
+          </div>
+          <span class="chip">3 uur → 10 min</span>
+        </div>
+        <div class="flow">
+          <div class="step">
+            <span class="step-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></span>
+            <span class="step-txt">Factuur komt binnen<small>Mailbox · trigger</small></span>
+          </div>
+          <div class="link"></div>
+          <div class="step">
+            <span class="step-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 7V4h16v3"></path><path d="M9 20h6"></path><path d="M12 4v16"></path></svg></span>
+            <span class="step-txt">OCR leest de regels uit<small>Bedrag · BTW · leverancier</small></span>
+          </div>
+          <div class="link"></div>
+          <div class="step">
+            <span class="step-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></span>
+            <span class="step-txt">Controle en codering<small>Afwijking? Naar uw goedkeuring</small></span>
+          </div>
+          <div class="link"></div>
+          <div class="step">
+            <span class="step-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M21 12a9 9 0 0 0-15.5-6.3"></path><path d="M3 12a9 9 0 0 0 15.5 6.3"></path><polyline points="15 2 21 2 21 8"></polyline><polyline points="9 22 3 22 3 16"></polyline></svg></span>
+            <span class="step-txt">Geboekt in Moneybird<small>Zonder handmatige invoer</small></span>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ===== Onze werkwijze — 3 stappen ===== -->
-  <section class="aanpak" id="hoe-werkt-het">
-    <div class="aanpak-inner">
-      <div class="section-label" style="text-align: center;">Onze werkwijze</div>
-      <h2 class="section-title">Van eerste gesprek tot werkende oplossing</h2>
-      <p class="section-sub">Een duidelijk traject in drie stappen. U weet vooraf waar u aan toe bent, wat het oplevert en wat het kost.</p>
-      <div class="aanpak-grid">
-        <div class="aanpak-step">
-          <h3>Analyse</h3>
-          <p>Samen brengen we uw situatie en uitdagingen in kaart. Waar zit tijdverlies, welke processen kunnen slimmer en welke prioriteiten liggen er?</p>
+      <div class="mock">
+        <div class="mock-head">
+          <div>
+            <div class="mock-eyebrow">AI-toepassingen</div>
+            <div class="mock-title">Kennisbank</div>
+          </div>
+          <span class="chip">60% zelfstandig</span>
         </div>
-        <div class="aanpak-step">
-          <h3>Conceptplan</h3>
-          <p>U ontvangt een helder voorstel: welke oplossing past bij uw bedrijf, wat het u oplevert en wat het kost. Concreet en zonder vakjargon.</p>
+        <div class="chat">
+          <div class="bubble bubble-q">Welke betaaltermijn geldt voor nieuwe klanten?</div>
+          <div class="bubble bubble-a">Voor nieuwe klanten geldt 14 dagen, met een kredietlimiet van € 5.000 tot de eerste betaling binnen is<span class="caret"></span></div>
         </div>
-        <div class="aanpak-step">
-          <h3>Implementatie</h3>
-          <p>Synomic voert het plan uit in overzichtelijke fases. U blijft betrokken, ziet direct de voortgang en heeft achteraf geen verrassingen.</p>
+        <div class="sources">
+          <span class="src">Verkoopvoorwaarden.pdf</span>
+          <span class="src">Debiteurenbeleid 2026</span>
+          <span class="src">Moneybird</span>
         </div>
+        <div class="mock-foot"><span>Antwoorden met bronvermelding uit uw eigen documenten</span></div>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== Partners strip ===== -->
-  <section class="partners">
-    <div class="partners-head">
-      <span class="partners-label">Onze partners</span>
-      <a class="partners-link" href="partners.html">Bekijk alle partners →</a>
-    </div>
-    <div class="partner-row">
-      <a class="partner-pill" href="partners.html">
-        <span class="partner-swatch"><img src="partner-claude.png" alt="Claude AI" /></span>
-        <span>
-          <span class="partner-name">Claude AI</span><br>
-          <span class="partner-role">AI-assistent</span>
-        </span>
-      </a>
-      <a class="partner-pill" href="partners.html">
-        <span class="partner-swatch"><img src="partner-n8n.svg" alt="n8n" style="width:36px;height:36px" /></span>
-        <span>
-          <span class="partner-name">n8n</span><br>
-          <span class="partner-role">Automatiseringsplatform</span>
-        </span>
-      </a>
-      <a class="partner-pill" href="partners.html">
-        <span class="partner-swatch"><img src="partner-moneybird.png" alt="Moneybird" /></span>
-        <span>
-          <span class="partner-name">Moneybird</span><br>
-          <span class="partner-role">Boekhoudpakket</span>
-        </span>
-      </a>
-    </div>
-  </section>
-
-  <!-- ===== Closing CTA ===== -->
-  <div class="cta-wrap">
-    <div class="cta">
-      <div class="cta-content">
-        <div class="cta-eyebrow">Vrijblijvend kennismaken</div>
-        <h2>Klaar voor de volgende stap in uw bedrijfsvoering?</h2>
-        <p>Plan een vrijblijvend gesprek. Binnen 30 minuten heeft u concreet inzicht in de kansen voor uw organisatie.</p>
       </div>
-      <a class="btn btn-primary" href="contact.html">Plan een gesprek →</a>
     </div>
   </div>
 
-  <!-- ===== Footer ===== -->
-  <footer class="footer">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <img src="logo-white.png" alt="Synomic" />
-        <div class="footer-brand-name">Synomic</div>
-        <div class="footer-brand-lines">Koornbeursweg 73<br>8442 DJ Heerenveen<br>KVK: 94705569</div>
+  <div class="marquee">
+    <div class="marquee-label">Synomic werkt met</div>
+    <div class="track">
+      <a class="logo-item" href="partners.html"><span class="logo-tile"><img src="partner-claude.png" alt="Claude AI" /></span><span>Claude AI</span></a>
+      <a class="logo-item" href="partners.html"><span class="logo-tile"><img src="partner-n8n-mark.png" alt="n8n" /></span><span>n8n</span></a>
+      <a class="logo-item" href="partners.html"><span class="logo-tile"><img src="partner-moneybird.png" alt="Moneybird" /></span><span>Moneybird</span></a>
+      <a class="logo-item" href="partners.html"><span class="logo-tile"><img src="partner-twinfield.png" alt="Twinfield" /></span><span>Twinfield</span></a>
+      <a class="logo-item" href="partners.html"><span class="logo-tile"><img src="partner-exact.png" alt="Exact Online" /></span><span>Exact Online</span></a>
+      <a class="logo-item" href="partners.html"><span class="logo-tile"><img src="partner-claude.png" alt="Claude AI" /></span><span>Claude AI</span></a>
+      <a class="logo-item" href="partners.html"><span class="logo-tile"><img src="partner-n8n-mark.png" alt="n8n" /></span><span>n8n</span></a>
+      <a class="logo-item" href="partners.html"><span class="logo-tile"><img src="partner-moneybird.png" alt="Moneybird" /></span><span>Moneybird</span></a>
+      <a class="logo-item" href="partners.html"><span class="logo-tile"><img src="partner-twinfield.png" alt="Twinfield" /></span><span>Twinfield</span></a>
+      <a class="logo-item" href="partners.html"><span class="logo-tile"><img src="partner-exact.png" alt="Exact Online" /></span><span>Exact Online</span></a>
+      <a class="logo-item" href="partners.html"><span class="logo-tile"><img src="partner-claude.png" alt="Claude AI" /></span><span>Claude AI</span></a>
+      <a class="logo-item" href="partners.html"><span class="logo-tile"><img src="partner-n8n-mark.png" alt="n8n" /></span><span>n8n</span></a>
+      <a class="logo-item" href="partners.html"><span class="logo-tile"><img src="partner-moneybird.png" alt="Moneybird" /></span><span>Moneybird</span></a>
+      <a class="logo-item" href="partners.html"><span class="logo-tile"><img src="partner-twinfield.png" alt="Twinfield" /></span><span>Twinfield</span></a>
+      <a class="logo-item" href="partners.html"><span class="logo-tile"><img src="partner-exact.png" alt="Exact Online" /></span><span>Exact Online</span></a>
+      <a class="logo-item" href="partners.html"><span class="logo-tile"><img src="partner-claude.png" alt="Claude AI" /></span><span>Claude AI</span></a>
+      <a class="logo-item" href="partners.html"><span class="logo-tile"><img src="partner-n8n-mark.png" alt="n8n" /></span><span>n8n</span></a>
+      <a class="logo-item" href="partners.html"><span class="logo-tile"><img src="partner-moneybird.png" alt="Moneybird" /></span><span>Moneybird</span></a>
+      <a class="logo-item" href="partners.html"><span class="logo-tile"><img src="partner-twinfield.png" alt="Twinfield" /></span><span>Twinfield</span></a>
+      <a class="logo-item" href="partners.html"><span class="logo-tile"><img src="partner-exact.png" alt="Exact Online" /></span><span>Exact Online</span></a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="label">Wat Synomic voor u doet</div>
+        <h2 class="h2">Drie specialismen. Één aanspreekpunt.</h2>
       </div>
-      <div class="footer-col">
+      <p class="lede">Finance, automatisering en AI komen bij Synomic samen. Dat zorgt voor consistentie in aanpak en versnelling in uitvoering — zonder versnippering over meerdere partijen.</p>
+    </div>
+    <div class="svc-grid reveal">
+      <a class="svc" href="diensten.html#finance">
+        <span class="svc-num">01</span>
+        <h3>Finance</h3>
+        <p>Rapportages en dashboards die direct inzicht geven in de bedrijfsvoering en onderbouwing bieden voor strategische beslissingen.</p>
+        <span class="svc-more">Bekijk finance →</span>
+      </a>
+      <a class="svc" href="diensten.html#automatisering">
+        <span class="svc-num">02</span>
+        <h3>Automatisering</h3>
+        <p>Terugkerende taken en werkstromen volledig geautomatiseerd. Uw organisatie behoudt focus op strategisch en waardevol werk.</p>
+        <span class="svc-more">Bekijk automatisering →</span>
+      </a>
+      <a class="svc" href="diensten.html#ai">
+        <span class="svc-num">03</span>
+        <h3>AI-toepassingen</h3>
+        <p>AI-oplossingen die aansluiten op uw bestaande processen. Praktisch inzetbaar en met meetbaar resultaat.</p>
+        <span class="svc-more">Bekijk AI-toepassingen →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="aanpak" id="hoe-werkt-het">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="label">Onze werkwijze</div>
+      <h2 class="h2">Van eerste gesprek tot werkende oplossing</h2>
+      <p class="lede">Een duidelijk traject in drie stappen. U weet vooraf waar u aan toe bent, wat het oplevert en wat het kost.</p>
+    </div>
+    <div class="steps reveal">
+      <div>
+        <div class="step-n">01</div>
+        <h3>Analyse</h3>
+        <p>Samen brengen we uw situatie en uitdagingen in kaart. Waar zit tijdverlies, welke processen kunnen slimmer en welke prioriteiten liggen er?</p>
+      </div>
+      <div>
+        <div class="step-n">02</div>
+        <h3>Conceptplan</h3>
+        <p>U ontvangt een helder voorstel: welke oplossing past bij uw bedrijf, wat het u oplevert en wat het kost. Concreet en zonder vakjargon.</p>
+      </div>
+      <div>
+        <div class="step-n">03</div>
+        <h3>Implementatie</h3>
+        <p>Synomic voert het plan uit in overzichtelijke fases. U blijft betrokken, ziet direct de voortgang en heeft achteraf geen verrassingen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-wrap">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div class="cta-in">
+        <div class="label">Vrijblijvend kennismaken</div>
+        <h2>Klaar voor de volgende stap in uw bedrijfsvoering?</h2>
+        <p>Plan een vrijblijvend gesprek. Binnen 30 minuten heeft u concreet inzicht in de kansen voor uw organisatie.</p>
+        <a class="pill pill-cyan" href="contact.html">Plan een gesprek →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div class="f-brand">
+        <img src="logo-white.png" alt="Synomic" />
+        <p>Koornbeursweg 73<br />8442 DJ Heerenveen<br />KVK: 94705569<br />info@synomic.nl</p>
+      </div>
+      <div class="f-col">
         <h4>Navigatie</h4>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="over-ons.html">Over ons</a></li>
-          <li><a href="diensten.html">Diensten</a></li>
           <li><a href="projecten.html">Projecten</a></li>
-          <li><a href="partners.html">Partners</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
-      <div class="footer-col">
+      <div class="f-col">
         <h4>Diensten</h4>
         <ul>
           <li><a href="diensten.html#finance">Finance</a></li>
@@ -842,251 +307,31 @@
           <li><a href="diensten.html#ai">AI-toepassingen</a></li>
         </ul>
       </div>
+      <div class="f-col">
+        <h4>Partners</h4>
+        <ul>
+          <li><a href="partners.html">Claude AI</a></li>
+          <li><a href="partners.html">n8n</a></li>
+          <li><a href="partners.html">Moneybird</a></li>
+          <li><a href="partners.html">Twinfield</a></li>
+          <li><a href="partners.html">Exact Online</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-bottom">
+    <div class="f-bot">
       <span>© <span class="jsYear">2026</span> Synomic – KVK 94705569. Alle rechten voorbehouden.</span>
-      <span><a href="privacy.html" style="color:inherit;text-decoration:underline;">Privacyverklaring</a> · Gebouwd met ♥ in Nederland</span>
+      <span><a href="privacy.html">Privacyverklaring</a> · Gebouwd met ♥ in Nederland</span>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <script>
-  // ===== Dropdown click-toggle (voor touch / mobile) =====
-  (function () {
-    const dd = document.getElementById('ddDiensten');
-    if (!dd) return;
-    const btn = dd.querySelector('button');
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = dd.classList.toggle('open');
-      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
-    document.addEventListener('click', (e) => {
-      if (!dd.contains(e.target)) {
-        dd.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-      }
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        dd.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-        btn.focus();
-      }
-    });
-  })();
-
-  // ===== Scroll-driven network widget =====
-  (function () {
-    const SVG_NS = 'http://www.w3.org/2000/svg';
-    const nodes = [
-      { id: 'finance', x: 90,  y: 92,  r: 19, lines: ['Finance'],              lit: 0.00 },
-      { id: 'it',      x: 240, y: 74,  r: 19, lines: ['Automatisering'],       lit: 0.03 },
-      { id: 'ai',      x: 390, y: 92,  r: 19, lines: ['AI'],                   lit: 0.06 },
-      { id: 'hub',     x: 240, y: 295, r: 32, lines: ['Synomic'],              lit: 0.18, central: true },
-      { id: 'impact',  x: 90,  y: 478, r: 17, lines: ['Inzicht'],              lit: 0.36, slideIn: true },
-      { id: 'groei',   x: 240, y: 496, r: 17, lines: ['Efficiëntie'],          lit: 0.42, slideIn: true },
-      { id: 'proces',  x: 390, y: 478, r: 17, lines: ['Groei'],                lit: 0.48, slideIn: true },
-    ];
-    const edges = [
-      { from: 'finance', to: 'hub',    s: 0.04, e: 0.18 },
-      { from: 'it',      to: 'hub',    s: 0.07, e: 0.20 },
-      { from: 'ai',      to: 'hub',    s: 0.10, e: 0.22 },
-      { from: 'hub',     to: 'impact', s: 0.26, e: 0.40 },
-      { from: 'hub',     to: 'groei',  s: 0.30, e: 0.44 },
-      { from: 'hub',     to: 'proces', s: 0.34, e: 0.48 },
-    ];
-    const byId = {}; nodes.forEach(n => byId[n.id] = n);
-    const clamp = v => Math.max(0, Math.min(1, v));
-    const smooth = v => { v = clamp(v); return v * v * (3 - 2 * v); };
-    const edgePath = (a, b) => {
-      const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
-      const off = (b.x - a.x) * 0.07;
-      return `M ${a.x} ${a.y} Q ${mx + off} ${my} ${b.x} ${b.y}`;
-    };
-
-    const anchor = document.querySelector('[data-scroll-anchor="1"]');
-    const edgesG = document.getElementById('snEdges');
-    const nodesG = document.getElementById('snNodes');
-    const bar = document.getElementById('snBar');
-    const progressEl = document.getElementById('snProgress');
-    if (!anchor || !edgesG) return;
-    let hover = null;
-    let lastP = 0;
-
-    const nodeEls = {};
-    nodes.forEach(n => {
-      const g = document.createElementNS(SVG_NS, 'g');
-      g.dataset.id = n.id;
-      if (n.central) {
-        const halo = document.createElementNS(SVG_NS, 'circle');
-        halo.setAttribute('cx', n.x); halo.setAttribute('cy', n.y); halo.setAttribute('r', n.r + 14);
-        halo.setAttribute('fill', 'rgba(43,196,196,.22)');
-        halo.innerHTML = `
-          <animate attributeName="r" values="${n.r+10};${n.r+22};${n.r+10}" dur="2.8s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values=".45;.12;.45" dur="2.8s" repeatCount="indefinite"/>`;
-        g.appendChild(halo);
-        const ring = document.createElementNS(SVG_NS, 'circle');
-        ring.setAttribute('cx', n.x); ring.setAttribute('cy', n.y); ring.setAttribute('r', n.r + 4);
-        ring.setAttribute('fill', 'none'); ring.setAttribute('stroke', '#2BC4C4');
-        ring.setAttribute('stroke-width', '1.5'); ring.setAttribute('opacity', '.6');
-        g.appendChild(ring);
-        const core = document.createElementNS(SVG_NS, 'circle');
-        core.setAttribute('cx', n.x); core.setAttribute('cy', n.y); core.setAttribute('r', n.r);
-        core.setAttribute('fill', 'url(#sn-hub-grad)'); core.setAttribute('filter', 'url(#sn-glow)');
-        g.appendChild(core);
-        const dot = document.createElementNS(SVG_NS, 'circle');
-        dot.setAttribute('cx', n.x); dot.setAttribute('cy', n.y); dot.setAttribute('r', n.r * 0.22);
-        dot.setAttribute('fill', '#2BC4C4');
-        g.appendChild(dot);
-      } else {
-        const halo = document.createElementNS(SVG_NS, 'circle');
-        halo.setAttribute('cx', n.x); halo.setAttribute('cy', n.y); halo.setAttribute('r', n.r + 4);
-        halo.setAttribute('fill', 'rgba(43,196,196,.22)');
-        halo.innerHTML = `
-          <animate attributeName="r" values="${n.r+2};${n.r+7};${n.r+2}" dur="3.4s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values=".35;.1;.35" dur="3.4s" repeatCount="indefinite"/>`;
-        g.appendChild(halo);
-        const core = document.createElementNS(SVG_NS, 'circle');
-        core.setAttribute('cx', n.x); core.setAttribute('cy', n.y); core.setAttribute('r', n.r);
-        core.setAttribute('fill', 'url(#sn-node-grad)'); core.setAttribute('filter', 'url(#sn-glow)');
-        g.appendChild(core);
-        const hl = document.createElementNS(SVG_NS, 'circle');
-        hl.setAttribute('cx', n.x); hl.setAttribute('cy', n.y - n.r * 0.2); hl.setAttribute('r', n.r * 0.32);
-        hl.setAttribute('fill', '#ffffff'); hl.setAttribute('opacity', '.55');
-        g.appendChild(hl);
-      }
-      const text = document.createElementNS(SVG_NS, 'text');
-      text.setAttribute('x', n.x); text.setAttribute('y', n.y + n.r + 22);
-      text.setAttribute('text-anchor', 'middle');
-      n.lines.forEach((line, i) => {
-        const ts = document.createElementNS(SVG_NS, 'tspan');
-        ts.setAttribute('x', n.x);
-        if (i > 0) ts.setAttribute('dy', '1.25em');
-        ts.textContent = line;
-        text.appendChild(ts);
-      });
-      g.appendChild(text);
-      g.addEventListener('mouseenter', () => { hover = n.id; update(lastP); });
-      g.addEventListener('mouseleave', () => { hover = null; update(lastP); });
-      nodesG.appendChild(g);
-      nodeEls[n.id] = { g, text };
-    });
-
-    const edgeEls = edges.map(e => {
-      const g = document.createElementNS(SVG_NS, 'g');
-      const glow = document.createElementNS(SVG_NS, 'path');
-      glow.setAttribute('fill', 'none'); glow.setAttribute('stroke-width', '7');
-      glow.setAttribute('stroke-linecap', 'round');
-      glow.style.filter = 'blur(4px)';
-      g.appendChild(glow);
-      const ghost = document.createElementNS(SVG_NS, 'path');
-      ghost.setAttribute('fill', 'none'); ghost.setAttribute('stroke', 'rgba(27,58,92,.08)');
-      ghost.setAttribute('stroke-width', '1'); ghost.setAttribute('stroke-linecap', 'round');
-      ghost.setAttribute('stroke-dasharray', '2 5');
-      g.appendChild(ghost);
-      const line = document.createElementNS(SVG_NS, 'path');
-      line.setAttribute('fill', 'none'); line.setAttribute('stroke-linecap', 'round');
-      g.appendChild(line);
-      edgesG.appendChild(g);
-      return { e, g, glow, ghost, line, spark: null };
-    });
-
-    function update(progress) {
-      lastP = progress;
-      bar.style.width = (progress * 100) + '%';
-      progressEl.textContent = Math.round(progress * 100) + '%';
-
-      nodes.forEach(n => {
-        const t = smooth((progress - n.lit) / 0.10);
-        const op = 0.22 + 0.78 * t;
-        let dy = 0;
-        if (n.slideIn) {
-          const t2 = smooth((progress - n.lit + 0.04) / 0.10);
-          dy = (1 - t2) * 32;
-        }
-        const el = nodeEls[n.id];
-        const hot = hover === n.id;
-        el.g.style.opacity = op;
-        el.g.style.transform = `translateY(${dy}px)` + (hot ? ' scale(1.10)' : '');
-        el.g.style.transformOrigin = `${n.x}px ${n.y}px`;
-        el.text.setAttribute('fill', hot ? '#1A9E9E' : '#1B3A5C');
-      });
-
-      edgeEls.forEach((er, i) => {
-        const a = byId[er.e.from];
-        const b = byId[er.e.to];
-        let by = b.y;
-        if (b.slideIn) {
-          const t2 = smooth((progress - b.lit + 0.04) / 0.10);
-          by = b.y + (1 - t2) * 32;
-        }
-        const d = edgePath({ x: a.x, y: a.y }, { x: b.x, y: by });
-        const len = Math.hypot(b.x - a.x, by - a.y) * 1.06;
-        const p = smooth((progress - er.e.s) / (er.e.e - er.e.s));
-        const hot = hover && (hover === er.e.from || hover === er.e.to);
-        er.glow.setAttribute('d', d);
-        er.glow.setAttribute('stroke', hot ? 'rgba(43,196,196,.55)' : 'rgba(43,196,196,.32)');
-        er.glow.style.opacity = p * 0.7;
-        er.ghost.setAttribute('d', d);
-        er.line.setAttribute('d', d);
-        er.line.setAttribute('stroke', hot ? '#1A9E9E' : '#2BC4C4');
-        er.line.setAttribute('stroke-width', hot ? 2.2 : 1.6);
-        er.line.setAttribute('stroke-dasharray', len);
-        er.line.setAttribute('stroke-dashoffset', (1 - p) * len);
-
-        if (p > 0.97 && !er.spark) {
-          const s = document.createElementNS(SVG_NS, 'circle');
-          s.setAttribute('r', '2.5'); s.setAttribute('fill', '#2BC4C4');
-          s.setAttribute('filter', 'url(#sn-glow-strong)');
-          s.innerHTML = `
-            <animateMotion dur="3.0s" repeatCount="indefinite" path="${d}" begin="${i*0.5}s"/>
-            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.85;1" dur="3.0s" repeatCount="indefinite" begin="${i*0.5}s"/>`;
-          er.g.appendChild(s); er.spark = s;
-        }
-        if (er.spark) {
-          const am = er.spark.querySelector('animateMotion');
-          if (am) am.setAttribute('path', d);
-        }
-      });
-    }
-
-    let raf = null;
-    function onScroll() {
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        raf = null;
-        const rect = anchor.getBoundingClientRect();
-        const vh = window.innerHeight || 800;
-        const startY = vh * 0.85;
-        const endY = vh * 0.15;
-        const total = rect.height + (startY - endY);
-        const elapsed = startY - rect.top;
-        update(clamp(elapsed / total));
-      });
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    update(0);
-    onScroll();
-  })();
-  </script>
-
-  <script>
-  (function () {
-    var hb = document.getElementById('hamburger');
-    var links = document.getElementById('navLinks');
-    if (hb && links) {
-      hb.addEventListener('click', function () {
-        var open = links.classList.toggle('open');
-        hb.classList.toggle('open', open);
-        hb.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-      links.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', function () { links.classList.remove('open'); hb.classList.remove('open'); hb.setAttribute('aria-expanded', 'false'); });
-      });
-    }
-    document.querySelectorAll('.jsYear').forEach(function (el) { el.textContent = new Date().getFullYear(); });
-  })();
-  </script>
+<script src="app.js" defer></script>
+<div class="cookie" id="cookie" role="dialog" aria-live="polite" aria-label="Cookiemelding">
+  <p><strong>Synomic gebruikt geen tracking cookies.</strong> Alleen technisch noodzakelijke opslag voor het contactformulier. Meer hierover leest u in de <a href="privacy.html">privacyverklaring</a>.</p>
+  <div class="cookie-btns">
+    <button class="pill pill-ghost pill-sm" type="button" data-cookie="geweigerd">Alleen noodzakelijk</button>
+    <button class="pill pill-cyan pill-sm" type="button" data-cookie="akkoord">Akkoord</button>
+  </div>
+</div>
 </body>
 </html>

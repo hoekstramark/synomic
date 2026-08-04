@@ -1,147 +1,140 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacyverklaring — Synomic</title>
-  <meta name="description" content="Privacyverklaring van Synomic. Hoe wij omgaan met uw persoonsgegevens." />
-  <meta name="robots" content="noindex, follow" />
-  <link rel="icon" type="image/png" href="logo.png" />
-  <link rel="canonical" href="https://synomic.nl/privacy.html" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --color-navy: #1B3A5C; --color-navy-deep: #0E2136; --color-navy-mid: #1A4D6E;
-      --color-cyan: #2BC4C4; --color-cyan-dim: #1A9E9E;
-      --color-white: #ffffff; --color-off-1: #F8FAFC; --color-off-2: #F5F7FA;
-      --color-border: #DDE3EC; --color-border-soft: #E8EDF3; --color-muted: #6B7A8D;
-      --cyan-04: rgba(43,196,196,.04); --cyan-10: rgba(43,196,196,.10);
-      --cyan-18: rgba(43,196,196,.18);
-      --font-display: 'Syne', system-ui, sans-serif;
-      --font-body: 'DM Sans', system-ui, sans-serif;
-      --gradient-hero: linear-gradient(135deg, #0E2136 0%, #1B3A5C 60%, #1A4D6E 100%);
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body { font-family: var(--font-body); font-weight: 400; font-size: 1rem; line-height: 1.65; color: var(--color-navy); background: var(--color-white); overflow-x: hidden; }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.2; color: var(--color-navy); }
-
-    .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 6vw; height: 72px; background: var(--color-navy); border-bottom: 1px solid rgba(255,255,255,.08); box-shadow: 0 4px 30px rgba(0,0,0,.25); }
-    .nav-logo img { height: 38px; }
-    .nav-links { display: flex; gap: 36px; list-style: none; align-items: center; }
-    .nav-links a { font-weight: 500; font-size: .95rem; color: rgba(255,255,255,.8); letter-spacing: .02em; padding-bottom: 3px; border-bottom: 2px solid transparent; transition: color .2s; }
-    .nav-links a:hover { color: var(--color-cyan); }
-    .nav-cta { color: var(--color-cyan) !important; font-weight: 700; }
-    .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 8px; }
-    .hamburger span { width: 24px; height: 2px; background: #fff; display: block; border-radius: 2px; transition: transform .25s, opacity .25s; }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    .page-header { padding: 110px 6vw 50px; background: var(--gradient-hero); position: relative; overflow: hidden; }
-    .page-header::after { content: ''; position: absolute; top: -50px; right: -50px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, var(--cyan-18) 0%, transparent 70%); pointer-events: none; }
-    .page-header h1 { font-weight: 800; font-size: clamp(2rem, 4vw, 3rem); color: #fff; position: relative; z-index: 2; }
-
-    .content { max-width: 760px; margin: 0 auto; padding: 60px 6vw 80px; }
-    .content h2 { font-size: 1.3rem; margin: 36px 0 12px; }
-    .content p, .content li { color: var(--color-muted); font-size: .97rem; line-height: 1.7; margin-bottom: 12px; }
-    .content ul { padding-left: 22px; margin-bottom: 12px; }
-    .content strong { color: var(--color-navy); font-weight: 600; }
-    .content .meta { font-size: .85rem; color: var(--color-muted); margin-bottom: 28px; }
-    .content a { color: var(--color-cyan); text-decoration: underline; }
-
-    .footer { background: var(--color-navy-deep); color: rgba(255,255,255,.75); padding: 48px 6vw 36px; }
-    .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: .82rem; flex-wrap: wrap; gap: 12px; }
-    .footer-bottom a { color: inherit; text-decoration: underline; }
-
-    @media (max-width: 960px) {
-      .hamburger { display: flex; }
-      .nav-links { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: flex-start; background: var(--color-navy); border-bottom: 1px solid rgba(255,255,255,.08); box-shadow: 0 24px 40px rgba(0,0,0,.35); padding: 18px 6vw 26px; gap: 18px; display: none; }
-      .nav-links.open { display: flex; }
-    }
-    @media (max-width: 640px) { .nav { padding: 0 4vw; height: 64px; } .nav-logo img { height: 30px; } }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://formspree.io; form-action https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none'" />
+<meta http-equiv="X-Content-Type-Options" content="nosniff" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<title>Privacyverklaring — Synomic</title>
+<meta name="description" content="Privacyverklaring van Synomic. Hoe wij omgaan met uw persoonsgegevens." />
+<link rel="icon" type="image/png" href="logo.png" />
+<link rel="canonical" href="https://synomic.nl/privacy.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Synomic" />
+<meta property="og:locale" content="nl_NL" />
+<meta property="og:title" content="Privacyverklaring — Synomic" />
+<meta property="og:description" content="Privacyverklaring van Synomic. Hoe wij omgaan met uw persoonsgegevens." />
+<meta property="og:url" content="https://synomic.nl/privacy.html" />
+<meta property="og:image" content="https://synomic.nl/logo.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="robots" content="noindex, follow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<script src="app.js" defer></script>
 </head>
 <body>
 
-  <nav class="nav">
-    <a class="nav-logo" href="index.html"><img src="logo-white.png" alt="Synomic" /></a>
-    <button class="hamburger" id="hamburger" aria-label="Menu openen" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html"><img src="logo.png" alt="Synomic" /></a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="over-ons.html">Over ons</a></li>
       <li><a href="diensten.html">Diensten</a></li>
       <li><a href="projecten.html">Projecten</a></li>
-      <li><a href="partners.html">Partners</a></li>
-      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+      <li><a href="over-ons.html">Over ons</a></li>
     </ul>
-  </nav>
-
-  <section class="page-header">
-    <h1>Privacyverklaring</h1>
-  </section>
-
-  <div class="content">
-    <p class="meta">Laatst bijgewerkt: juli 2026</p>
-
-    <p>Synomic, gevestigd aan de Koornbeursweg 73, 8442 DJ Heerenveen (KVK 94705569), is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in deze privacyverklaring.</p>
-
-    <h2>Welke gegevens verwerken wij?</h2>
-    <p>Wij verwerken uitsluitend de gegevens die u zelf verstrekt via het contactformulier op deze website:</p>
-    <ul>
-      <li>Naam</li>
-      <li>Bedrijfsnaam (optioneel)</li>
-      <li>E-mailadres</li>
-      <li>Telefoonnummer (optioneel)</li>
-      <li>De inhoud van uw bericht</li>
-    </ul>
-
-    <h2>Waarvoor gebruiken wij deze gegevens?</h2>
-    <p>Uw gegevens worden uitsluitend gebruikt om uw vraag te beantwoorden en — indien u dat wenst — een kennismakingsgesprek in te plannen. De grondslag voor deze verwerking is uw toestemming, die u geeft door het formulier te versturen.</p>
-
-    <h2>Hoe lang bewaren wij uw gegevens?</h2>
-    <p>Wij bewaren uw gegevens niet langer dan nodig voor de afhandeling van uw vraag, met een maximum van 12 maanden na het laatste contact. Ontstaat er een zakelijke relatie, dan gelden de wettelijke bewaartermijnen voor administratie.</p>
-
-    <h2>Delen met derden</h2>
-    <p>Synomic verkoopt uw gegevens nooit aan derden. Voor de technische verzending van het contactformulier maken wij gebruik van <strong>Formspree</strong> (Formspree Inc., Verenigde Staten), die als verwerker optreedt. Formspree verwerkt uw formuliergegevens uitsluitend om deze aan ons door te sturen. Meer informatie vindt u in de <a href="https://formspree.io/legal/privacy-policy/" rel="noopener" target="_blank">privacyverklaring van Formspree</a>.</p>
-    <p>Deze website gebruikt lettertypen van Google Fonts. Bij het laden van de pagina wordt uw IP-adres gedeeld met Google. Wij overwegen deze lettertypen in de toekomst lokaal te hosten.</p>
-
-    <h2>Cookies</h2>
-    <p>Deze website gebruikt geen tracking- of marketingcookies en geen analytische diensten die persoonsgegevens verzamelen.</p>
-
-    <h2>Uw rechten</h2>
-    <p>U heeft het recht om uw persoonsgegevens in te zien, te laten corrigeren of te laten verwijderen. Ook kunt u uw toestemming intrekken of bezwaar maken tegen de verwerking. Neem hiervoor contact op via het <a href="contact.html">contactformulier</a>.</p>
-    <p>Bent u van mening dat wij niet juist met uw gegevens omgaan? Dan heeft u het recht een klacht in te dienen bij de <a href="https://autoriteitpersoonsgegevens.nl" rel="noopener" target="_blank">Autoriteit Persoonsgegevens</a>.</p>
-
-    <h2>Beveiliging</h2>
-    <p>Synomic neemt passende maatregelen om misbruik, verlies en onbevoegde toegang tot uw gegevens tegen te gaan. De website wordt uitsluitend via een beveiligde verbinding (HTTPS) aangeboden.</p>
+    <button class="burger" id="burger" aria-label="Menu openen" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+    <a class="pill pill-cyan pill-sm" href="contact.html">Plan een gesprek</a>
   </div>
+</nav>
 
-  <footer class="footer">
-    <div class="footer-bottom">
+<header class="page-head">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Kruimelpad"><a href="index.html">Home</a><span>/</span><span>Privacyverklaring</span></nav>
+    <h1>Privacy<em>verklaring</em></h1>
+    
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="prose" style="margin:0 auto">
+      <p style="font-size:.86rem">Laatst bijgewerkt: juli 2026</p>
+      <p>Synomic, gevestigd aan de Koornbeursweg 73, 8442 DJ Heerenveen (KVK 94705569), is verantwoordelijk voor de verwerking van persoonsgegevens zoals beschreven in deze privacyverklaring.</p>
+
+      <h2>Welke gegevens verwerken wij?</h2>
+      <p>Wij verwerken uitsluitend de gegevens die u zelf verstrekt via het contactformulier op deze website:</p>
+      <ul>
+        <li>Naam</li>
+        <li>Bedrijfsnaam (optioneel)</li>
+        <li>E-mailadres</li>
+        <li>Telefoonnummer (optioneel)</li>
+        <li>De inhoud van uw bericht</li>
+      </ul>
+
+      <h2>Waarvoor gebruiken wij deze gegevens?</h2>
+      <p>Uw gegevens worden uitsluitend gebruikt om uw vraag te beantwoorden en — indien u dat wenst — een kennismakingsgesprek in te plannen. De grondslag voor deze verwerking is uw toestemming, die u geeft door het formulier te versturen.</p>
+
+      <h2>Hoe lang bewaren wij uw gegevens?</h2>
+      <p>Wij bewaren uw gegevens niet langer dan nodig voor de afhandeling van uw vraag, met een maximum van 12 maanden na het laatste contact. Ontstaat er een zakelijke relatie, dan gelden de wettelijke bewaartermijnen voor administratie.</p>
+
+      <h2>Delen met derden</h2>
+      <p>Synomic verkoopt uw gegevens nooit aan derden. Voor de technische verzending van het contactformulier maken wij gebruik van <strong>Formspree</strong> (Formspree Inc., Verenigde Staten), die als verwerker optreedt. Formspree verwerkt uw formuliergegevens uitsluitend om deze aan ons door te sturen. Meer informatie vindt u in de <a href="https://formspree.io/legal/privacy-policy/" rel="noopener" target="_blank">privacyverklaring van Formspree</a>.</p>
+      <p>Deze website gebruikt lettertypen van Google Fonts. Bij het laden van de pagina wordt uw IP-adres gedeeld met Google. Wij overwegen deze lettertypen in de toekomst lokaal te hosten.</p>
+
+      <h2>Cookies</h2>
+      <p>Deze website gebruikt geen tracking- of marketingcookies en geen analytische diensten die persoonsgegevens verzamelen.</p>
+
+      <h2>Uw rechten</h2>
+      <p>U heeft het recht om uw persoonsgegevens in te zien, te laten corrigeren of te laten verwijderen. Ook kunt u uw toestemming intrekken of bezwaar maken tegen de verwerking. Neem hiervoor contact op via het <a href="contact.html">contactformulier</a>.</p>
+      <p>Bent u van mening dat wij niet juist met uw gegevens omgaan? Dan heeft u het recht een klacht in te dienen bij de <a href="https://autoriteitpersoonsgegevens.nl" rel="noopener" target="_blank">Autoriteit Persoonsgegevens</a>.</p>
+
+      <h2>Beveiliging</h2>
+      <p>Synomic neemt passende maatregelen om misbruik, verlies en onbevoegde toegang tot uw gegevens tegen te gaan. De website wordt uitsluitend via een beveiligde verbinding (HTTPS) aangeboden.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-top">
+      <div class="f-brand">
+        <img src="logo-white.png" alt="Synomic" />
+        <p>Koornbeursweg 73<br />8442 DJ Heerenveen<br />KVK: 94705569<br />info@synomic.nl</p>
+      </div>
+      <div class="f-col">
+        <h4>Navigatie</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="over-ons.html">Over ons</a></li>
+          <li><a href="projecten.html">Projecten</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Diensten</h4>
+        <ul>
+          <li><a href="diensten.html#finance">Finance</a></li>
+          <li><a href="diensten.html#automatisering">Automatisering</a></li>
+          <li><a href="diensten.html#ai">AI-toepassingen</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Partners</h4>
+        <ul>
+          <li><a href="partners.html">Claude AI</a></li>
+          <li><a href="partners.html">n8n</a></li>
+          <li><a href="partners.html">Moneybird</a></li>
+          <li><a href="partners.html">Twinfield</a></li>
+          <li><a href="partners.html">Exact Online</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bot">
       <span>© <span class="jsYear">2026</span> Synomic – KVK 94705569. Alle rechten voorbehouden.</span>
       <span><a href="privacy.html">Privacyverklaring</a> · Gebouwd met ♥ in Nederland</span>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <script>
-  (function () {
-    var hb = document.getElementById('hamburger');
-    var links = document.getElementById('navLinks');
-    if (hb && links) {
-      hb.addEventListener('click', function () {
-        var open = links.classList.toggle('open');
-        hb.classList.toggle('open', open);
-        hb.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    }
-    document.querySelectorAll('.jsYear').forEach(function (el) { el.textContent = new Date().getFullYear(); });
-  })();
-  </script>
+<div class="cookie" id="cookie" role="dialog" aria-live="polite" aria-label="Cookiemelding">
+  <p><strong>Synomic gebruikt geen tracking cookies.</strong> Alleen technisch noodzakelijke opslag voor het contactformulier. Meer hierover leest u in de <a href="privacy.html">privacyverklaring</a>.</p>
+  <div class="cookie-btns">
+    <button class="pill pill-ghost pill-sm" type="button" data-cookie="geweigerd">Alleen noodzakelijk</button>
+    <button class="pill pill-cyan pill-sm" type="button" data-cookie="akkoord">Akkoord</button>
+  </div>
+</div>
 </body>
 </html>

@@ -1,83 +1,60 @@
-# Synomic Website – Installatie-instructies
+# Synomic Website
 
-## Bestanden in dit pakket
+Statische website voor synomic.nl. Geen build-stap: de bestanden in deze map zijn wat de bezoeker krijgt.
+
+## Bestanden
 
 ```
-synomic-website/
-├── index.html          → Homepagina
-├── over-ons.html       → Over ons pagina
-├── diensten.html       → Diensten pagina
-├── projecten.html      → Projecten pagina
-├── contact.html        → Contactpagina (beveiligd formulier)
-├── style.css           → Globale opmaak
-├── logo.png            → Uw logo
-└── README.md           → Dit bestand
+index.html            Homepage
+over-ons.html         Over ons
+diensten.html         Diensten (ankers: #finance, #automatisering, #ai)
+projecten.html        Projecten en cases, met filter
+partners.html         Partners en platforms
+contact.html          Contactformulier
+privacy.html          Privacyverklaring
+style.css             Alle opmaak
+app.js                Alle scripts (menu, reveals, filter, cookiemelding, formulier)
+logo.png              Logo voor lichte achtergrond
+logo-white.png        Logo voor donkere achtergrond
+partner-*.png/.svg    Logo's van de partners
+sitemap.xml           Sitemap
+robots.txt            Robots
 ```
 
----
+## Publiceren via GitHub Pages
 
-## Uploaden naar TransIP
+Alle bestanden staan in de root van de repository. Zet in de repo-instellingen Pages op branch `main`, map `/ (root)`. Na een push is de site binnen een minuut bijgewerkt.
 
-1. **Log in op TransIP** → ga naar "Hosting" → kies uw domein
-2. Ga naar **Bestandsbeheer** (of gebruik FTP)
-3. Upload **alle bestanden** naar de map `public_html` (of `htdocs`)
-4. Zorg dat `index.html` in de root staat
-5. Klaar! Bezoek uw domein om de website te zien.
+## Contactformulier
 
-### Via FTP (bijv. FileZilla)
-- Host: uw domeinnaam of FTP-host van TransIP
-- Gebruikersnaam & wachtwoord: zie TransIP controlepaneel → FTP
-- Upload alle bestanden naar `/public_html/`
+Het formulier verstuurt naar Formspree endpoint `xbdwaekq` (zie `app.js`, constante `ENDPOINT`). Wilt u een ander adres of een andere dienst, pas dan alleen die constante aan.
 
----
+Beveiliging van het formulier:
 
-## Contactformulier activeren
+- **Honeypot** — verborgen veld `website`; ingevuld betekent bot, het bericht wordt niet verstuurd
+- **Tijdcontrole** — verzending binnen 3 seconden na laden wordt geweigerd
+- **Rate limiting** — maximaal 3 verzendingen per 15 minuten per browsersessie
+- **Validatie** — naam, geldig e-mailadres, onderwerp, bericht van minimaal 20 tekens
+- **Verplichte privacy-akkoordverklaring**
 
-Het formulier bevat beveiligingen, maar heeft een e-mail service nodig om berichten echt te versturen.
+## Beveiliging van de site
 
-### Optie 1: Formspree (gratis, aanbevolen)
-1. Ga naar [formspree.io](https://formspree.io) en maak een gratis account
-2. Maak een nieuw formulier aan → kopieer uw formulier-ID (bijv. `xpzgkdwl`)
-3. Open `contact.html` en zoek de commentaarregel:
-   ```
-   // const response = await fetch('https://formspree.io/f/JOUW_FORMSPREE_ID', {
-   ```
-4. Vervang `JOUW_FORMSPREE_ID` door uw ID
-5. Verwijder de `//` aan het begin van de regels
-6. Verwijder of commentarieer de `simulatedSuccess`-regels
+Elke pagina bevat een Content-Security-Policy als meta-tag (GitHub Pages kan geen echte HTTP-headers meesturen):
 
-### Optie 2: EmailJS
-- Gratis tot 200 e-mails/maand
-- Zie documentatie op emailjs.com
+- scripts alleen uit deze map — externe of geïnjecteerde scripts worden geblokkeerd
+- afbeeldingen alleen uit deze map
+- verbindingen alleen naar formspree.io
+- `frame-ancestors 'none'` — de site kan niet in een iframe van derden worden getoond
+- `object-src 'none'` en `base-uri 'self'`
 
-### Optie 3: Eigen backend
-- PHP mailer op uw hosting
-- Koppel aan het fetch-endpoint in contact.html
+Aanvullend: `X-Content-Type-Options: nosniff` en een strikt referrer-beleid.
 
----
+Verhuist u naar hosting waar u wél headers kunt zetten (bijv. TransIP), zet de CSP dan als HTTP-header en voeg `Strict-Transport-Security` toe.
 
-## Beveiliging contactformulier
+## Cookies
 
-Het formulier bevat de volgende beveiligingen:
-- **Honeypot veld** – verborgen veld dat bots invullen, mensen niet
-- **Tijdcontrole** – formulier ingevuld in minder dan 3 seconden = waarschijnlijk bot
-- **Rate limiting** – maximaal 3 verzendingen per 15 minuten per sessie
-- **Input validatie** – alle velden worden gecontroleerd voor verzending
-- **HTML-escaping** – voorkomt XSS-aanvallen
-- **Privacy checkbox** – verplichte akkoordverklaring
-
----
+De site plaatst geen tracking cookies. De cookiemelding onthoudt de keuze in `localStorage` onder `synomic-cookiekeuze`; het formulier gebruikt `sessionStorage` voor de rate limiting. Er gaat geen enkel gegeven naar een derde partij behalve de formulierinzending naar Formspree en het laden van de lettertypen bij Google Fonts.
 
 ## Teksten aanpassen
 
-Alle teksten staan direct in de HTML-bestanden. U kunt ze eenvoudig aanpassen:
-- **Uw naam/bio**: `over-ons.html`
-- **Projecten**: `projecten.html` – pas bestaande projecten aan of voeg toe
-- **Contactgegevens**: `contact.html` (e-mailadres, locatie)
-- **Footer**: elke pagina bevat een footer – zoek naar `info@synomic.nl`
-
----
-
-## Vragen?
-
-Heeft u vragen over de website? Neem contact op via het contactformulier op de website.
+Alle teksten staan direct in de HTML-bestanden. Contactgegevens en KVK-nummer staan in de footer van elke pagina en in `over-ons.html`.
