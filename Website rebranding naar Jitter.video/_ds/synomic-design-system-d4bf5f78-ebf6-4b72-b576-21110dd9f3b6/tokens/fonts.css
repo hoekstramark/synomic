@@ -1,7 +1,0 @@
-/* Synomic — Webfonts
-   Both faces ship as Google-hosted webfonts. The source repository does the
-   same @import. If you ever need self-hosted .woff2 files, drop them into
-   assets/fonts/ and replace this @import block with @font-face rules pointing
-   to those files. */
-
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
