@@ -1,8 +1,0 @@
-# Netlify / Cloudflare Pages
-/index.html      /                                 301
-/diensten.html   /diensten/                        301
-/over-ons.html   /over-synomic/                    301
-/projecten.html  /projecten/                       301
-/partners.html   /software/                        301
-/contact.html    /contact/                         301
-/privacy.html    /privacy/                         301
