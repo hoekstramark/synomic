@@ -142,9 +142,12 @@ export default async () => {
   const cache = items.length
     ? 'public, max-age=300'
     : 'public, max-age=60, must-revalidate';
+  // `durable` zet het antwoord in de gedeelde cache van Netlify in plaats van
+  // alleen op het edge-knooppunt dat toevallig antwoordde. Zonder dat woord
+  // draait de function per knooppunt opnieuw en ziet CBS alsnog verkeer.
   const cdn = items.length
-    ? 'public, max-age=3600, stale-while-revalidate=86400'
-    : 'public, max-age=60';
+    ? 'public, durable, max-age=3600, stale-while-revalidate=86400'
+    : 'public, durable, max-age=60';
 
   return new Response(JSON.stringify(body), {
     status: items.length ? 200 : 503,
