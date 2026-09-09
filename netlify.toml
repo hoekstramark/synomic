@@ -3,6 +3,13 @@
   publish = "."
   command = ""
 
+# Netlify schrijft standaard interne links om van `diensten.html` naar
+# `/diensten`. De pagina blijft dan op beide adressen bereikbaar, terwijl de
+# canonical en de sitemap `.html` aanhouden — links en canonical spreken
+# elkaar dan tegen. Uit, zodat alles dezelfde URL-vorm gebruikt.
+[build.processing.html]
+  pretty_urls = false
+
 [[headers]]
   for = "/*"
   [headers.values]
