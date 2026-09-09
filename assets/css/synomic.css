@@ -2193,3 +2193,25 @@ button[disabled] {
     position: static;
   }
 }
+
+/* ── 27. Ticker items ─────────────────────────────────────────────────── */
+
+/* Bronlabel voor het bericht: CBS, ECB, Btw, Prinsjesdag. */
+.marquee__bron {
+  color: var(--cyan);
+  margin-right: 0.6rem;
+}
+
+/* De balk is nu klikbaar, dus hij moet ook reageren. */
+a.marquee__item {
+  transition: color var(--dur-s) var(--ease-out);
+}
+a.marquee__item:hover {
+  color: var(--paper);
+}
+a.marquee__item:hover .marquee__bron {
+  color: var(--cyan-bright);
+}
+.marquee:has(a):hover {
+  cursor: pointer;
+}
