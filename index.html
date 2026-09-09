@@ -1,153 +1,547 @@
-<!DOCTYPE html>
-<html lang="nl">
+<!doctype html>
+<html lang="nl" class="no-js">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://formspree.io; form-action https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none'">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Bedrijfsprocessen automatiseren voor mkb en zzp | Synomic</title>
-<meta name="description" content="Synomic automatiseert administratie, rapportage en terugkerend werk voor mkb en zzp in Nederland. Eén aanspreekpunt, reactie binnen één werkdag.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Synomic — Bedrijfsprocessen automatiseren voor mkb en zzp</title>
+<meta name="description" content="Synomic verbindt finance, IT en AI. Financieel inzicht, processen automatiseren en AI-toepassingen voor mkb en zzp. Vaste prijs voor het eerste proces. Heerenveen, werkzaam door heel Nederland.">
 <link rel="canonical" href="https://synomic.nl/">
-<link rel="icon" type="image/png" href="logo.png">
+<meta name="theme-color" content="#050d14">
+
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Synomic">
 <meta property="og:locale" content="nl_NL">
-<meta property="og:title" content="Bedrijfsprocessen automatiseren voor mkb en zzp | Synomic">
-<meta property="og:description" content="Synomic automatiseert administratie, rapportage en terugkerend werk voor mkb en zzp in Nederland. Eén aanspreekpunt, reactie binnen één werkdag.">
+<meta property="og:site_name" content="Synomic">
+<meta property="og:title" content="Synomic — Bedrijfsprocessen automatiseren voor mkb en zzp">
+<meta property="og:description" content="Financieel inzicht, processen automatiseren en AI-toepassingen. De cijfers van vorige maand staan op de eerste werkdag klaar.">
 <meta property="og:url" content="https://synomic.nl/">
-<meta property="og:image" content="https://synomic.nl/logo.png">
-<meta name="twitter:card" content="summary">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://synomic.nl/#organization","name":"Synomic","url":"https://synomic.nl/","logo":"https://synomic.nl/logo.png","image":"https://synomic.nl/logo.png","description":"Synomic automatiseert administratie, rapportage en terugkerende processen voor mkb-bedrijven en zzp'ers in Nederland.","address":{"@type":"PostalAddress","streetAddress":"Koornbeursweg 73","postalCode":"8442 DJ","addressLocality":"Heerenveen","addressRegion":"Friesland","addressCountry":"NL"},"geo":{"@type":"GeoCoordinates","latitude":52.9602,"longitude":5.9195},"identifier":{"@type":"PropertyValue","propertyID":"KVK","value":"94705569"},"areaServed":{"@type":"Country","name":"Nederland"},"founder":{"@type":"Person","name":"Mark Hoekstra"},"knowsAbout":["Bedrijfsprocessen automatiseren","Financiële rapportage","Liquiditeitsprognose","AI-toepassingen","Factuurverwerking","Systeemkoppelingen"],"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:30","closes":"17:30"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","@id":"https://synomic.nl/#website","url":"https://synomic.nl/","name":"Synomic","inLanguage":"nl-NL","publisher":{"@id":"https://synomic.nl/#organization"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Wat kost het automatiseren van een proces?","acceptedAnswer":{"@type":"Answer","text":"Dat hangt af van het aantal systemen dat aan elkaar moet en van de uitzonderingen in het proces. U krijgt vooraf een vaste prijs voor het eerste proces, zodat u weet waar u aan begint voordat er een regel code staat."}},{"@type":"Question","name":"Moet ik mijn boekhoudpakket vervangen?","acceptedAnswer":{"@type":"Answer","text":"Nee. Synomic bouwt op wat u al gebruikt. Moneybird, Twinfield en Exact Online hebben allemaal een koppeling waar de automatisering op aansluit."}},{"@type":"Question","name":"Waar staat mijn data?","acceptedAnswer":{"@type":"Answer","text":"In de systemen die u al gebruikt en op Europese servers. Wat er met een AI-model wordt gedeeld, spreken we per toepassing af en leggen we vast in een verwerkersovereenkomst."}},{"@type":"Question","name":"Hoe lang duurt het voordat er iets werkt?","acceptedAnswer":{"@type":"Answer","text":"Voor één afgebakend proces staat er doorgaans binnen enkele weken een werkende versie. Die draait eerst mee naast de handmatige route en pas als het een aantal weken goed gaat, gaat de oude route eruit."}}]}</script>
+<meta property="og:image" content="https://synomic.nl/assets/img/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/img/logo.png">
+<link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/synomic.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Synomic",
+  "description": "Bedrijfsprocessen automatiseren voor mkb en zzp. Financieel inzicht, procesautomatisering en AI-toepassingen.",
+  "url": "https://synomic.nl/",
+  "email": "mark@synomic.nl",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Koornbeursweg 73",
+    "postalCode": "8442 DJ",
+    "addressLocality": "Heerenveen",
+    "addressCountry": "NL"
+  },
+  "areaServed": { "@type": "Country", "name": "Nederland" },
+  "founder": { "@type": "Person", "name": "Mark Hoekstra" },
+  "identifier": "KVK 94705569"
+}
+</script>
 </head>
+
 <body>
-<nav class="nav"><div class="nav-inner"><a class="nav-logo" href="index.html" aria-label="Synomic, naar de homepage"><img src="logo.png" alt="Synomic" width="140" height="34"></a><ul class="nav-links" id="navLinks"><li><a href="diensten.html">Diensten</a></li><li><a href="werkwijze.html">Werkwijze</a></li><li><a href="kennisbank.html">Kennisbank</a></li><li><a href="over-synomic.html">Over Synomic</a></li><li><a class="btn btn-primary btn-sm" href="contact.html">Plan een gesprek</a></li></ul><button class="burger" id="burger" aria-label="Menu openen" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button></div></nav>
-<header class="hero">
-  <div class="wrap">
-    <span class="badge"><span class="dot"></span>Finance · Automatisering · AI</span>
-    <h1>Bedrijfsprocessen <em>automatiseren</em> voor mkb en zzp</h1>
-    <p>Synomic bouwt de koppelingen, rapportages en AI-toepassingen waarmee mkb-bedrijven en zzp'ers hun administratie laten draaien. Het werk dat nu met de hand gebeurt, loopt daarna door het systeem. U houdt de regie over wat er gebeurt en wanneer.</p>
-    <div class="hero-btns">
-      <a class="btn btn-primary" href="contact.html">Plan een gesprek</a>
-      <a class="btn btn-ghost" href="werkwijze.html">Zo werkt het</a>
+<a class="skip" href="#main">Naar de inhoud</a>
+
+<!-- ── Topbar: ticker + nav as one stack; the ticker collapses on scroll ─ -->
+<div class="topbar">
+<div class="ticker" aria-hidden="true">
+  <div class="marquee" data-marquee data-speed="42">
+    <div class="marquee__track">
+      <span class="marquee__item meta">Reactie binnen één werkdag</span>
+      <span class="marquee__item meta">Vaste prijs voor het eerste proces</span>
+      <span class="marquee__item meta">Wie het gesprek voert, bouwt het ook</span>
+      <span class="marquee__item meta">Heerenveen — werkzaam door heel Nederland</span>
+      <span class="marquee__item meta">Documentatie bij oplevering</span>
     </div>
-    <p class="hero-note">Reactie binnen één werkdag. Vrijblijvend. Vanuit Heerenveen, actief in heel Nederland.</p>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="/" aria-label="Synomic — naar de homepage">
+      <img src="assets/img/logo-white.png" alt="Synomic" width="1280" height="490">
+    </a>
+
+    <nav class="nav__links" aria-label="Hoofdmenu">
+      <a class="nav__link" href="diensten.html">Diensten</a>
+      <a class="nav__link" href="systemen.html">Systemen</a>
+      <a class="nav__link" href="kennisbank.html">Kennisbank</a>
+      <a class="nav__link" href="over-synomic.html">Over Synomic</a>
+    </nav>
+
+    <a class="btn btn--sm nav__cta" href="afspraak.html">
+      Plan een afspraak
+      <svg class="btn__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+        <path d="M1 11 11 1M11 1H3.5M11 1v7.5" stroke="currentColor" stroke-width="1.2"/>
+      </svg>
+    </a>
+
+    <button class="nav__burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+</div>
 
-<section class="sec">
-  <div class="wrap">
-    <div class="reveal">
-      <p class="label">Wat Synomic doet</p>
-      <h2>Drie specialismen, één aanspreekpunt</h2>
-      <p class="lede" style="margin:16px 0 40px">Synomic combineert financiële kennis met de techniek om processen daadwerkelijk te veranderen. Eerst komt de vraag welk cijfer of welk proces u tegenhoudt, daarna of de oplossing in de rapportage, de koppeling of een AI-toepassing zit. Vaak is het een combinatie, en die wordt in één traject opgepakt.</p>
-    </div>
-    <div class="grid g3 reveal">
-      <a class="card" href="diensten-financieel-inzicht.html">
-        <div class="card-num">01</div>
-        <h3>Financieel inzicht</h3>
-        <p>Synomic haalt de cijfers rechtstreeks uit uw boekhouding, zodat het dashboard elke ochtend klopt. De prognose kijkt vooruit zonder dat iemand hem bijwerkt.</p>
-        <span class="card-more">Bekijk financieel inzicht</span>
-      </a>
-      <a class="card" href="diensten-processen-automatiseren.html">
-        <div class="card-num">02</div>
-        <h3>Processen automatiseren</h3>
-        <p>Facturen, uren en rapportages lopen door zonder dat iemand ze overtypt. Synomic legt daarvoor de koppeling tussen de systemen die u al gebruikt, en de fouten die bij overtypen ontstaan verdwijnen daarmee ook.</p>
-        <span class="card-more">Bekijk automatisering</span>
-      </a>
-      <a class="card" href="diensten-ai-toepassingen.html">
-        <div class="card-num">03</div>
-        <h3>AI-toepassingen</h3>
-        <p>Synomic zet AI in op werk dat nu tijd kost. Een kennisbank die antwoord geeft uit uw eigen documenten. Of documentverwerking die post en mail leest voordat een medewerker eraan begint.</p>
-        <span class="card-more">Bekijk AI-toepassingen</span>
-      </a>
-    </div>
+<div class="menu" id="menu">
+  <ul class="menu__list">
+    <li><a href="diensten.html"><span class="idx">01</span> Diensten</a></li>
+    <li><a href="systemen.html"><span class="idx">02</span> Systemen</a></li>
+    <li><a href="kennisbank.html"><span class="idx">03</span> Kennisbank</a></li>
+    <li><a href="over-synomic.html"><span class="idx">04</span> Over Synomic</a></li>
+    <li><a href="afspraak.html"><span class="idx">05</span> Plan een afspraak</a></li>
+  </ul>
+  <div>
+    <p class="meta">Koornbeursweg 73 · 8442 DJ Heerenveen</p>
+    <p class="meta" style="margin-top:.6rem">KVK 94705569</p>
   </div>
-</section>
+</div>
 
-<section class="sec" style="padding-top:0">
-  <div class="wrap reveal">
-    <p class="label" style="color:var(--muted)">Synomic werkt met</p>
-    <div class="pills">
-      <a class="pill" href="software.html"><img src="partner-moneybird.png" alt="Moneybird" width="32" height="32"><span><b>Moneybird</b><small>Boekhouding</small></span></a>
-      <a class="pill" href="software.html"><img src="partner-exact.png" alt="Exact Online" width="32" height="32"><span><b>Exact Online</b><small>Boekhouding</small></span></a>
-      <a class="pill" href="software.html"><img src="partner-twinfield.png" alt="Twinfield" width="32" height="32"><span><b>Twinfield</b><small>Boekhouding</small></span></a>
-      <a class="pill" href="software.html"><img src="partner-n8n.svg" alt="n8n" width="32" height="32"><span><b>n8n</b><small>Workflows</small></span></a>
-      <a class="pill" href="software.html"><img src="partner-claude.png" alt="Claude" width="32" height="32"><span><b>Claude</b><small>AI-model</small></span></a>
-      <a class="pill" href="software.html"><img src="partner-google.webp" alt="Google" width="32" height="32"><span><b>Google</b><small>Cloud en data</small></span></a>
-      <a class="pill" href="software.html"><img src="partner-microsoft.png" alt="Microsoft" width="32" height="32"><span><b>Microsoft</b><small>Cloud en data</small></span></a>
-    </div>
-  </div>
-</section>
+<main id="main">
 
-<section class="sec sec-alt">
-  <div class="wrap">
-    <div class="grid g2 reveal" style="gap:48px">
-      <div>
-        <p class="label">Voor wie</p>
-        <h2>Te groot voor de spreadsheet, te klein voor een ERP</h2>
-        <p style="margin-top:18px">Synomic werkt voor mkb-bedrijven en zzp'ers die inmiddels een volwaardige administratie voeren, maar die nog draaien op bestanden en handmatige stappen die bij een kleiner bedrijf pasten. Een ERP-implementatie is voor deze omvang te zwaar en te duur, terwijl doorgaan op de huidige manier steeds meer tijd kost.</p>
-        <p>Synomic vult die ruimte in met gerichte oplossingen op de systemen die er al staan. Er wordt één proces per keer opgepakt, opgeleverd en overgedragen, zodat u de winst ziet voordat u over een volgende stap beslist.</p>
+<!-- ── Hero ───────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <canvas class="hero__canvas" data-canvas="ledger" aria-hidden="true"></canvas>
+
+  <div class="hero__inner wrap">
+    <div class="hero__grid">
+      <p class="meta meta-row meta--cyan hero__label" data-hero="fade">Heerenveen · Werkzaam door heel Nederland</p>
+
+      <div class="hero__title">
+        <h1 class="t-h1" data-hero="lines">Finance, IT en AI voor het mkb</h1>
       </div>
-      <div class="grid" style="gap:16px">
-        <div class="card card-soft"><h3>Zzp'ers en kleine bedrijven</h3><p>U doet de administratie er 's avonds bij. Synomic neemt het terugkerende deel daarvan over, zonder dat u er een rij abonnementen bij krijgt.</p></div>
-        <div class="card card-soft"><h3>Mkb met tien tot vijftig medewerkers</h3><p>Uw urenregistratie weet niets van uw boekhouding. Synomic legt de koppeling en zorgt dat de rapportage klopt zonder dat iemand hem achteraf naloopt.</p></div>
-        <div class="card card-soft"><h3>Administratiekantoren</h3><p>Uw klanten leveren aan zoals het hen uitkomt. Synomic bouwt de voorbewerking die dat gelijktrekt voordat het uw administratie in gaat.</p></div>
+
+      <div class="hero__aside">
+        <p class="t-lede" data-hero="fade">
+          Financieel inzicht, geautomatiseerde processen en AI-toepassingen
+          voor mkb en zzp. De cijfers van vorige maand staan op de eerste
+          werkdag klaar.
+        </p>
+        <div class="hero__actions" data-hero="fade">
+          <a class="btn btn--solid" href="afspraak.html">
+            Plan een afspraak
+            <svg class="btn__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M1 11 11 1M11 1H3.5M11 1v7.5" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+          </a>
+          <a class="btn" href="#diensten">Bekijk de diensten</a>
+        </div>
       </div>
     </div>
   </div>
-</section>
 
-<section class="sec">
-  <div class="wrap">
-    <div class="reveal" style="margin-bottom:34px">
-      <p class="label">Kennisbank</p>
-      <h2>Antwoord op wat ondernemers googelen</h2>
+  <div class="hero__mark" aria-hidden="true">
+    <div class="hero__wordmark t-mega">
+      <span>S</span><span>Y</span><span>N</span><span>O</span><span>M</span><span>I</span><span>C</span>
     </div>
-    <div class="grid g3 reveal">
-      <a class="card" href="kennisbank-factuurverwerking-automatiseren.html"><span class="eyebrow">Automatisering</span><h3 style="margin-top:14px">Facturen verwerken zonder overtypen: hoe het technisch werkt</h3><p>Van mailbox naar boekhouding in vier stappen, en de plekken waar zo'n koppeling struikelt.</p></a>
-      <a class="card" href="kennisbank-liquiditeitsprognose-maken.html"><span class="eyebrow">Finance</span><h3 style="margin-top:14px">Een liquiditeitsprognose maken die u ook echt gebruikt</h3><p>Welke posten erin horen en waarom de meeste prognoses na twee maanden stilvallen.</p></a>
-      <a class="card" href="kennisbank.html"><span class="eyebrow">Kennisbank</span><h3 style="margin-top:14px">Alle artikelen over finance, automatisering en AI</h3><p>Uitleg over de onderwerpen waar ondernemers in hun administratie op vastlopen.</p></a>
+  </div>
+
+  <div class="hero__inner wrap">
+    <div class="hero__scroll">
+      <span class="meta" style="display:flex;align-items:center;gap:.85rem">
+        <span class="hero__scroll-line"></span> Scroll
+      </span>
+      <span class="meta">KVK 94705569 · Heerenveen</span>
     </div>
   </div>
 </section>
 
-<section class="sec sec-light">
-  <div class="wrap">
-    <div class="reveal" style="margin-bottom:30px">
-      <p class="label">Veelgestelde vragen</p>
-      <h2>Wat ondernemers vooraf willen weten</h2>
+<!-- ── Datastrip ──────────────────────────────────────────────────────── -->
+<section class="datastrip" aria-hidden="true">
+  <div class="datastrip__row" data-marquee data-speed="34" data-dir="right">
+    <div class="datastrip__seg">
+      <span><span class="datastrip__key">4711.20</span> · F-2408 · 1.482,50</span>
+      <span><span class="datastrip__key">1300.00</span> · INK-771 · 820,05</span>
+      <span><span class="datastrip__key">8000.10</span> · MB-9920 · 12.940,00</span>
+      <span><span class="datastrip__key">NL91</span> · BNK-208 · 391,00</span>
+      <span><span class="datastrip__key">4400.30</span> · OCR-63 · 17,40</span>
     </div>
-    <div class="faq reveal">
-      <details><summary>Wat kost het automatiseren van een proces?</summary><p>Dat hangt af van het aantal systemen dat aan elkaar moet en van de uitzonderingen in het proces. U krijgt vooraf een vaste prijs voor het eerste proces, zodat u weet waar u aan begint voordat er een regel code staat.</p></details>
-      <details><summary>Moet ik mijn boekhoudpakket vervangen?</summary><p>Nee. Synomic bouwt op wat u al gebruikt. Moneybird, Twinfield en Exact Online hebben allemaal een koppeling waar de automatisering op aansluit.</p></details>
-      <details><summary>Waar staat mijn data?</summary><p>In de systemen die u al gebruikt en op Europese servers. Wat er met een AI-model wordt gedeeld, spreken we per toepassing af en leggen we vast in een verwerkersovereenkomst.</p></details>
-      <details><summary>Hoe lang duurt het voordat er iets werkt?</summary><p>Voor één afgebakend proces staat er doorgaans binnen enkele weken een werkende versie. Die draait eerst mee naast de handmatige route en pas als het een aantal weken goed gaat, gaat de oude route eruit.</p></details>
+  </div>
+
+  <div class="datastrip__row datastrip__row--word" data-marquee data-speed="58">
+    <div class="datastrip__seg">
+      <span>Financieel inzicht</span>
+      <span><em>·</em></span>
+      <span>Processen automatiseren</span>
+      <span><em>·</em></span>
+      <span>AI-toepassingen</span>
+      <span><em>·</em></span>
+    </div>
+  </div>
+
+  <div class="datastrip__row" data-marquee data-speed="40">
+    <div class="datastrip__seg">
+      <span><span class="datastrip__key">GEBOEKT</span> · 2100.00 · EX-1183 · 5.109,60</span>
+      <span><span class="datastrip__key">MATCH</span> · 1600.05 · TW-0447 · 248,75</span>
+      <span><span class="datastrip__key">OK</span> · 4713.10 · API-19 · 9.640,10</span>
+      <span><span class="datastrip__key">GEBOEKT</span> · 7000.00 · DEC-041 · 64,20</span>
+      <span><span class="datastrip__key">MATCH</span> · 4020.15 · F-2411 · 2.317,85</span>
     </div>
   </div>
 </section>
 
-<section class="sec" style="padding-top:0">
+<!-- ── Diensten ───────────────────────────────────────────────────────── -->
+<section class="sec" id="diensten">
   <div class="wrap">
-    <div class="cta reveal">
-      <p class="label">Vrijblijvend kennismaken</p>
-      <h2>Noem het proces dat u de meeste tijd kost</h2>
-      <p>Bel, mail of stuur een bericht. In een half uur weet u of het te automatiseren valt en wat het ongeveer kost.</p>
-      <div class="cta-btns">
-        <a class="btn btn-primary" href="contact.html">Plan een gesprek</a>
-        <button type="button" class="btn btn-ghost" data-mail>Stuur een mail</button>
+    <div class="sec-head">
+      <p class="meta meta-row meta--cyan sec-head__label" data-reveal="up">01 — Diensten</p>
+      <div class="sec-head__title">
+        <h2 class="t-h2" data-reveal="lines">Drie terreinen die in elkaar overlopen</h2>
+      </div>
+      <div class="sec-head__aside">
+        <p class="t-body" data-reveal="up" data-delay="0.1">
+          Een dashboard is pas betrouwbaar als de data er automatisch in komt,
+          en een AI-toepassing levert pas iets op als het proces eronder klopt.
+        </p>
+      </div>
+    </div>
+
+    <div data-reveal="stagger">
+      <a class="srow" href="diensten-financieel-inzicht.html">
+        <span class="idx srow__idx">01</span>
+        <span class="srow__title">
+          <h3 class="t-h3">Financieel inzicht en rapportage</h3>
+        </span>
+        <span class="srow__body">
+          <span class="t-body" style="display:block">
+            Maandrapportage, liquiditeitsprognose en een dashboard dat uit uw eigen
+            boekhouding wordt gevoed. De cijfers van vorige maand staan op de eerste
+            werkdag klaar.
+          </span>
+          <span class="tags">
+            <span class="tag">Moneybird</span><span class="tag">Twinfield</span>
+            <span class="tag">Exact Online</span><span class="tag">Power BI</span>
+          </span>
+        </span>
+        <span class="srow__go">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2 14 14 2M14 2H4.5M14 2v9.5" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+        </span>
+      </a>
+
+      <a class="srow" href="diensten-processen-automatiseren.html">
+        <span class="idx srow__idx">02</span>
+        <span class="srow__title">
+          <h3 class="t-h3">Processen automatiseren</h3>
+        </span>
+        <span class="srow__body">
+          <span class="t-body" style="display:block">
+            Factuurverwerking, urenregistratie, offertes en terugkerende rapportages.
+            Synomic legt de koppelingen tussen systemen die nu niets van elkaar weten,
+            zodat gegevens nog maar één keer worden ingevoerd.
+          </span>
+          <span class="tags">
+            <span class="tag">n8n</span><span class="tag">API-koppelingen</span>
+            <span class="tag">OCR</span><span class="tag">Webhooks</span>
+          </span>
+        </span>
+        <span class="srow__go">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2 14 14 2M14 2H4.5M14 2v9.5" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+        </span>
+      </a>
+
+      <a class="srow" href="diensten-ai-toepassingen.html">
+        <span class="idx srow__idx">03</span>
+        <span class="srow__title">
+          <h3 class="t-h3">AI-toepassingen</h3>
+        </span>
+        <span class="srow__body">
+          <span class="t-body" style="display:block">
+            Een kennisbank die antwoordt uit uw eigen documenten, tekstherkenning op
+            inkomende post en modellen die vrije tekst omzetten naar gestructureerde data.
+          </span>
+          <span class="tags">
+            <span class="tag">Claude</span><span class="tag">RAG</span>
+            <span class="tag">OCR</span><span class="tag">Documentverwerking</span>
+          </span>
+        </span>
+        <span class="srow__go">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2 14 14 2M14 2H4.5M14 2v9.5" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+
+    <p style="margin-top:2.5rem" data-reveal="up">
+      <a class="link" href="diensten.html">
+        Alle diensten
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M1 11 11 1M11 1H3.5M11 1v7.5" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+      </a>
+    </p>
+  </div>
+</section>
+
+<!-- ── Projecten ──────────────────────────────────────────────────────── -->
+<section class="sec" id="projecten">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="meta meta-row meta--cyan sec-head__label" data-reveal="up">02 — Projecten</p>
+      <div class="sec-head__title">
+        <h2 class="t-h2" data-reveal="lines">Wat Synomic bouwt</h2>
+      </div>
+      <div class="sec-head__aside">
+        <p class="t-body" data-reveal="up" data-delay="0.1">
+          Vier processen uit de praktijk, met de systemen waarmee ze zijn gebouwd.
+        </p>
+      </div>
+    </div>
+
+    <div class="cases" data-reveal="stagger">
+      <article class="case">
+        <p class="meta case__sector">Groothandel</p>
+        <h3 class="t-h3">Inkoopfacturen die zichzelf voorbereiden</h3>
+        <p class="t-body">
+          Eén postbus leest de pdf's uit, herkent leverancier, bedrag en btw, en
+          zet de boeking klaar. Alleen de uitzonderingen komen nog bij een mens.
+        </p>
+        <div class="tags">
+          <span class="tag">n8n</span><span class="tag">OCR</span><span class="tag">Moneybird</span>
+        </div>
+      </article>
+
+      <article class="case">
+        <p class="meta case__sector">Installatiebedrijf</p>
+        <h3 class="t-h3">Van urenbriefje naar projectmarge</h3>
+        <p class="t-body">
+          Uren gaan digitaal de deur uit en landen direct in facturatie en
+          dashboard. De marge per project is zichtbaar terwijl het werk loopt.
+        </p>
+        <div class="tags">
+          <span class="tag">API-koppeling</span><span class="tag">Dashboard</span>
+        </div>
+      </article>
+
+      <article class="case">
+        <p class="meta case__sector">Zakelijke dienstverlening</p>
+        <h3 class="t-h3">Een kennisbank die antwoord geeft met bron</h3>
+        <p class="t-body">
+          Medewerkers stellen hun vraag in gewone taal en krijgen antwoord met
+          verwijzing naar het document waar het in staat.
+        </p>
+        <div class="tags">
+          <span class="tag">Claude</span><span class="tag">RAG</span>
+        </div>
+      </article>
+
+      <article class="case">
+        <p class="meta case__sector">Retail</p>
+        <h3 class="t-h3">Maandcijfers zonder de spreadsheet van één persoon</h3>
+        <p class="t-body">
+          Kassa, boekhouding en bank komen samen in een dashboard dat zichzelf
+          ververst. Vakantie van de controller is geen probleem meer.
+        </p>
+        <div class="tags">
+          <span class="tag">Exact Online</span><span class="tag">Power BI</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── Systemen ───────────────────────────────────────────────────────── -->
+<section class="sec" id="systemen">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="meta meta-row meta--cyan sec-head__label" data-reveal="up">03 — Systemen</p>
+      <div class="sec-head__title">
+        <h2 class="t-h2" data-reveal="lines">Software waar Synomic dagelijks mee werkt</h2>
+      </div>
+      <div class="sec-head__aside">
+        <p class="t-body" data-reveal="up" data-delay="0.1">
+          Staat uw pakket er niet bij? Vrijwel alles met een API laat zich koppelen.
+        </p>
+        <p style="margin-top:1.5rem">
+          <a class="link" href="systemen.html">
+            Alle systemen
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M1 11 11 1M11 1H3.5M11 1v7.5" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="logos">
+    <div class="logos__track" data-marquee data-speed="46">
+      <div class="logos__set">
+        <img src="assets/img/partner-moneybird.png" alt="Moneybird" loading="lazy">
+        <img src="assets/img/partner-exact.png" alt="Exact Online" loading="lazy">
+        <img src="assets/img/partner-twinfield.png" alt="Twinfield" loading="lazy">
+        <img src="assets/img/partner-n8n.svg" alt="n8n" loading="lazy">
+        <img src="assets/img/partner-zapier.svg" class="is-solid" alt="Zapier" loading="lazy">
+        <img src="assets/img/partner-claude.png" alt="Claude" loading="lazy">
+        <img src="assets/img/partner-google.webp" alt="Google" loading="lazy">
+        <img src="assets/img/partner-microsoft.png" alt="Microsoft" loading="lazy">
       </div>
     </div>
   </div>
 </section>
-<footer><div class="wrap"><div class="f-top"><div><img src="logo-white.png" alt="Synomic" width="130" height="32"><p>Koornbeursweg 73<br>8442 DJ Heerenveen<br>KVK 94705569<br><button type="button" class="mail-link" data-mail>Stuur een mail</button></p></div><div><h4>Diensten</h4><ul><li><a href="diensten-financieel-inzicht.html">Financieel inzicht</a></li><li><a href="diensten-processen-automatiseren.html">Processen automatiseren</a></li><li><a href="diensten-ai-toepassingen.html">AI-toepassingen</a></li></ul></div><div><h4>Synomic</h4><ul><li><a href="over-synomic.html">Over Synomic</a></li><li><a href="werkwijze.html">Werkwijze</a></li><li><a href="projecten.html">Projecten</a></li><li><a href="software.html">Software</a></li></ul></div><div><h4>Contact</h4><ul><li><a href="contact.html">Contactformulier</a></li><li><a href="kennisbank.html">Kennisbank</a></li><li><a href="privacy.html">Privacyverklaring</a></li></ul></div></div><div class="f-bot"><span>&copy; <span class="jsYear">2026</span> Synomic. KVK 94705569. Alle rechten voorbehouden.</span><span>Heerenveen, werkzaam in heel Nederland</span></div></div></footer>
-<div class="cookie" id="cookie" role="dialog" aria-live="polite" aria-label="Cookiemelding"><p><strong>Synomic gebruikt geen tracking cookies.</strong> Alleen technisch noodzakelijke opslag voor het contactformulier. Meer hierover leest u in de <a href="privacy.html">privacyverklaring</a>.</p><div class="cookie-btns"><button class="btn btn-sm" style="background:#f5f7fa;color:#1B3A5C" type="button" data-cookie="geweigerd">Alleen noodzakelijk</button><button class="btn btn-primary btn-sm" type="button" data-cookie="akkoord">Akkoord</button></div></div>
-<script src="app.js" defer></script>
+
+<!-- ── Kennisbank ─────────────────────────────────────────────────────── -->
+<section class="sec" id="kennisbank">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="meta meta-row meta--cyan sec-head__label" data-reveal="up">04 — Kennisbank</p>
+      <div class="sec-head__title">
+        <h2 class="t-h2" data-reveal="lines">De kennisbank van Synomic</h2>
+      </div>
+      <div class="sec-head__aside">
+        <p class="t-body" data-reveal="up" data-delay="0.1">
+          Hier verschijnen artikelen over onderwerpen waar ondernemers in hun
+          administratie op vastlopen — geschreven vanuit wat er in de praktijk
+          misgaat en wat daaraan te doen is.
+        </p>
+      </div>
+    </div>
+
+    <div class="arts" data-reveal="stagger">
+      <a class="art" href="kennisbank-factuurverwerking-automatiseren.html">
+        <span class="meta art__cat meta--cyan">Automatisering</span>
+        <span class="art__title t-h3">Facturen verwerken zonder overtypen: hoe het technisch werkt</span>
+        <span class="art__desc meta">Van mailbox naar boekhouding in vier stappen</span>
+        <span class="art__go">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2 14 14 2M14 2H4.5M14 2v9.5" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+        </span>
+      </a>
+
+      <a class="art" href="kennisbank-liquiditeitsprognose-maken.html">
+        <span class="meta art__cat meta--cyan">Finance</span>
+        <span class="art__title t-h3">Een liquiditeitsprognose maken die u ook echt gebruikt</span>
+        <span class="art__desc meta">Welke posten erin horen en hoe ver u vooruit kijkt</span>
+        <span class="art__go">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M2 14 14 2M14 2H4.5M14 2v9.5" stroke="currentColor" stroke-width="1.2"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+
+    <p style="margin-top:2.5rem" data-reveal="up">
+      <a class="link" href="kennisbank.html">
+        Naar de kennisbank
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <path d="M1 11 11 1M11 1H3.5M11 1v7.5" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+      </a>
+    </p>
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────────────────────── -->
+<section class="cta sec">
+  <canvas class="cta__net" data-canvas="net" aria-hidden="true"></canvas>
+  <div class="cta__inner wrap">
+    <div class="grid12" style="row-gap:2.5rem">
+      <div style="grid-column:1 / span 8">
+        <p class="meta meta-row meta--cyan" style="margin-bottom:2rem" data-reveal="up">Plan een afspraak</p>
+        <h2 class="t-display" data-reveal="lines">Een half uur, en u weet of het loont</h2>
+      </div>
+      <div style="grid-column:10 / span 3;align-self:end">
+        <p class="t-body" data-reveal="up">
+          Daarna weet u wat de eerste stap kost. U overlegt rechtstreeks met
+          degene die de oplossing bouwt.
+        </p>
+        <div class="hero__actions" data-reveal="up" data-delay="0.1">
+          <a class="btn btn--solid" href="afspraak.html">
+            Plan een afspraak
+            <svg class="btn__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <path d="M1 11 11 1M11 1H3.5M11 1v7.5" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ── Footer ─────────────────────────────────────────────────────────── -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid" data-reveal="stagger">
+      <div class="foot__brand">
+        <img src="assets/img/logo-white.png" alt="Synomic" width="1280" height="490" style="height:30px;width:auto" loading="lazy">
+        <p class="t-body" style="margin-top:1.5rem;max-width:32ch">
+          Sync staat voor systemen, processen en mensen die gelijk lopen. Nomic
+          voor de economische waarde die zichtbaar wordt zodra een organisatie
+          op orde is.
+        </p>
+      </div>
+
+      <div class="foot__col">
+        <h4 class="meta">Diensten</h4>
+        <ul>
+          <li><a href="diensten-financieel-inzicht.html">Financieel inzicht</a></li>
+          <li><a href="diensten-processen-automatiseren.html">Processen automatiseren</a></li>
+          <li><a href="diensten-ai-toepassingen.html">AI-toepassingen</a></li>
+          <li><a href="diensten.html">Alle diensten</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h4 class="meta">Synomic</h4>
+        <ul>
+          <li><a href="over-synomic.html">Over Synomic</a></li>
+          <li><a href="index.html#projecten">Projecten</a></li>
+          <li><a href="systemen.html">Systemen</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h4 class="meta">Kennis</h4>
+        <ul>
+          <li><a href="kennisbank.html">Kennisbank</a></li>
+          <li><a href="kennisbank-factuurverwerking-automatiseren.html">Factuurverwerking</a></li>
+          <li><a href="kennisbank-liquiditeitsprognose-maken.html">Liquiditeitsprognose</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h4 class="meta">Contact</h4>
+        <ul>
+          <li><a href="afspraak.html">Plan een afspraak</a></li>
+          <li><a href="mailto:mark@synomic.nl">mark@synomic.nl</a></li>
+        </ul>
+        <p class="meta" style="margin-top:1.25rem;line-height:1.7">
+          Koornbeursweg 73<br>8442 DJ Heerenveen<br>KVK 94705569
+        </p>
+      </div>
+    </div>
+
+    <div class="foot__mark" aria-hidden="true">
+      <svg viewBox="0 0 1000 132" preserveAspectRatio="xMidYMid meet" role="presentation">
+        <text x="0" y="104" font-family="Geist, sans-serif" font-size="132" font-weight="300"
+              letter-spacing="14" fill="currentColor" textLength="1000" lengthAdjust="spacingAndGlyphs">SYNOMIC</text>
+      </svg>
+    </div>
+
+    <div class="foot__legal">
+      <p class="meta">© 2026 Synomic — Heerenveen</p>
+      <p class="meta"><a href="privacy.html">Privacy</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- Self-hosted: no third-party requests, so no visitor IP leaves this domain. -->
+<script src="assets/js/vendor/gsap.min.js" defer></script>
+<script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/js/vendor/lenis.min.js" defer></script>
+<script src="assets/js/vendor/split-type.min.js" defer></script>
+<script src="assets/js/synomic.js" defer></script>
 </body>
 </html>

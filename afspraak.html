@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="nl" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan een afspraak | Synomic</title>
+<meta name="description" content="Een half uur is genoeg om te horen of het loont en wat de eerste stap kost. Reactie binnen één werkdag.">
+<link rel="canonical" href="https://synomic.nl/afspraak.html">
+<meta name="theme-color" content="#050d14">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:site_name" content="Synomic">
+<meta property="og:title" content="Plan een afspraak | Synomic">
+<meta property="og:description" content="Een half uur is genoeg om te horen of het loont en wat de eerste stap kost. Reactie binnen één werkdag.">
+<meta property="og:url" content="https://synomic.nl/afspraak.html">
+<meta property="og:image" content="https://synomic.nl/assets/img/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/img/logo.png">
+<link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/synomic.css">
+</head>
+
+<body>
+<a class="skip" href="#main">Naar de inhoud</a>
+
+<!-- ── Topbar: ticker + nav as one stack; the ticker collapses on scroll ─ -->
+<div class="topbar">
+<div class="ticker" aria-hidden="true">
+  <div class="marquee" data-marquee data-speed="42">
+    <div class="marquee__track">
+      <span class="marquee__item meta">Reactie binnen één werkdag</span>
+      <span class="marquee__item meta">Vaste prijs voor het eerste proces</span>
+      <span class="marquee__item meta">Wie het gesprek voert, bouwt het ook</span>
+      <span class="marquee__item meta">Heerenveen — werkzaam door heel Nederland</span>
+      <span class="marquee__item meta">Documentatie bij oplevering</span>
+    </div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Synomic — naar de homepage">
+      <img src="assets/img/logo-white.png" alt="Synomic" width="1280" height="490">
+    </a>
+
+    <nav class="nav__links" aria-label="Hoofdmenu">
+      <a class="nav__link" href="diensten.html">Diensten</a>
+      <a class="nav__link" href="systemen.html">Systemen</a>
+      <a class="nav__link" href="kennisbank.html">Kennisbank</a>
+      <a class="nav__link" href="over-synomic.html">Over Synomic</a>
+    </nav>
+
+    <a class="btn btn--sm nav__cta" href="afspraak.html">Plan een afspraak <svg class="btn__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 11 11 1M11 1H3.5M11 1v7.5" stroke="currentColor" stroke-width="1.2"/></svg></a>
+
+    <button class="nav__burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+</div>
+
+<div class="menu" id="menu">
+  <ul class="menu__list">
+    <li><a href="diensten.html"><span class="idx">01</span> Diensten</a></li>
+    <li><a href="systemen.html"><span class="idx">02</span> Systemen</a></li>
+    <li><a href="kennisbank.html"><span class="idx">03</span> Kennisbank</a></li>
+    <li><a href="over-synomic.html"><span class="idx">04</span> Over Synomic</a></li>
+    <li><a href="afspraak.html"><span class="idx">05</span> Plan een afspraak</a></li>
+  </ul>
+  <div>
+    <p class="meta">Koornbeursweg 73 · 8442 DJ Heerenveen</p>
+    <p class="meta" style="margin-top:.6rem">KVK 94705569</p>
+  </div>
+</div>
+
+<main id="main">
+
+<section class="phead">
+  <canvas class="phead__net" data-canvas="net" aria-hidden="true"></canvas>
+  <div class="phead__inner wrap">
+    <nav class="meta phead__crumb" aria-label="Kruimelpad"><a href="index.html">Home</a> <span>/</span> Plan een afspraak</nav>
+    <div class="phead__grid">
+      <div class="phead__title">
+        <p class="meta meta-row meta--cyan" style="margin-bottom:1.75rem" data-reveal="up">Plan een afspraak</p>
+        <h1 class="t-h1" data-reveal="lines">Een half uur, en u weet <em>of het loont</em></h1>
+      </div>
+      <div class="phead__aside">
+        <p class="t-lede" data-reveal="up" data-delay="0.05">Beschrijf hieronder welk proces u bezighoudt. Synomic reageert binnen één werkdag met een voorstel voor een moment, en met een eerste inschatting of het zich laat oplossen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="book">
+
+      <div class="book__form">
+        <!-- Posts natively to Formspree when JS is unavailable; synomic.js
+             upgrades it to a fetch submit with inline validation. -->
+        <form class="form" data-form="afspraak"
+              action="https://formspree.io/f/xbdwaekq"
+              method="POST" novalidate>
+
+          <input type="hidden" name="_subject" value="Afspraakaanvraag via synomic.nl">
+          <div class="hp" aria-hidden="true">
+            <label for="_gotcha">Laat dit veld leeg</label>
+            <input type="text" name="_gotcha" id="_gotcha" tabindex="-1" autocomplete="off">
+          </div>
+
+          <div class="field">
+            <label for="naam">Naam <span class="field__req" aria-hidden="true">*</span></label>
+            <input type="text" id="naam" name="naam" required autocomplete="name"
+                   aria-describedby="err-naam">
+            <span class="field__err" id="err-naam"></span>
+          </div>
+
+          <div class="field">
+            <label for="bedrijf">Bedrijf</label>
+            <input type="text" id="bedrijf" name="bedrijf" autocomplete="organization">
+            <span class="field__err"></span>
+          </div>
+
+          <div class="field">
+            <label for="email">E-mailadres <span class="field__req" aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" required autocomplete="email"
+                   aria-describedby="err-email">
+            <span class="field__err" id="err-email"></span>
+          </div>
+
+          <div class="field">
+            <label for="telefoon">Telefoon</label>
+            <input type="tel" id="telefoon" name="telefoon" autocomplete="tel">
+            <span class="field__err"></span>
+          </div>
+
+          <div class="field">
+            <label for="onderwerp">Waar gaat het over?</label>
+            <select id="onderwerp" name="onderwerp">
+              <option value="Weet ik nog niet">Weet ik nog niet</option>
+              <option value="Financieel inzicht">Financieel inzicht en rapportage</option>
+              <option value="Processen automatiseren">Processen automatiseren</option>
+              <option value="AI-toepassingen">AI-toepassingen</option>
+            </select>
+            <span class="field__err"></span>
+          </div>
+
+          <div class="field">
+            <label for="pakket">Welk boekhoudpakket gebruikt u?</label>
+            <input type="text" id="pakket" name="pakket"
+                   placeholder="Moneybird, Exact Online, Twinfield…">
+            <span class="field__hint">Weet u het niet, of gebruikt u geen pakket? Laat het leeg.</span>
+            <span class="field__err"></span>
+          </div>
+
+          <div class="field field--wide">
+            <label for="bericht">Beschrijf het proces <span class="field__req" aria-hidden="true">*</span></label>
+            <textarea id="bericht" name="bericht" required rows="6"
+                      aria-describedby="hint-bericht err-bericht"></textarea>
+            <span class="field__hint" id="hint-bericht">
+              Wat gaat er nu met de hand, hoe vaak komt het terug en wie doet het?
+              Daarmee is de eerste vraag al te beantwoorden.
+            </span>
+            <span class="field__err" id="err-bericht"></span>
+          </div>
+
+          <div class="field field--check field--wide">
+            <label class="check">
+              <input type="checkbox" name="akkoord" value="ja" required
+                     aria-describedby="err-akkoord">
+              <span class="check__box" aria-hidden="true"></span>
+              <span>
+                Ik ga ermee akkoord dat Synomic deze gegevens gebruikt om mijn vraag
+                te beantwoorden, zoals beschreven in de
+                <a href="privacy.html">privacyverklaring</a>.
+              </span>
+            </label>
+            <span class="field__err" id="err-akkoord"></span>
+          </div>
+
+          <div class="form__status" role="status" aria-live="polite"></div>
+
+          <div class="form__foot">
+            <button class="btn btn--solid" type="submit">Verstuur aanvraag <svg class="btn__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 11 11 1M11 1H3.5M11 1v7.5" stroke="currentColor" stroke-width="1.2"/></svg></button>
+            <span class="meta">Reactie binnen één werkdag</span>
+          </div>
+        </form>
+
+        <div class="sent" data-form-sent hidden>
+          <div class="sent__mark" aria-hidden="true"></div>
+          <h2 class="t-h2">Uw aanvraag is binnen</h2>
+          <p class="t-body">
+            Synomic reageert binnen één werkdag, met een voorstel voor een moment en
+            een eerste inschatting. Komt er niets aan, kijk dan in uw spamfilter of
+            mail rechtstreeks naar
+            <a href="mailto:mark@synomic.nl" style="color:var(--cyan)">mark@synomic.nl</a>.
+          </p>
+          <p style="margin-top:1.75rem">
+            <a class="link" href="kennisbank.html">Ondertussen: naar de kennisbank <svg class="btn__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 11 11 1M11 1H3.5M11 1v7.5" stroke="currentColor" stroke-width="1.2"/></svg></a>
+          </p>
+        </div>
+      </div>
+
+      <aside class="book__aside">
+        <p class="meta meta-row meta--cyan" style="margin-bottom:1.5rem">Wat er daarna gebeurt</p>
+        <ol class="steps">
+          <li>Synomic reageert binnen één werkdag en stelt twee momenten voor.</li>
+          <li>In een half uur loopt u het proces door zoals het nu werkelijk gaat.</li>
+          <li>Daarna weet u of het loont en wat de eerste stap kost.</li>
+        </ol>
+
+        <div style="margin-top:2.5rem;padding-top:1.75rem;border-top:1px solid var(--line)">
+          <p class="meta" style="margin-bottom:1rem">Liever direct</p>
+          <p><a class="link" href="mailto:mark@synomic.nl">mark@synomic.nl <svg class="btn__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 11 11 1M11 1H3.5M11 1v7.5" stroke="currentColor" stroke-width="1.2"/></svg></a></p>
+          <p class="meta" style="margin-top:1.75rem;line-height:1.8">
+            Koornbeursweg 73<br>8442 DJ Heerenveen<br>KVK 94705569
+          </p>
+        </div>
+
+        <div style="margin-top:2.5rem;padding-top:1.75rem;border-top:1px solid var(--line)">
+          <p class="t-body" style="font-size:.9rem">
+            Er zit geen verplichting aan vast. Levert het gesprek niets op, dan
+            houdt het daar op.
+          </p>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid" data-reveal="stagger">
+      <div class="foot__brand">
+        <img src="assets/img/logo-white.png" alt="Synomic" width="1280" height="490" style="height:30px;width:auto" loading="lazy">
+        <p class="t-body" style="margin-top:1.5rem;max-width:32ch">
+          Sync staat voor systemen, processen en mensen die gelijk lopen. Nomic
+          voor de economische waarde die zichtbaar wordt zodra een organisatie
+          op orde is.
+        </p>
+      </div>
+
+      <div class="foot__col">
+        <h4 class="meta">Diensten</h4>
+        <ul>
+          <li><a href="diensten-financieel-inzicht.html">Financieel inzicht</a></li>
+          <li><a href="diensten-processen-automatiseren.html">Processen automatiseren</a></li>
+          <li><a href="diensten-ai-toepassingen.html">AI-toepassingen</a></li>
+          <li><a href="diensten.html">Alle diensten</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h4 class="meta">Synomic</h4>
+        <ul>
+          <li><a href="over-synomic.html">Over Synomic</a></li>
+          <li><a href="index.html#projecten">Projecten</a></li>
+          <li><a href="systemen.html">Systemen</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h4 class="meta">Kennis</h4>
+        <ul>
+          <li><a href="kennisbank.html">Kennisbank</a></li>
+          <li><a href="kennisbank-factuurverwerking-automatiseren.html">Factuurverwerking</a></li>
+          <li><a href="kennisbank-liquiditeitsprognose-maken.html">Liquiditeitsprognose</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h4 class="meta">Contact</h4>
+        <ul>
+          <li><a href="afspraak.html">Plan een afspraak</a></li>
+          <li><a href="mailto:mark@synomic.nl">mark@synomic.nl</a></li>
+        </ul>
+        <p class="meta" style="margin-top:1.25rem;line-height:1.7">
+          Koornbeursweg 73<br>8442 DJ Heerenveen<br>KVK 94705569
+        </p>
+      </div>
+    </div>
+
+    <div class="foot__mark" aria-hidden="true">
+      <svg viewBox="0 0 1000 132" preserveAspectRatio="xMidYMid meet" role="presentation">
+        <text x="0" y="104" font-family="Geist, sans-serif" font-size="132" font-weight="300"
+              letter-spacing="14" fill="currentColor" textLength="1000" lengthAdjust="spacingAndGlyphs">SYNOMIC</text>
+      </svg>
+    </div>
+
+    <div class="foot__legal">
+      <p class="meta">© 2026 Synomic — Heerenveen</p>
+      <p class="meta"><a href="privacy.html">Privacy</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- Self-hosted: no third-party requests, so no visitor IP leaves this domain. -->
+<script src="assets/js/vendor/gsap.min.js" defer></script>
+<script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/js/vendor/lenis.min.js" defer></script>
+<script src="assets/js/vendor/split-type.min.js" defer></script>
+<script src="assets/js/synomic.js" defer></script>
+</body>
+</html>
