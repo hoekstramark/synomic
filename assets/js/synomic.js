@@ -115,63 +115,250 @@
   /* One engine for the announcement ticker, the ledger data strips and the
      logo band. Content is cloned until it overflows twice, then translated
      with a wrapping modifier so the loop is genuinely seamless. Scroll
-     velocity feeds into timeScale — the Spectral trick that makes the page
+     velocity feeds into the speed — the Spectral trick that makes the page
      feel physically connected to the wheel. */
+
+  var marquees = {};
 
   function buildMarquee(el) {
     var speed = parseFloat(el.dataset.speed || '60'); // px per second
     var dir = el.dataset.dir === 'right' ? 1 : -1;
-    var set = el.firstElementChild;
-    if (!set) return null;
+    if (!el.firstElementChild) return null;
 
-    var need = Math.ceil((window.innerWidth * 2) / Math.max(set.offsetWidth, 1)) + 1;
-    for (var i = 0; i < need; i++) {
-      el.appendChild(set.cloneNode(true));
+    // Pristine copy of one set, so the marquee can be rebuilt with new
+    // content without inheriting the clones from the previous pass.
+    var template = el.firstElementChild.cloneNode(true);
+    var state = { x: dir < 0 ? 0 : -1 };
+    var width = 0;
+    var wrap = null;
+    var paused = false;
+
+    function layout() {
+      el.textContent = '';
+      el.appendChild(template.cloneNode(true));
+
+      var set = el.firstElementChild;
+      width = set.offsetWidth;
+      if (!width) return false;
+
+      var need = Math.ceil((window.innerWidth * 2) / width) + 1;
+      for (var i = 0; i < need; i++) el.appendChild(set.cloneNode(true));
+
+      if (hasGsap) wrap = gsap.utils.wrap(-width, 0);
+      if (state.x === -1) state.x = -width;
+      render();
+      return true;
     }
 
-    var w = set.offsetWidth;
-    if (!w) return null;
+    function render() {
+      el.style.transform =
+        'translate3d(' + (wrap ? wrap(state.x) : state.x) + 'px,0,0)';
+    }
 
-    if (REDUCED || !hasGsap) return null;
+    if (!layout()) return null;
 
-    var wrap = gsap.utils.wrap(-w, 0);
-    var x = dir < 0 ? 0 : -w;
+    if (!REDUCED && hasGsap) {
+      var boost = 1;
+      gsap.ticker.add(function (t, dt) {
+        if (paused || !width) return;
+        var extra = Math.min(Math.abs(scrollVelocity) * 0.11, 5.5);
+        boost += (1 + extra - boost) * 0.08;
+        state.x += (dir * speed * boost * dt) / 1000;
+        render();
+      });
 
-    var tween = gsap.to(
-      {},
-      {
-        duration: 1,
-        repeat: -1,
-        ease: 'none',
-        onUpdate: function () {},
+      // Standing still is the only way to read a headline, let alone click it.
+      if (el.dataset.pausable === 'true') {
+        el.addEventListener('pointerenter', function () {
+          paused = true;
+        });
+        el.addEventListener('pointerleave', function () {
+          paused = false;
+        });
+        el.addEventListener('focusin', function () {
+          paused = true;
+        });
+        el.addEventListener('focusout', function () {
+          paused = false;
+        });
       }
-    );
-    tween.kill();
+    }
 
-    // Hand-rolled ticker keeps velocity coupling exact.
-    var state = { x: x };
-    var render = function () {
-      el.style.transform = 'translate3d(' + wrap(state.x) + 'px,0,0)';
+    var ctl = {
+      setContent: function (node) {
+        template = node;
+        state.x = dir < 0 ? 0 : -1;
+        layout();
+      },
     };
-    render();
-
-    var boost = 1;
-    var tick = function (t, dt) {
-      var extra = Math.min(Math.abs(scrollVelocity) * 0.11, 5.5);
-      boost += (1 + extra - boost) * 0.08;
-      state.x += (dir * speed * boost * dt) / 1000;
-      render();
-    };
-    gsap.ticker.add(tick);
-
-    return { el: el, width: w };
+    if (el.dataset.marquee) marquees[el.dataset.marquee] = ctl;
+    return ctl;
   }
 
   function initMarquees() {
-    document
-      .querySelectorAll('[data-marquee]')
-      .forEach(function (el) {
-        buildMarquee(el);
+    document.querySelectorAll('[data-marquee]').forEach(function (el) {
+      buildMarquee(el);
+    });
+  }
+
+  /* ── Ticker ────────────────────────────────────────────────────────── */
+  /* Two sources, deliberately split by how reliable they are. The tax
+     deadlines are pure date arithmetic and therefore always available; the
+     news comes over the network and may not arrive at all. The bar shows the
+     deadlines immediately and folds the news in when it lands, so it is
+     never empty and never waits on a request. */
+
+  var MAAND = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli',
+    'augustus', 'september', 'oktober', 'november', 'december'];
+
+  function laatsteDag(jaar, maand) {
+    return new Date(jaar, maand + 1, 0); // dag 0 van de volgende maand
+  }
+
+  function dagenTot(datum, vanaf) {
+    return Math.ceil((datum - vanaf) / 86400000);
+  }
+
+  function datumTekst(d) {
+    return d.getDate() + ' ' + MAAND[d.getMonth()];
+  }
+
+  function fiscaleItems(nu) {
+    var items = [];
+    var jaar = nu.getFullYear();
+
+    // Btw per kwartaal: aangifte en betaling uiterlijk de laatste dag van de
+    // maand ná het kwartaal.
+    for (var q = 0; q < 8; q++) {
+      var kJaar = jaar + Math.floor(q / 4);
+      var kwartaal = q % 4;
+      var deadline = laatsteDag(kJaar, kwartaal * 3 + 3);
+      if (deadline > nu) {
+        items.push({
+          bron: 'Btw',
+          tekst:
+            'Aangifte Q' + (kwartaal + 1) + ' vóór ' + datumTekst(deadline) +
+            ' · nog ' + dagenTot(deadline, nu) + ' dagen',
+        });
+        break;
+      }
+    }
+
+    // Loonheffing: maandelijks, uiterlijk de laatste dag van de volgende maand.
+    var lh = laatsteDag(jaar, nu.getMonth());
+    if (lh <= nu) lh = laatsteDag(jaar, nu.getMonth() + 1);
+    var periode = new Date(lh.getFullYear(), lh.getMonth() - 1, 1);
+    items.push({
+      bron: 'Loonheffing',
+      tekst:
+        MAAND[periode.getMonth()] + ' vóór ' + datumTekst(lh) +
+        ' · nog ' + dagenTot(lh, nu) + ' dagen',
+    });
+
+    // Prinsjesdag: de derde dinsdag van september.
+    var pd = derdeDinsdag(jaar);
+    if (pd < nu) pd = derdeDinsdag(jaar + 1);
+    var dagen = dagenTot(pd, nu);
+    items.push({
+      bron: 'Prinsjesdag',
+      tekst:
+        datumTekst(pd) + ' ' + pd.getFullYear() +
+        (dagen <= 60 ? ' · nog ' + dagen + ' dagen' : ''),
+    });
+
+    return items;
+  }
+
+  function derdeDinsdag(jaar) {
+    var d = new Date(jaar, 8, 1);
+    var gevonden = 0;
+    while (d.getMonth() === 8) {
+      if (d.getDay() === 2 && ++gevonden === 3) return d;
+      d.setDate(d.getDate() + 1);
+    }
+    return new Date(jaar, 8, 15);
+  }
+
+  function tickerTrack(items) {
+    var track = document.createElement('div');
+    track.className = 'marquee__track';
+
+    items.forEach(function (item) {
+      var node = document.createElement(item.url ? 'a' : 'span');
+      node.className = 'marquee__item meta';
+      if (item.url) {
+        node.href = item.url;
+        node.target = '_blank';
+        node.rel = 'noopener noreferrer';
+      }
+
+      var bron = document.createElement('span');
+      bron.className = 'marquee__bron';
+      bron.textContent = item.bron;
+
+      var tekst = document.createElement('span');
+      tekst.textContent = item.tekst;
+
+      node.appendChild(bron);
+      node.appendChild(tekst);
+      track.appendChild(node);
+    });
+
+    return track;
+  }
+
+  function initTicker() {
+    var el = document.querySelector('[data-marquee="ticker"]');
+    if (!el) return;
+
+    var nu = new Date();
+    var vast = fiscaleItems(nu);
+
+    var ctl = marquees.ticker;
+    if (!ctl) return;
+
+    var a11y = document.querySelector('[data-ticker-a11y]');
+
+    function toon(items) {
+      ctl.setContent(tickerTrack(items));
+      if (!a11y) return;
+      // De marquee zelf blijft aria-hidden: die herhaalt zijn inhoud vier of
+      // vijf keer voor de naadloze lus. Hier staat elk bericht precies één
+      // keer, in leesvolgorde, met een werkende link.
+      a11y.textContent = '';
+      var lijst = document.createElement('ul');
+      items.forEach(function (item) {
+        var li = document.createElement('li');
+        if (item.url) {
+          var a = document.createElement('a');
+          a.href = item.url;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.textContent = item.bron + ': ' + item.tekst;
+          li.appendChild(a);
+        } else {
+          li.textContent = item.bron + ': ' + item.tekst;
+        }
+        lijst.appendChild(li);
+      });
+      a11y.appendChild(lijst);
+    }
+
+    // Meteen zichtbaar, zonder op het netwerk te wachten.
+    toon(vast);
+
+    fetch('/api/ticker', { headers: { Accept: 'application/json' } })
+      .then(function (r) {
+        if (!r.ok) throw new Error(String(r.status));
+        return r.json();
+      })
+      .then(function (data) {
+        if (!data || !Array.isArray(data.items) || !data.items.length) return;
+        // Deadlines eerst: die zijn concreet en gelden voor iedereen.
+        toon(vast.concat(data.items));
+      })
+      .catch(function () {
+        // De balk toont dan alleen de deadlines. Dat is genoeg.
       });
   }
 
@@ -1042,6 +1229,7 @@
     initScroll();
     initNav();
     initMarquees();
+    initTicker();
     initHero();
     initLedgerCanvas();
     initNetworks();

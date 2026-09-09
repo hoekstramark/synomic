@@ -28,8 +28,11 @@
 
 <!-- ── Topbar: ticker + nav as one stack; the ticker collapses on scroll ─ -->
 <div class="topbar">
-<div class="ticker" aria-hidden="true">
-  <div class="marquee" data-marquee data-speed="42">
+<div class="ticker">
+  <!-- De marquee herhaalt zijn inhoud voor de naadloze lus en is daarom
+       aria-hidden; de leesbare kopie staat eronder. De statische regels
+       hieronder zijn de terugval zonder JavaScript. -->
+  <div class="marquee" data-marquee="ticker" data-pausable="true" data-speed="42" aria-hidden="true">
     <div class="marquee__track">
       <span class="marquee__item meta">Reactie binnen één werkdag</span>
       <span class="marquee__item meta">Vaste prijs voor het eerste proces</span>
@@ -38,6 +41,7 @@
       <span class="marquee__item meta">Documentatie bij oplevering</span>
     </div>
   </div>
+  <div class="sr-only" data-ticker-a11y></div>
 </div>
 
 <header class="nav">
