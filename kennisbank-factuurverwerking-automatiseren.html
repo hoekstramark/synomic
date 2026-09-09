@@ -1,69 +1,417 @@
-<!DOCTYPE html>
-<html lang="nl">
+<!doctype html>
+<html lang="nl" class="no-js">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://formspree.io; form-action https://formspree.io; frame-ancestors 'none'; base-uri 'self'; object-src 'none'">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Factuurverwerking automatiseren: zo werkt het | Synomic</title>
-<meta name="description" content="Van mailbox naar boekhouding zonder overtypen. Wat er technisch gebeurt, wat u zelf moet regelen en waar zo'n koppeling in de praktijk struikelt.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facturen verwerken zonder overtypen: hoe het technisch werkt | Synomic</title>
+<meta name="description" content="Van mailbox naar boekhouding in vier schakels, wat Peppol en de ViDA-richtlijn daaraan veranderen, en de drie plekken waar een factuurkoppeling in de praktijk vastloopt.">
 <link rel="canonical" href="https://synomic.nl/kennisbank-factuurverwerking-automatiseren.html">
-<link rel="icon" type="image/png" href="logo.png">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="Synomic">
+<meta name="theme-color" content="#050d14">
+
+<meta property="og:type" content="website">
 <meta property="og:locale" content="nl_NL">
-<meta property="og:title" content="Factuurverwerking automatiseren: zo werkt het | Synomic">
-<meta property="og:description" content="Van mailbox naar boekhouding zonder overtypen. Wat er technisch gebeurt, wat u zelf moet regelen en waar zo'n koppeling in de praktijk struikelt.">
+<meta property="og:site_name" content="Synomic">
+<meta property="og:title" content="Facturen verwerken zonder overtypen: hoe het technisch werkt | Synomic">
+<meta property="og:description" content="Van mailbox naar boekhouding in vier schakels, wat Peppol en de ViDA-richtlijn daaraan veranderen, en de drie plekken waar een factuurkoppeling in de praktijk vastloopt.">
 <meta property="og:url" content="https://synomic.nl/kennisbank-factuurverwerking-automatiseren.html">
-<meta property="og:image" content="https://synomic.nl/logo.png">
-<meta name="twitter:card" content="summary">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Facturen verwerken zonder overtypen: hoe het technisch werkt","description":"Van mailbox naar boekhouding in vier stappen, en waar zo'n koppeling struikelt.","author":{"@type":"Person","name":"Mark Hoekstra","url":"https://synomic.nl/over-synomic.html"},"publisher":{"@id":"https://synomic.nl/#organization"},"datePublished":"2026-08-05","dateModified":"2026-08-05","inLanguage":"nl-NL","mainEntityOfPage":{"@type":"WebPage","@id":"https://synomic.nl/kennisbank-factuurverwerking-automatiseren.html"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://synomic.nl/"},{"@type":"ListItem","position":2,"name":"Kennisbank","item":"https://synomic.nl/kennisbank.html"},{"@type":"ListItem","position":3,"name":"Factuurverwerking automatiseren","item":"https://synomic.nl/kennisbank-factuurverwerking-automatiseren.html"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Werkt factuurverwerking ook bij weinig facturen?","acceptedAnswer":{"@type":"Answer","text":"Onder de dertig facturen per maand zit de winst vooral in rust en minder fouten, niet in geld. Bij grotere aantallen wordt de terugverdientijd kort."}},{"@type":"Question","name":"Kan ik zelf blijven goedkeuren?","acceptedAnswer":{"@type":"Answer","text":"Ja. De goedkeuringsstap blijft menselijk. Het systeem bereidt de boeking voor en legt alleen afwijkingen aan u voor."}}]}</script>
+<meta property="og:image" content="https://synomic.nl/assets/img/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/img/logo.png">
+<link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/synomic.css">
 </head>
+
 <body>
-<nav class="nav"><div class="nav-inner"><a class="nav-logo" href="index.html" aria-label="Synomic, naar de homepage"><img src="logo.png" alt="Synomic" width="140" height="34"></a><ul class="nav-links" id="navLinks"><li><a href="diensten.html">Diensten</a></li><li><a href="werkwijze.html">Werkwijze</a></li><li><a href="kennisbank.html" aria-current="page">Kennisbank</a></li><li><a href="over-synomic.html">Over Synomic</a></li><li><a class="btn btn-primary btn-sm" href="contact.html">Plan een gesprek</a></li></ul><button class="burger" id="burger" aria-label="Menu openen" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button></div></nav>
-<header class="ph"><div class="wrap"><div class="crumb"><a href="index.html">Home</a> <span>/</span> <a href="kennisbank.html">Kennisbank</a> <span>/</span> <span style="color:rgba(255,255,255,.75)">Factuurverwerking automatiseren</span></div>
-    <p style="color:var(--cyan);font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px">Automatisering</p>
-    <h1>Facturen verwerken zonder overtypen: hoe het technisch werkt</h1>
-    <p style="font-size:.9rem;color:rgba(255,255,255,.55);margin-top:16px">Door Mark Hoekstra · Bijgewerkt 5 augustus 2026 · 6 minuten lezen</p></div></header>
-  <section class="sec"><div class="wrap two-col">
-    <article class="prose">
-      <p class="intro">Een factuur die binnenkomt hoeft niemand meer over te typen. De mail wordt opgepakt, de pdf uitgelezen, de gegevens gecontroleerd en de boeking klaargezet. Alleen wat afwijkt komt bij een mens terecht. Hieronder staat wat er in elke stap gebeurt en waar het misgaat.</p>
-      <h2>Tussen mailbox en boekhouding</h2>
-      <p>De keten bestaat uit vier schakels. Een trigger die de factuur oppikt, tekstherkenning die de regels uitleest, een controlestap die de gegevens toetst aan wat u al weet, en de boeking zelf. Elke schakel kan bij een andere leverancier zitten, en dat is meteen de reden dat het bij veel bedrijven half werkt.</p>
-      <p>De trigger is het eenvoudigst. Een aparte mailbox voor inkoopfacturen, of een map waar leveranciers naartoe uploaden. Zorg dat er één ingang is. Facturen die via de privémail van de directeur binnenkomen, blijven handwerk.</p>
-      <h2>De betrouwbaarheid van tekstherkenning</h2>
-      <p>Op bedrag, datum en factuurnummer is moderne OCR zeer betrouwbaar. Op leveranciersherkenning gaat het vaker mis, zeker bij bedrijven die onder twee namen factureren. Daarom hangt er een controlestap achter die het herkende bedrijf matcht met uw crediteurenbestand. Vindt hij geen match, dan gaat de factuur naar de wachtrij in plaats van naar de boeking.</p>
-      <div class="pull"><p>De vraag is niet of het systeem fouten maakt. De vraag is of u ziet wanneer dat gebeurt.</p></div>
-      <h2>Waar zo'n koppeling vastloopt</h2>
-      <p>Op drie plekken. Bij leveranciers die hun factuur in de body van de mail zetten in plaats van als bijlage. Bij creditfacturen, die door veel systemen als gewone factuur worden gelezen. En bij de goedkeuringsstap, omdat niemand vooraf heeft afgesproken wie wat mag goedkeuren en tot welk bedrag.</p>
-      <p>Die laatste is geen technisch probleem. Regel het voordat u gaat bouwen, dan bouwt u het in één keer goed.</p>
-      <h2>Wat u zelf moet regelen</h2>
-      <p>Drie dingen liggen bij u en niet bij de techniek. Eén ingang voor facturen, zodat er niets buiten het proces om binnenkomt. Een crediteurenbestand dat klopt, want daar wordt tegen gematcht. En een afspraak over goedkeuring, met bedragen en namen erbij.</p>
-      <p>Deze voorbereiding kost een middag en bepaalt voor een groot deel of de automatisering later betrouwbaar draait.</p>
-      <h2>Wanneer het zich terugverdient</h2>
-      <p>Tel het aantal inkoopfacturen per maand en de minuten die er nu per factuur in gaan, inclusief zoeken en corrigeren. Vermenigvuldig met uw interne uurtarief. Zet daar de bouwkosten en het maandelijkse beheer tegenover. Bij een paar honderd facturen per maand valt die som doorgaans snel uit. Onder de dertig facturen per maand is de winst vooral rust, niet geld.</p>
-      <div class="faq"><details><summary>Werkt factuurverwerking ook bij weinig facturen?</summary><p>Onder de dertig facturen per maand zit de winst vooral in rust en minder fouten, niet in geld. Bij grotere aantallen wordt de terugverdientijd kort.</p></details><details><summary>Kan ik zelf blijven goedkeuren?</summary><p>Ja. De goedkeuringsstap blijft menselijk. Het systeem bereidt de boeking voor en legt alleen afwijkingen aan u voor.</p></details></div>
-      <div class="card card-soft" style="background:var(--off2);margin-top:34px">
-        <h3>Wilt u dit voor uw eigen administratie laten uitzoeken?</h3>
-        <p style="margin:10px 0 18px">Synomic bekijkt uw factuurstroom en zegt eerlijk of het loont. <a href="diensten-processen-automatiseren.html">Lees meer over processen automatiseren</a>.</p>
-        <a class="btn btn-navy" href="contact.html">Neem contact op</a>
+<a class="skip" href="#main">Naar de inhoud</a>
+
+<!-- ── Topbar: ticker + nav as one stack; the ticker collapses on scroll ─ -->
+<div class="topbar">
+<div class="ticker" aria-hidden="true">
+  <div class="marquee" data-marquee data-speed="42">
+    <div class="marquee__track">
+      <span class="marquee__item meta">Reactie binnen één werkdag</span>
+      <span class="marquee__item meta">Vaste prijs voor het eerste proces</span>
+      <span class="marquee__item meta">Wie het gesprek voert, bouwt het ook</span>
+      <span class="marquee__item meta">Heerenveen — werkzaam door heel Nederland</span>
+      <span class="marquee__item meta">Documentatie bij oplevering</span>
+    </div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html" aria-label="Synomic — naar de homepage">
+      <img src="assets/img/logo-white.png" alt="Synomic" width="1280" height="490">
+    </a>
+
+    <nav class="nav__links" aria-label="Hoofdmenu">
+      <a class="nav__link" href="diensten.html">Diensten</a>
+      <a class="nav__link" href="systemen.html">Systemen</a>
+      <a class="nav__link" href="kennisbank.html" aria-current="page">Kennisbank</a>
+      <a class="nav__link" href="over-synomic.html">Over Synomic</a>
+    </nav>
+
+    <a class="btn btn--sm nav__cta" href="afspraak.html">Plan een afspraak <svg class="btn__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 11 11 1M11 1H3.5M11 1v7.5" stroke="currentColor" stroke-width="1.2"/></svg></a>
+
+    <button class="nav__burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+</div>
+
+<div class="menu" id="menu">
+  <ul class="menu__list">
+    <li><a href="diensten.html"><span class="idx">01</span> Diensten</a></li>
+    <li><a href="systemen.html"><span class="idx">02</span> Systemen</a></li>
+    <li><a href="kennisbank.html"><span class="idx">03</span> Kennisbank</a></li>
+    <li><a href="over-synomic.html"><span class="idx">04</span> Over Synomic</a></li>
+    <li><a href="afspraak.html"><span class="idx">05</span> Plan een afspraak</a></li>
+  </ul>
+  <div>
+    <p class="meta">Koornbeursweg 73 · 8442 DJ Heerenveen</p>
+    <p class="meta" style="margin-top:.6rem">KVK 94705569</p>
+  </div>
+</div>
+
+<main id="main">
+
+<section class="phead">
+  <canvas class="phead__net" data-canvas="net" aria-hidden="true"></canvas>
+  <div class="phead__inner wrap">
+    <nav class="meta phead__crumb" aria-label="Kruimelpad"><a href="index.html">Home</a> <span>/</span> <a href="kennisbank.html">Kennisbank</a> <span>/</span> Factuurverwerking</nav>
+    <div class="phead__grid">
+      <div class="phead__title">
+        <p class="meta meta-row meta--cyan" style="margin-bottom:1.75rem" data-reveal="up">Automatisering</p>
+        <h1 class="t-h1" data-reveal="lines">Facturen verwerken <em>zonder overtypen</em></h1>
+        <div class="artmeta" data-reveal="up" data-delay="0.05">
+          <span class="meta">Mark Hoekstra</span>
+          <span class="artmeta__sep" aria-hidden="true"></span>
+          <span class="meta">Bijgewerkt 9 september 2026</span>
+          <span class="artmeta__sep" aria-hidden="true"></span>
+          <span class="meta">5 minuten lezen</span>
+        </div>
       </div>
-      <div class="author"><div style="width:56px;height:56px;border-radius:50%;background:var(--off2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;color:var(--navy);flex:none">MH</div><div><div style="font-family:'Syne',sans-serif;font-weight:700">Mark Hoekstra</div><p class="muted" style="font-size:.9rem;margin:4px 0 0">Oprichter van Synomic. Bouwt vanuit Heerenveen de koppelingen en workflows waarmee mkb-bedrijven hun administratie laten doorlopen.</p></div></div>
-    </article>
-    <aside class="grid" style="gap:20px">
-      <div class="aside aside-soft"><h3>Inhoud</h3><ul><li>Tussen mailbox en boekhouding</li><li>Betrouwbaarheid van OCR</li><li>Waar het vastloopt</li><li>Wat u zelf regelt</li><li>Terugverdientijd</li></ul></div>
-      <div class="aside"><h3>Verder lezen</h3><ul><li><a href="kennisbank-liquiditeitsprognose-maken.html">Een liquiditeitsprognose maken die u ook echt gebruikt</a></li><li><a href="software.html">Software waar Synomic mee koppelt</a></li></ul></div>
-    </aside>
-  </div></section>
-<footer><div class="wrap"><div class="f-top"><div><img src="logo-white.png" alt="Synomic" width="130" height="32"><p>Koornbeursweg 73<br>8442 DJ Heerenveen<br>KVK 94705569<br><button type="button" class="mail-link" data-mail>Stuur een mail</button></p></div><div><h4>Diensten</h4><ul><li><a href="diensten-financieel-inzicht.html">Financieel inzicht</a></li><li><a href="diensten-processen-automatiseren.html">Processen automatiseren</a></li><li><a href="diensten-ai-toepassingen.html">AI-toepassingen</a></li></ul></div><div><h4>Synomic</h4><ul><li><a href="over-synomic.html">Over Synomic</a></li><li><a href="werkwijze.html">Werkwijze</a></li><li><a href="projecten.html">Projecten</a></li><li><a href="software.html">Software</a></li></ul></div><div><h4>Contact</h4><ul><li><a href="contact.html">Contactformulier</a></li><li><a href="kennisbank.html">Kennisbank</a></li><li><a href="privacy.html">Privacyverklaring</a></li></ul></div></div><div class="f-bot"><span>&copy; <span class="jsYear">2026</span> Synomic. KVK 94705569. Alle rechten voorbehouden.</span><span>Heerenveen, werkzaam in heel Nederland</span></div></div></footer>
-<div class="cookie" id="cookie" role="dialog" aria-live="polite" aria-label="Cookiemelding"><p><strong>Synomic gebruikt geen tracking cookies.</strong> Alleen technisch noodzakelijke opslag voor het contactformulier. Meer hierover leest u in de <a href="privacy.html">privacyverklaring</a>.</p><div class="cookie-btns"><button class="btn btn-sm" style="background:#f5f7fa;color:#1B3A5C" type="button" data-cookie="geweigerd">Alleen noodzakelijk</button><button class="btn btn-primary btn-sm" type="button" data-cookie="akkoord">Akkoord</button></div></div>
-<script src="app.js" defer></script>
+      <div class="phead__aside">
+        <p class="t-lede" data-reveal="up" data-delay="0.05">
+          Een factuur die binnenkomt hoeft niemand meer over te typen. De mail wordt
+          opgepikt, de pdf uitgelezen, de gegevens gecontroleerd en de boeking
+          klaargezet. Alleen wat afwijkt komt bij een mens terecht.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="doc">
+      <aside class="doc__side">
+    <nav class="toc" aria-label="Op deze pagina">
+      <h4 class="meta">Op deze pagina</h4>
+      <ul>
+      <li><a href="#keten">Tussen mailbox en boekhouding</a></li>
+      <li><a href="#peppol">OCR of Peppol</a></li>
+      <li><a href="#ocr">Betrouwbaarheid van tekstherkenning</a></li>
+      <li><a href="#vastloopt">Waar het vastloopt</a></li>
+      <li><a href="#zelf">Wat u zelf moet regelen</a></li>
+      <li><a href="#bewaren">Waar de factuur blijft</a></li>
+      <li><a href="#terugverdient">Wanneer het zich terugverdient</a></li>
+      <li><a href="#faq">Veelgestelde vragen</a></li>
+      </ul>
+    </nav>
+    <div class="toc__also">
+      <h4 class="meta">Lees ook</h4>
+      <ul>
+        <li><a href="diensten-processen-automatiseren.html">Processen automatiseren</a></li>
+        <li><a href="kennisbank-liquiditeitsprognose-maken.html">Een liquiditeitsprognose maken</a></li>
+        <li><a href="systemen.html">Systemen die Synomic koppelt</a></li>
+      </ul>
+    </div>
+      </aside>
+
+      <div class="doc__main prose">
+        <section class="prose-sec" id="keten">
+          <span class="idx">01</span>
+          <h2 class="t-h2" data-reveal="lines">Tussen mailbox en boekhouding</h2>
+          <p data-reveal="up">
+            De keten bestaat uit vier schakels. Een trigger die de factuur oppikt,
+            tekstherkenning die de regels uitleest, een controlestap die de gegevens
+            toetst aan wat u al weet, en de boeking zelf. Elke schakel kan bij een
+            andere leverancier zitten, en dat is meteen de reden dat het bij veel
+            bedrijven half werkt.
+          </p>
+          <p data-reveal="up">
+            De trigger is het eenvoudigst. Een aparte mailbox voor inkoopfacturen, of
+            een map waar leveranciers naartoe uploaden. Zorg dat er één ingang is.
+            Facturen die via de privémail van de directeur binnenkomen, blijven
+            handwerk.
+          </p>
+        </section>
+
+        <section class="prose-sec" id="peppol">
+          <span class="idx">02</span>
+          <h2 class="t-h2" data-reveal="lines">OCR of Peppol: twee routes naar dezelfde boeking</h2>
+          <p data-reveal="up">
+            Tekstherkenning is niet de enige weg. Een factuur kan ook als data
+            binnenkomen, in een vast formaat dat een systeem direct kan lezen. Dan is
+            er niets te herkennen: leverancier, bedrag, btw en factuurregels staan er
+            al als velden in. Dat is e-facturatie, en het loopt over een netwerk dat
+            Peppol heet.
+          </p>
+          <p data-reveal="up">
+            Voor leveringen aan de overheid is dat in Nederland al verplicht. Voor
+            onderling zakelijk verkeer is het nu nog vrijwillig, maar dat verandert.
+          </p>
+          <dl class="deflist deflist--dates" data-reveal="stagger">
+            <div><dt>2017</dt><dd>E-facturatie verplicht voor leveringen aan de centrale overheid.</dd></div>
+            <div><dt>2019</dt><dd>Uitgebreid naar alle aanbestedende diensten.</dd></div>
+            <div><dt>2026</dt><dd>Definitief kabinetsstandpunt over de verplichting tussen bedrijven wordt in de zomer verwacht, met conceptwetgeving in het vierde kwartaal.</dd></div>
+            <div><dt>2030—2032</dt><dd>De Europese ViDA-richtlijn maakt e-facturatie tussen bedrijven verplicht, gefaseerd ingevoerd, met Peppol als voorgeschreven infrastructuur. Het Nederlandse formaat wordt Peppol BIS Billing 3.0 met de NLCIUS-specificatie, gebaseerd op UBL.</dd></div>
+          </dl>
+          <p data-reveal="up">
+            Wat dat betekent voor een koppeling die u nu bouwt: tekstherkenning
+            verdwijnt niet, maar wordt het vangnet in plaats van de hoofdweg.
+            Facturen van leveranciers die al via Peppol versturen gaan de korte
+            route, en alles wat als pdf binnenkomt gaat door de herkenning.
+          </p>
+          <p data-reveal="up">
+            Bouw daarom een controlestap en een boekingsstap die niet weten waar de
+            gegevens vandaan komen. Dan hoeft er later alleen een ingang bij, in
+            plaats van een nieuwe keten.
+          </p>
+          <div class="callout" data-reveal="up">
+            <span class="meta meta--cyan">Vuistregel</span>
+            <p>
+              Vraag bij elke vaste leverancier of ze al via Peppol kunnen factureren.
+              Elke leverancier die dat kan is één bron minder waar tekstherkenning
+              fout op kan gaan.
+            </p>
+          </div>
+        </section>
+
+        <section class="prose-sec" id="ocr">
+          <span class="idx">03</span>
+          <h2 class="t-h2" data-reveal="lines">De betrouwbaarheid van tekstherkenning</h2>
+          <p data-reveal="up">
+            Op bedrag, datum en factuurnummer is moderne tekstherkenning zeer
+            betrouwbaar. Op leveranciersherkenning gaat het vaker mis, zeker bij
+            bedrijven die onder twee namen factureren. Daarom hangt er een
+            controlestap achter die het herkende bedrijf matcht met uw
+            crediteurenbestand. Vindt hij geen match, dan gaat de factuur naar de
+            wachtrij in plaats van naar de boeking.
+          </p>
+          <p data-reveal="up">
+            Op de btw zit meer werk dan één veld. De controlestap kijkt of het
+            btw-nummer geldig is en of het tarief past bij wat er geleverd wordt,
+            maar vooral of er iets bijzonders aan de hand is. Btw verlegd bij
+            onderaanneming, en intracommunautaire verwerving bij een leverancier uit
+            een ander EU-land, leiden tot een andere boeking dan een gewone factuur
+            met eenentwintig procent. Dat zijn precies de gevallen waarop automatisch
+            boeken misgaat, en dus de gevallen die naar de wachtrij horen te gaan.
+          </p>
+          <p class="quote" data-reveal="up">
+            De vraag is niet of het systeem fouten maakt. De vraag is of u ziet
+            wanneer dat gebeurt.
+          </p>
+        </section>
+
+        <section class="prose-sec" id="vastloopt">
+          <span class="idx">04</span>
+          <h2 class="t-h2" data-reveal="lines">Waar zo'n koppeling vastloopt</h2>
+          <p data-reveal="up">Op drie plekken.</p>
+          <ul class="checks" data-reveal="stagger">
+            <li>Bij leveranciers die hun factuur in de body van de mail zetten in plaats van als bijlage</li>
+            <li>Bij creditfacturen, die door veel systemen als gewone factuur worden gelezen</li>
+            <li>Bij de goedkeuringsstap, omdat niemand vooraf heeft afgesproken wie wat mag goedkeuren en tot welk bedrag</li>
+          </ul>
+          <p data-reveal="up" style="margin-top:1.5rem">
+            Die laatste is geen technisch probleem. Regel het voordat u gaat bouwen,
+            dan bouwt u het in één keer goed.
+          </p>
+        </section>
+
+        <section class="prose-sec" id="zelf">
+          <span class="idx">05</span>
+          <h2 class="t-h2" data-reveal="lines">Wat u zelf moet regelen</h2>
+          <p data-reveal="up">
+            Drie dingen liggen bij u en niet bij de techniek. Eén ingang voor
+            facturen, zodat er niets buiten het proces om binnenkomt. Een
+            crediteurenbestand dat klopt, want daar wordt tegen gematcht. En een
+            afspraak over goedkeuring, met bedragen en namen erbij.
+          </p>
+          <p data-reveal="up">
+            Houd bij die laatste vast dat wie een factuur goedkeurt niet dezelfde is
+            die de betaling doet. Uw accountant vraagt daar bij de jaarrekening naar,
+            en het is eenvoudiger om die scheiding vooraf in de workflow te zetten
+            dan er later een uitzondering op te bouwen.
+          </p>
+          <p data-reveal="up">
+            Deze voorbereiding kost een middag en bepaalt voor een groot deel of de
+            automatisering later betrouwbaar draait.
+          </p>
+        </section>
+
+        <section class="prose-sec" id="bewaren">
+          <span class="idx">06</span>
+          <h2 class="t-h2" data-reveal="lines">Waar de factuur zelf blijft</h2>
+          <p data-reveal="up">
+            Een geautomatiseerde keten haalt de gegevens uit de factuur, maar de
+            factuur zelf moet blijven bestaan. De bewaarplicht is zeven jaar, en voor
+            gegevens rond onroerend goed tien. Bewaar het bestand zoals het
+            binnenkwam, niet alleen de velden die eruit zijn gehaald.
+          </p>
+          <p data-reveal="up">
+            Leg daarom in de workflow vast waar de pdf of het XML-bestand landt, en
+            zet de verwijzing naar dat bestand bij de boeking. Zet u een factuur om
+            naar een ander formaat, dan moet dat conversieproces aantoonbaar zijn en
+            moeten alle gegevens bewaard blijven. In de praktijk is dat het verschil
+            tussen een archief waar uw accountant in kan en een map met losse
+            downloads.
+          </p>
+        </section>
+
+        <section class="prose-sec" id="terugverdient">
+          <span class="idx">07</span>
+          <h2 class="t-h2" data-reveal="lines">Wanneer het zich terugverdient</h2>
+          <p data-reveal="up">
+            Tel het aantal inkoopfacturen per maand en de minuten die er nu per
+            factuur in gaan, inclusief zoeken en corrigeren. Vermenigvuldig met uw
+            interne uurtarief. Zet daar de bouwkosten en het maandelijkse beheer
+            tegenover.
+          </p>
+          <p data-reveal="up">
+            Bij een paar honderd facturen per maand valt die som doorgaans snel uit.
+            Onder de dertig facturen per maand is de winst vooral rust, niet geld.
+          </p>
+        </section>
+
+        <section class="prose-sec" id="faq">
+          <span class="idx">08</span>
+          <h2 class="t-h2" style="margin-bottom:2rem" data-reveal="lines">Veelgestelde vragen</h2>
+<div class="faq">
+  <details>
+    <summary><span class="t-h3">Werkt factuurverwerking ook bij weinig facturen?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+    <div class="faq__body"><p>Onder de dertig facturen per maand zit de winst vooral in rust en minder fouten, niet in geld. Bij grotere aantallen wordt de terugverdientijd kort.</p></div>
+  </details>
+  <details>
+    <summary><span class="t-h3">Kan ik zelf blijven goedkeuren?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+    <div class="faq__body"><p>Ja. De goedkeuringsstap blijft menselijk. Het systeem bereidt de boeking voor en legt alleen afwijkingen aan u voor.</p></div>
+  </details>
+  <details>
+    <summary><span class="t-h3">Moet ik wachten op de e-facturatieplicht?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+    <div class="faq__body"><p>Nee. De verplichting tussen bedrijven komt pas na 2030, en tot die tijd komt het merendeel van uw facturen als pdf binnen. Bouw de keten nu, maar bouw hem zo dat een Peppol-ingang er later bij kan zonder de rest te raken.</p></div>
+  </details>
+  <details>
+    <summary><span class="t-h3">Wat gebeurt er met een factuur die niet wordt herkend?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+    <div class="faq__body"><p>Die gaat naar een wachtrij met de reden erbij, en niet naar de boeking. Er verdwijnt niets stilletjes — dat is de belangrijkste eis aan zo'n keten.</p></div>
+  </details>
+</div>
+
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="pager">
+  <a href="kennisbank.html"><span class="meta">← Vorige</span><span class="t-h3">Alle artikelen</span></a>
+  <a href="kennisbank-liquiditeitsprognose-maken.html"><span class="meta">Volgende →</span><span class="t-h3">Een liquiditeitsprognose maken</span></a>
+</div></div>
+
+<section class="cta sec">
+  <canvas class="cta__net" data-canvas="net" aria-hidden="true"></canvas>
+  <div class="cta__inner wrap">
+    <div class="grid12" style="row-gap:2.5rem">
+      <div style="grid-column:1 / span 8">
+        <p class="meta meta-row meta--cyan" style="margin-bottom:2rem" data-reveal="up">Plan een afspraak</p>
+        <h2 class="t-display" data-reveal="lines">Beschrijf uw factuurstroom, dan hoort u of het kan</h2>
+      </div>
+      <div style="grid-column:10 / span 3;align-self:end">
+        <p class="t-body" data-reveal="up">Hoeveel facturen per maand, langs welke weg ze binnenkomen en in welk pakket ze moeten landen. Daarmee is de eerste vraag al te beantwoorden.</p>
+        <div class="hero__actions" data-reveal="up" data-delay="0.1">
+          <a class="btn btn--solid" href="afspraak.html">Plan een afspraak <svg class="btn__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 11 11 1M11 1H3.5M11 1v7.5" stroke="currentColor" stroke-width="1.2"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid" data-reveal="stagger">
+      <div class="foot__brand">
+        <img src="assets/img/logo-white.png" alt="Synomic" width="1280" height="490" style="height:30px;width:auto" loading="lazy">
+        <p class="t-body" style="margin-top:1.5rem;max-width:32ch">
+          Sync staat voor systemen, processen en mensen die gelijk lopen. Nomic
+          voor de economische waarde die zichtbaar wordt zodra een organisatie
+          op orde is.
+        </p>
+      </div>
+
+      <div class="foot__col">
+        <h4 class="meta">Diensten</h4>
+        <ul>
+          <li><a href="diensten-financieel-inzicht.html">Financieel inzicht</a></li>
+          <li><a href="diensten-processen-automatiseren.html">Processen automatiseren</a></li>
+          <li><a href="diensten-ai-toepassingen.html">AI-toepassingen</a></li>
+          <li><a href="diensten.html">Alle diensten</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h4 class="meta">Synomic</h4>
+        <ul>
+          <li><a href="over-synomic.html">Over Synomic</a></li>
+          <li><a href="index.html#projecten">Projecten</a></li>
+          <li><a href="systemen.html">Systemen</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h4 class="meta">Kennis</h4>
+        <ul>
+          <li><a href="kennisbank.html">Kennisbank</a></li>
+          <li><a href="kennisbank-factuurverwerking-automatiseren.html">Factuurverwerking</a></li>
+          <li><a href="kennisbank-liquiditeitsprognose-maken.html">Liquiditeitsprognose</a></li>
+        </ul>
+      </div>
+
+      <div class="foot__col">
+        <h4 class="meta">Contact</h4>
+        <ul>
+          <li><a href="afspraak.html">Plan een afspraak</a></li>
+          <li><a href="mailto:mark@synomic.nl">mark@synomic.nl</a></li>
+        </ul>
+        <p class="meta" style="margin-top:1.25rem;line-height:1.7">
+          Koornbeursweg 73<br>8442 DJ Heerenveen<br>KVK 94705569
+        </p>
+      </div>
+    </div>
+
+    <div class="foot__mark" aria-hidden="true">
+      <svg viewBox="0 0 1000 132" preserveAspectRatio="xMidYMid meet" role="presentation">
+        <text x="0" y="104" font-family="Geist, sans-serif" font-size="132" font-weight="300"
+              letter-spacing="14" fill="currentColor" textLength="1000" lengthAdjust="spacingAndGlyphs">SYNOMIC</text>
+      </svg>
+    </div>
+
+    <div class="foot__legal">
+      <p class="meta">© 2026 Synomic — Heerenveen</p>
+      <p class="meta"><a href="privacy.html">Privacy</a></p>
+    </div>
+  </div>
+</footer>
+
+<!-- Self-hosted: no third-party requests, so no visitor IP leaves this domain. -->
+<script src="assets/js/vendor/gsap.min.js" defer></script>
+<script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/js/vendor/lenis.min.js" defer></script>
+<script src="assets/js/vendor/split-type.min.js" defer></script>
+<script src="assets/js/synomic.js" defer></script>
 </body>
 </html>

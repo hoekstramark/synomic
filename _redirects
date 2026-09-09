@@ -1,0 +1,15 @@
+# Oude URL's die met de herbouw zijn verdwenen. 301 = permanent verplaatst,
+# zodat Google de opgebouwde posities meeneemt naar de nieuwe pagina.
+
+/werkwijze.html    /over-synomic.html#werkwijze   301
+/contact.html      /afspraak.html                 301
+/projecten.html    /#projecten                    301
+/software.html     /systemen.html                 301
+
+# Deze twee stonden in de repo als meta-refresh-stubs uit een eerdere
+# hernoeming. Nu echte 301's, en partners wijst meteen naar de eindbestemming
+# in plaats van via software.html — een redirect-ketting kost bezoekers een
+# extra rondje en verwatert de doorgegeven waarde.
+
+/over-ons.html     /over-synomic.html             301
+/partners.html     /systemen.html                 301

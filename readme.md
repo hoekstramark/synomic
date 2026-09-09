@@ -1,60 +1,120 @@
-# Synomic Website
+# synomic.nl
 
-Statische website voor synomic.nl. Geen build-stap: de bestanden in deze map zijn wat de bezoeker krijgt.
+Statische website. Geen build-stap, geen dependencies, geen `node_modules`:
+wat in deze repository staat is letterlijk wat de bezoeker krijgt.
+
+Gehost op Netlify, gekoppeld aan deze repository. Een push naar `main` is
+binnen een minuut live.
 
 ## Bestanden
 
 ```
-index.html            Homepage
-over-ons.html         Over ons
-diensten.html         Diensten (ankers: #finance, #automatisering, #ai)
-projecten.html        Projecten en cases, met filter
-partners.html         Partners en platforms
-contact.html          Contactformulier
-privacy.html          Privacyverklaring
-style.css             Alle opmaak
-app.js                Alle scripts (menu, reveals, filter, cookiemelding, formulier)
-logo.png              Logo voor lichte achtergrond
-logo-white.png        Logo voor donkere achtergrond
-partner-*.png/.svg    Logo's van de partners
-sitemap.xml           Sitemap
-robots.txt            Robots
+index.html                                     Landingspagina
+diensten.html                                  Overzicht van de drie diensten
+diensten-financieel-inzicht.html               ┐
+diensten-processen-automatiseren.html          ├ dienstdetailpagina's
+diensten-ai-toepassingen.html                  ┘
+systemen.html                                  Software waar Synomic mee werkt
+kennisbank.html                                Artikeloverzicht
+kennisbank-factuurverwerking-automatiseren.html ┐ artikelen
+kennisbank-liquiditeitsprognose-maken.html      ┘
+over-synomic.html                              Over Synomic
+afspraak.html                                  Afspraakformulier (Formspree)
+privacy.html                                   Privacyverklaring
+404.html                                       Foutpagina (root-relatieve paden)
+
+assets/css/synomic.css                         Het volledige designsysteem
+assets/js/synomic.js                           Alle eigen scripts
+assets/js/vendor/                              GSAP, ScrollTrigger, Lenis, SplitType
+assets/fonts/                                  Geist en Geist Mono (woff2)
+assets/img/                                    Logo's en partnerlogo's
+
+_redirects                                     301's voor oude URL's (Netlify)
+netlify.toml                                   Headers, CSP en cachebeleid
+sitemap.xml  robots.txt                        Vindbaarheid
 ```
 
-## Publiceren via GitHub Pages
+## Geen externe verzoeken
 
-Alle bestanden staan in de root van de repository. Zet in de repo-instellingen Pages op branch `main`, map `/ (root)`. Na een push is de site binnen een minuut bijgewerkt.
+De site haalt niets bij derden op. Lettertypen en libraries staan op de eigen
+server, er is geen analytics en er worden geen cookies geplaatst. Het enige
+externe verkeer ontstaat wanneer een bezoeker zelf het afspraakformulier
+verstuurt.
 
-## Contactformulier
+Dat is geen toevalligheid maar een uitgangspunt: het houdt de
+privacyverklaring kort, maakt een cookiemelding overbodig en laat een strenge
+Content-Security-Policy toe. Wie een script, lettertype of widget van een
+externe partij toevoegt, haalt alle drie die eigenschappen onderuit. Host het
+liever mee in `assets/`.
 
-Het formulier verstuurt naar Formspree endpoint `xbdwaekq` (zie `app.js`, constante `ENDPOINT`). Wilt u een ander adres of een andere dienst, pas dan alleen die constante aan.
+## Het designsysteem aanpassen
 
-Beveiliging van het formulier:
+Alles begint bij de tokens boven in `assets/css/synomic.css`:
 
-- **Honeypot** — verborgen veld `website`; ingevuld betekent bot, het bericht wordt niet verstuurd
-- **Tijdcontrole** — verzending binnen 3 seconden na laden wordt geweigerd
-- **Rate limiting** — maximaal 3 verzendingen per 15 minuten per browsersessie
-- **Validatie** — naam, geldig e-mailadres, onderwerp, bericht van minimaal 20 tekens
-- **Verplichte privacy-akkoordverklaring**
+| Wat | Waar |
+| --- | --- |
+| Kleuren | `:root` — `--ink-*` (vlakken), `--paper*` (tekst), `--cyan*` (accent) |
+| Typografie | `--sans`, `--mono`, en de `--fs-*` schaal met `clamp()` |
+| Ritme | `--gutter`, `--maxw`, `--sec-y` |
+| Beweging | `--ease-out`, `--ease-io`, `--dur-s/m/l` |
 
-## Beveiliging van de site
+De maten schalen mee met het scherm via `clamp()`, dus er zijn geen aparte
+mobiele waarden nodig. Breekpunten staan alleen waar de indeling echt
+verandert.
 
-Elke pagina bevat een Content-Security-Policy als meta-tag (GitHub Pages kan geen echte HTTP-headers meesturen):
+Twee dingen om vast te houden:
 
-- scripts alleen uit deze map — externe of geïnjecteerde scripts worden geblokkeerd
-- afbeeldingen alleen uit deze map
-- verbindingen alleen naar formspree.io
-- `frame-ancestors 'none'` — de site kan niet in een iframe van derden worden getoond
-- `object-src 'none'` en `base-uri 'self'`
+- **Regellengte.** `ch` rekent met de breedte van het cijfer `0`, en dat is in
+  Geist fors breder dan een gemiddelde letter. `52ch` levert ongeveer 74
+  tekens per regel op, niet 52.
+- **`hidden` werkt alleen door de regel bovenin.** De browser zet `hidden` op
+  `display: none`, maar elke eigen `display`-regel wint daarvan. Daarom staat
+  er `[hidden] { display: none !important; }` in de reset.
 
-Aanvullend: `X-Content-Type-Options: nosniff` en een strikt referrer-beleid.
+## Beweging
 
-Verhuist u naar hosting waar u wél headers kunt zetten (bijv. TransIP), zet de CSP dan als HTTP-header en voeg `Strict-Transport-Security` toe.
+`assets/js/synomic.js` bevat losse functies die elk hun eigen element opzoeken
+en niets doen als dat er niet is. Een pagina activeert dus alleen wat hij
+gebruikt.
 
-## Cookies
+- **Lenis** verzorgt het scrollen met traagheid
+- **GSAP + ScrollTrigger** doen de reveals, de sticky secties en de rails
+- **SplitType** knipt koppen in regels voor de maskerende reveal
+- Twee canvas-animaties: het ledgerraster in de hero en het node-netwerk in
+  de paginakoppen en CTA's
 
-De site plaatst geen tracking cookies. De cookiemelding onthoudt de keuze in `localStorage` onder `synomic-cookiekeuze`; het formulier gebruikt `sessionStorage` voor de rate limiting. Er gaat geen enkel gegeven naar een derde partij behalve de formulierinzending naar Formspree en het laden van de lettertypen bij Google Fonts.
+Alles staat achter `prefers-reduced-motion`, en de reveals worden pas
+verborgen nadat JavaScript heeft bevestigd dat het kan animeren — valt een
+script uit, dan is de pagina gewoon volledig zichtbaar in plaats van blanco.
 
-## Teksten aanpassen
+## Het formulier
 
-Alle teksten staan direct in de HTML-bestanden. Contactgegevens en KVK-nummer staan in de footer van elke pagina en in `over-ons.html`.
+`afspraak.html` post naar Formspree. Het endpoint staat in het
+`action`-attribuut van het formulier; dat is de enige plek waar het voorkomt.
+
+Zonder JavaScript post het formulier native naar Formspree en krijgt de
+bezoeker de bedankpagina van Formspree. Met JavaScript gaat het over `fetch`,
+blijft de bezoeker op de pagina en verschijnt het bevestigingspaneel.
+
+Instellingen die in het Formspree-dashboard horen, niet in de code:
+
+- **Allowed domains** op `synomic.nl`, zodat het endpoint niet elders bruikbaar is
+- Het afleveradres van de inzendingen
+- Een eventuele automatische ontvangstbevestiging
+
+## Een artikel toevoegen
+
+Kopieer een bestaande kennisbankpagina en vervang de inhoud. Let op vier
+dingen:
+
+1. `<title>`, `description` en `canonical` in de `<head>`
+2. De inhoudsopgave in `.toc` moet verwijzen naar de `id`'s van de secties
+3. Voeg de pagina toe aan `kennisbank.html` en aan `sitemap.xml`
+4. Zet de leestijd op de gemeten lengte — reken ongeveer 200 woorden per
+   minuut voor zakelijk Nederlands
+
+## Oude URL's
+
+`_redirects` vangt de pagina's op die bij eerdere versies van de site
+bestonden. Hernoem je een pagina, voeg dan een regel toe in plaats van de
+oude naam te laten verdwijnen.
