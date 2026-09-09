@@ -1120,17 +1120,17 @@ html.js-motion [data-reveal] {
   padding-right: clamp(3rem, 6vw, 6rem);
   flex: none;
 }
+/* Logo's staan altijd in hun eigen kleur: een partnerlogo dat je pas ziet
+   als je erover gaat, doet zijn werk niet. Bij hover groeit er één uit de
+   rij, zodat aanwijzen iets oplevert. */
 .logos__set img {
   height: clamp(20px, 2.2vw, 28px);
   width: auto;
-  filter: grayscale(1) brightness(2.4) contrast(0.5);
-  opacity: 0.5;
-  transition: opacity var(--dur-m) var(--ease-out),
-    filter var(--dur-m) var(--ease-out);
+  transform-origin: center;
+  transition: transform var(--dur-m) var(--ease-out);
 }
 .logos__set img:hover {
-  opacity: 1;
-  filter: grayscale(0) brightness(1) contrast(1);
+  transform: scale(1.22);
 }
 
 /* ── 16. Article list ─────────────────────────────────────────────────── */
@@ -1700,14 +1700,6 @@ html.js-motion [data-reveal] {
 .sys__logo img {
   max-height: 22px;
   width: auto;
-  filter: grayscale(1) brightness(2.4) contrast(0.5);
-  opacity: 0.6;
-  transition: opacity var(--dur-m) var(--ease-out),
-    filter var(--dur-m) var(--ease-out);
-}
-.sys:hover .sys__logo img {
-  opacity: 1;
-  filter: none;
 }
 .sys__name {
   grid-column: 3 / span 3;
@@ -1747,20 +1739,6 @@ html.js-motion [data-reveal] {
   .sys__what {
     grid-column: 1 / span 12;
   }
-}
-
-/* Some vendor logos are a solid coloured tile rather than a dark wordmark.
-   The brightness push that lifts a wordmark out of the dark washes those
-   flat, so they get a plain desaturation instead. */
-.sys__logo img.is-solid,
-.logos__set img.is-solid {
-  filter: grayscale(1);
-  opacity: 0.45;
-}
-.sys:hover .sys__logo img.is-solid,
-.logos__set img.is-solid:hover {
-  filter: none;
-  opacity: 1;
 }
 
 /* ── Pager ────────────────────────────────────────────────────────────── */
