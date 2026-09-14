@@ -119,7 +119,25 @@ async function ecbRate() {
   };
 }
 
-export default async () => {
+export default async (req) => {
+  // Tweede slot: dit adres kent geen parameters. Standaard telt Netlify de
+  // query-string mee in de cachesleutel, dus zonder deze regel start elke
+  // unieke URL de function opnieuw en haalt CBS en de ECB opnieuw op.
+  //
+  // Deze doorverwijzing krijgt bewust géén Netlify-Vary: anders kan een
+  // gecachte 301 onder de sleutel van het kale adres belanden en verwijst
+  // /api/ticker naar zichzelf.
+  if (new URL(req.url).search) {
+    return new Response(null, {
+      status: 301,
+      headers: {
+        Location: '/api/ticker',
+        'Cache-Control': 'public, max-age=3600',
+        'Netlify-CDN-Cache-Control': 'public, durable, max-age=86400',
+      },
+    });
+  }
+
   // Eén trage of stukke bron mag de andere niet meenemen.
   const [nieuws, rente] = await Promise.allSettled([cbsHeadlines(), ecbRate()]);
 
@@ -155,6 +173,10 @@ export default async () => {
       'Content-Type': 'application/json; charset=utf-8',
       'Cache-Control': cache,
       'Netlify-CDN-Cache-Control': cdn,
+      // Eerste slot: de cachesleutel varieert alleen op de nooit gebruikte
+      // parameter `_`. Alle andere query-strings krijgen hetzelfde gecachte
+      // antwoord en starten de function niet.
+      'Netlify-Vary': 'query=_',
     },
   });
 };
