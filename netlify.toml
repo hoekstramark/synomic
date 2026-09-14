@@ -1,6 +1,8 @@
 # Deze site is platte HTML: er is niets te bouwen, alleen te publiceren.
+# Alleen de map site/ gaat online. Deze configuratie, de readme en de
+# broncode van de function blijven daardoor buiten het publieke domein.
 [build]
-  publish = "."
+  publish = "site"
   command = ""
 
 # Netlify schrijft standaard interne links om van `diensten.html` naar

@@ -8,31 +8,38 @@ binnen een minuut live.
 
 ## Bestanden
 
-```
-index.html                                     Landingspagina
-diensten.html                                  Overzicht van de drie diensten
-diensten-financieel-inzicht.html               ┐
-diensten-processen-automatiseren.html          ├ dienstdetailpagina's
-diensten-ai-toepassingen.html                  ┘
-systemen.html                                  Software waar Synomic mee werkt
-kennisbank.html                                Artikeloverzicht
-kennisbank-factuurverwerking-automatiseren.html ┐ artikelen
-kennisbank-liquiditeitsprognose-maken.html      ┘
-over-synomic.html                              Over Synomic
-afspraak.html                                  Afspraakformulier (Formspree)
-privacy.html                                   Privacyverklaring
-404.html                                       Foutpagina (root-relatieve paden)
+Alleen `site/` wordt gepubliceerd. Alles daarbuiten — deze readme, de
+Netlify-configuratie en de broncode van de function — staat in de repo maar
+niet online.
 
-assets/css/synomic.css                         Het volledige designsysteem
-assets/js/synomic.js                           Alle eigen scripts
-assets/js/vendor/                              GSAP, ScrollTrigger, Lenis, SplitType
-assets/fonts/                                  Geist en Geist Mono (woff2)
-assets/img/                                    Logo's en partnerlogo's
-
-_redirects                                     301's voor oude URL's (Netlify)
-netlify.toml                                   Headers, CSP en cachebeleid
-sitemap.xml  robots.txt                        Vindbaarheid
 ```
+netlify.toml                                    Publicatiemap, headers, CSP en cachebeleid
+netlify/functions/ticker.mjs                    Nieuws en rente voor de bovenbalk (/api/ticker)
+
+site/
+  index.html                                    Landingspagina
+  diensten.html                                 Overzicht van de drie diensten
+  diensten-financieel-inzicht.html              ┐
+  diensten-processen-automatiseren.html         ├ dienstdetailpagina's
+  diensten-ai-toepassingen.html                 ┘
+  systemen.html                                 Software waar Synomic mee werkt
+  kennisbank.html                               Artikeloverzicht
+  kennisbank-*.html                             Artikelen
+  over-synomic.html                             Over Synomic
+  afspraak.html                                 Afspraakformulier (Formspree)
+  privacy.html                                  Privacyverklaring
+  404.html                                      Foutpagina (root-relatieve paden)
+  _redirects                                    301's voor oude URL's
+  sitemap.xml  robots.txt                       Vindbaarheid
+  .well-known/security.txt                      Contact bij een gevonden kwetsbaarheid
+  assets/css/synomic.css                        Het volledige designsysteem
+  assets/js/synomic.js                          Alle eigen scripts
+  assets/js/vendor/                             GSAP, ScrollTrigger, Lenis, SplitType
+  assets/fonts/  assets/img/                    Lettertypen en afbeeldingen
+```
+
+`security.txt` verloopt op 14 september 2027. Zet de `Expires`-datum dan een
+jaar verder; de wekelijkse beveiligingsscan waarschuwt een maand vooraf.
 
 ## Geen externe verzoeken
 
