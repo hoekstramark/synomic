@@ -119,21 +119,28 @@ async function ecbRate() {
   };
 }
 
+/* Elk antwoord van deze function draagt dezelfde Netlify-Vary. Wisselende
+   regels voor hetzelfde adres laten Netlify de cache weggooien; op de
+   preview gaf een antwoord zonder die header na één aanvraag een vers
+   antwoord op het kale adres. */
+const VARY = 'query=_';
+
 export default async (req) => {
-  // Tweede slot: dit adres kent geen parameters. Standaard telt Netlify de
-  // query-string mee in de cachesleutel, dus zonder deze regel start elke
-  // unieke URL de function opnieuw en haalt CBS en de ECB opnieuw op.
+  // Eerste slot zit in VARY: de cachesleutel kijkt alleen naar `_`, dus elke
+  // andere query-string krijgt het gecachte antwoord en start niets.
   //
-  // Deze doorverwijzing krijgt bewust géén Netlify-Vary: anders kan een
-  // gecachte 301 onder de sleutel van het kale adres belanden en verwijst
-  // /api/ticker naar zichzelf.
-  if (new URL(req.url).search) {
-    return new Response(null, {
-      status: 301,
+  // Tweede slot: wie `_` meestuurt, krijgt een foutmelding zonder dat CBS of
+  // de ECB benaderd worden. Geen doorverwijzing — Netlify plakt de
+  // query-string achter de Location, waardoor /api/ticker?_=x naar zichzelf
+  // bleef verwijzen.
+  if (new URL(req.url).searchParams.has('_')) {
+    return new Response(JSON.stringify({ fout: 'Dit adres kent geen parameters.' }), {
+      status: 400,
       headers: {
-        Location: '/api/ticker',
+        'Content-Type': 'application/json; charset=utf-8',
         'Cache-Control': 'public, max-age=3600',
         'Netlify-CDN-Cache-Control': 'public, durable, max-age=86400',
+        'Netlify-Vary': VARY,
       },
     });
   }
@@ -173,10 +180,7 @@ export default async (req) => {
       'Content-Type': 'application/json; charset=utf-8',
       'Cache-Control': cache,
       'Netlify-CDN-Cache-Control': cdn,
-      // Eerste slot: de cachesleutel varieert alleen op de nooit gebruikte
-      // parameter `_`. Alle andere query-strings krijgen hetzelfde gecachte
-      // antwoord en starten de function niet.
-      'Netlify-Vary': 'query=_',
+      'Netlify-Vary': VARY,
     },
   });
 };
