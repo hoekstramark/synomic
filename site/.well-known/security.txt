@@ -1,0 +1,7 @@
+# Beveiligingscontact voor synomic.nl, volgens RFC 9116.
+# Vond u een kwetsbaarheid? Meld het hier; u krijgt binnen één werkdag reactie.
+
+Contact: mailto:mark@synomic.nl
+Expires: 2027-09-14T00:00:00.000Z
+Preferred-Languages: nl, en
+Canonical: https://synomic.nl/.well-known/security.txt
