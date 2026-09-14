@@ -119,7 +119,32 @@ async function ecbRate() {
   };
 }
 
-export default async () => {
+/* Elk antwoord van deze function draagt dezelfde Netlify-Vary. Wisselende
+   regels voor hetzelfde adres laten Netlify de cache weggooien; op de
+   preview gaf een antwoord zonder die header na één aanvraag een vers
+   antwoord op het kale adres. */
+const VARY = 'query=_';
+
+export default async (req) => {
+  // Eerste slot zit in VARY: de cachesleutel kijkt alleen naar `_`, dus elke
+  // andere query-string krijgt het gecachte antwoord en start niets.
+  //
+  // Tweede slot: wie `_` meestuurt, krijgt een foutmelding zonder dat CBS of
+  // de ECB benaderd worden. Geen doorverwijzing — Netlify plakt de
+  // query-string achter de Location, waardoor /api/ticker?_=x naar zichzelf
+  // bleef verwijzen.
+  if (new URL(req.url).searchParams.has('_')) {
+    return new Response(JSON.stringify({ fout: 'Dit adres kent geen parameters.' }), {
+      status: 400,
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'Cache-Control': 'public, max-age=3600',
+        'Netlify-CDN-Cache-Control': 'public, durable, max-age=86400',
+        'Netlify-Vary': VARY,
+      },
+    });
+  }
+
   // Eén trage of stukke bron mag de andere niet meenemen.
   const [nieuws, rente] = await Promise.allSettled([cbsHeadlines(), ecbRate()]);
 
@@ -155,6 +180,7 @@ export default async () => {
       'Content-Type': 'application/json; charset=utf-8',
       'Cache-Control': cache,
       'Netlify-CDN-Cache-Control': cdn,
+      'Netlify-Vary': VARY,
     },
   });
 };
