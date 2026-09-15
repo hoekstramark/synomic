@@ -52,11 +52,11 @@ Dat is geen toevalligheid maar een uitgangspunt: het houdt de
 privacyverklaring kort, maakt een cookiemelding overbodig en laat een strenge
 Content-Security-Policy toe. Wie een script, lettertype of widget van een
 externe partij toevoegt, haalt alle drie die eigenschappen onderuit. Host het
-liever mee in `assets/`.
+liever mee in `site/assets/`.
 
 ## Het designsysteem aanpassen
 
-Alles begint bij de tokens boven in `assets/css/synomic.css`:
+Alles begint bij de tokens boven in `site/assets/css/synomic.css`:
 
 | Wat | Waar |
 | --- | --- |
@@ -80,7 +80,7 @@ Twee dingen om vast te houden:
 
 ## Beweging
 
-`assets/js/synomic.js` bevat losse functies die elk hun eigen element opzoeken
+`site/assets/js/synomic.js` bevat losse functies die elk hun eigen element opzoeken
 en niets doen als dat er niet is. Een pagina activeert dus alleen wat hij
 gebruikt.
 
@@ -96,7 +96,7 @@ script uit, dan is de pagina gewoon volledig zichtbaar in plaats van blanco.
 
 ## Het formulier
 
-`afspraak.html` post naar Formspree. Het endpoint staat in het
+`site/afspraak.html` post naar Formspree. Het endpoint staat in het
 `action`-attribuut van het formulier; dat is de enige plek waar het voorkomt.
 
 Zonder JavaScript post het formulier native naar Formspree en krijgt de
