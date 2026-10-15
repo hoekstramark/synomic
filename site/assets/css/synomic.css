@@ -2198,3 +2198,57 @@ a.marquee__item:hover .marquee__bron {
 .marquee:has(a):hover {
   cursor: pointer;
 }
+
+/* ── Tools overview ───────────────────────────────────────────────────── */
+
+/* A tool row reads like an article row but holds its own actions, so it is
+   not one big link. */
+.tool {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(1rem, 2vw, 2rem);
+  row-gap: 1.5rem;
+  align-items: start;
+  padding-block: clamp(2rem, 4vw, 3.25rem);
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 7rem;
+}
+.tool__mark {
+  grid-column: 1 / span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  color: var(--cyan);
+}
+.tool__head {
+  grid-column: 3 / span 4;
+}
+.tool__by {
+  margin-top: 0.6rem;
+  color: var(--muted);
+}
+.tool__body {
+  grid-column: 8 / span 5;
+}
+.tool__body .t-body {
+  color: var(--paper-dim);
+}
+.tool__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem 1.75rem;
+  margin-top: 1.75rem;
+}
+@media (max-width: 900px) {
+  .tool__mark,
+  .tool__head,
+  .tool__body {
+    grid-column: 1 / -1;
+  }
+  .tool__mark {
+    flex-direction: row;
+    align-items: center;
+  }
+}

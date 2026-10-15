@@ -3,7 +3,7 @@
 
 /werkwijze.html    /over-synomic.html#werkwijze   301
 /contact.html      /afspraak.html                 301
-/projecten.html    /#projecten                    301
+/projecten.html    /                              301
 /software.html     /systemen.html                 301
 
 # Deze twee stonden in de repo als meta-refresh-stubs uit een eerdere
@@ -13,3 +13,10 @@
 
 /over-ons.html     /over-synomic.html             301
 /partners.html     /systemen.html                 301
+
+# De kennisbank is in oktober 2026 vervangen door het overzicht van eigen
+# tools. De artikelen verwijzen door naar de dienst waar ze over gingen.
+
+/kennisbank.html                                   /onze-tools.html                          301
+/kennisbank-factuurverwerking-automatiseren.html   /diensten-processen-automatiseren.html    301
+/kennisbank-liquiditeitsprognose-maken.html        /diensten-financieel-inzicht.html         301
