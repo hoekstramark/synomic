@@ -23,8 +23,7 @@ site/
   diensten-processen-automatiseren.html         ├ dienstdetailpagina's
   diensten-ai-toepassingen.html                 ┘
   systemen.html                                 Software waar Synomic mee werkt
-  kennisbank.html                               Artikeloverzicht
-  kennisbank-*.html                             Artikelen
+  onze-tools.html                               Overzicht van de eigen tools (Inkoopkompas)
   over-synomic.html                             Over Synomic
   afspraak.html                                 Afspraakformulier (Formspree)
   privacy.html                                  Privacyverklaring
@@ -109,16 +108,18 @@ Instellingen die in het Formspree-dashboard horen, niet in de code:
 - Het afleveradres van de inzendingen
 - Een eventuele automatische ontvangstbevestiging
 
-## Een artikel toevoegen
+## Een tool toevoegen
 
-Kopieer een bestaande kennisbankpagina en vervang de inhoud. Let op vier
-dingen:
+Elke tool is een `<article class="tool">` in `onze-tools.html`. Kopieer het
+blok van Inkoopkompas en let op drie dingen:
 
-1. `<title>`, `description` en `canonical` in de `<head>`
-2. De inhoudsopgave in `.toc` moet verwijzen naar de `id`'s van de secties
-3. Voeg de pagina toe aan `kennisbank.html` en aan `sitemap.xml`
-4. Zet de leestijd op de gemeten lengte — reken ongeveer 200 woorden per
-   minuut voor zakelijk Nederlands
+1. Een eigen `id`, zodat andere pagina's naar `onze-tools.html#id` kunnen linken
+2. Het icoon als inline-SVG met `currentColor` (de CSP staat geen externe beelden toe)
+3. Zet de tool ook in de footerkolom "Tools" op elke pagina
+
+De kennisbank is in oktober 2026 vervangen door dit overzicht. De oude
+pagina's staan in `_archief-kennisbank/` (niet gepubliceerd) en hun URL's
+verwijzen via `_redirects` door.
 
 ## Oude URL's
 
