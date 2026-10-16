@@ -2252,3 +2252,14 @@ a.marquee__item:hover .marquee__bron {
     align-items: center;
   }
 }
+
+/* ── Grid12 on narrow screens ─────────────────────────────────────────── */
+
+/* Kolommen in .grid12 krijgen hun plek via een inline style. Op smalle
+   schermen moeten ze onder elkaar, en een inline style wint alleen van
+   !important. */
+@media (max-width: 900px) {
+  .grid12 > [style*="grid-column"] {
+    grid-column: 1 / -1 !important;
+  }
+}
