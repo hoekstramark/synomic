@@ -1078,7 +1078,7 @@
     var status = form.querySelector('.form__status');
     var submit = form.querySelector('button[type="submit"]');
     var sent = document.querySelector('[data-form-sent]');
-    var MAILTO = 'mailto:mark@synomic.nl';
+    var MAILTO = 'mailto:info@synomic.nl';
 
     var fieldOf = function (el) {
       return el.closest('.field') || el.closest('.check');
@@ -1154,7 +1154,7 @@
       if (action.indexOf('VERVANG-DIT') !== -1) {
         say(
           'Het formulier is nog niet gekoppeld aan Formspree. Mail zolang naar ' +
-            '<a href="' + MAILTO + '" style="color:var(--cyan)">mark@synomic.nl</a>.'
+            '<a href="' + MAILTO + '" style="color:var(--cyan)">info@synomic.nl</a>.'
         );
         return;
       }
@@ -1207,13 +1207,13 @@
             handled
               ? 'Een paar velden zijn niet geaccepteerd. Kijk ze na en probeer het opnieuw.'
               : 'Versturen is niet gelukt. Probeer het opnieuw of mail naar ' +
-                  '<a href="' + MAILTO + '" style="color:var(--cyan)">mark@synomic.nl</a>.'
+                  '<a href="' + MAILTO + '" style="color:var(--cyan)">info@synomic.nl</a>.'
           );
         })
         .catch(function () {
           say(
             'Er is geen verbinding met de server. Probeer het later opnieuw of mail ' +
-              'naar <a href="' + MAILTO + '" style="color:var(--cyan)">mark@synomic.nl</a>.'
+              'naar <a href="' + MAILTO + '" style="color:var(--cyan)">info@synomic.nl</a>.'
           );
         })
         .then(function () {
