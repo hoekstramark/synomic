@@ -135,8 +135,24 @@
             <span class="field__err" id="err-email"></span>
           </div>
 
+          <fieldset class="field field--check field--wide">
+            <legend>Hoe wilt u contact?</legend>
+            <div class="choice">
+              <label class="check check--radio">
+                <input type="radio" name="contact" value="Per e-mail" checked>
+                <span class="check__box" aria-hidden="true"></span>
+                <span>Per e-mail</span>
+              </label>
+              <label class="check check--radio">
+                <input type="radio" name="contact" value="Bel mij terug">
+                <span class="check__box" aria-hidden="true"></span>
+                <span>Bel mij terug</span>
+              </label>
+            </div>
+          </fieldset>
+
           <div class="field">
-            <label for="telefoon">Telefoon</label>
+            <label for="telefoon">Telefoon <span class="field__req" aria-hidden="true" data-tel-req hidden>*</span></label>
             <input type="tel" id="telefoon" name="telefoon" autocomplete="tel">
             <span class="field__err"></span>
           </div>
@@ -212,7 +228,7 @@
         <div>
           <p class="meta meta-row meta--cyan" style="margin-bottom:1.5rem">Liever direct</p>
           <p><a class="link" href="mailto:info@synomic.nl">info@synomic.nl <svg class="btn__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 11 11 1M11 1H3.5M11 1v7.5" stroke="currentColor" stroke-width="1.2"/></svg></a></p>
-          <p style="margin-top:.75rem"><a class="link" href="tel:+31513201152">0513 20 11 52 <svg class="btn__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 11 11 1M11 1H3.5M11 1v7.5" stroke="currentColor" stroke-width="1.2"/></svg></a></p>
+          <p style="margin-top:.75rem"><a class="link" href="afspraak.html?contact=terugbellen" data-terugbellen>Bel mij terug <svg class="btn__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 11 11 1M11 1H3.5M11 1v7.5" stroke="currentColor" stroke-width="1.2"/></svg></a></p>
           <p class="meta" style="margin-top:1.75rem;line-height:1.8">
             Koornbeursweg 73<br>8442 DJ Heerenveen<br>KVK 94705569
           </p>
@@ -275,7 +291,7 @@
         <ul>
           <li><a href="afspraak.html">Plan een afspraak</a></li>
           <li><a href="mailto:info@synomic.nl">info@synomic.nl</a></li>
-          <li><a href="tel:+31513201152">0513 20 11 52</a></li>
+          <li><a href="afspraak.html?contact=terugbellen">Bel mij terug</a></li>
         </ul>
         <p class="meta" style="margin-top:1.25rem;line-height:1.7">
           Koornbeursweg 73<br>8442 DJ Heerenveen<br>KVK 94705569
