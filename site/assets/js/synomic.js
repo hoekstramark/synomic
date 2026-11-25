@@ -1129,6 +1129,47 @@
       });
     });
 
+    // "Bel mij terug" maakt telefoon verplicht en geeft de mail een eigen
+    // onderwerp, zodat een terugbelverzoek in de inbox opvalt.
+    var tel = form.elements.telefoon;
+    var telReq = form.querySelector('[data-tel-req]');
+    var subject = form.elements._subject;
+    var subjectMail = subject ? subject.value : '';
+    var contacts = [].slice.call(form.querySelectorAll('input[name="contact"]'));
+    var bellen = contacts.filter(function (r) {
+      return r.value === 'Bel mij terug';
+    })[0];
+
+    var syncContact = function () {
+      var terug = !!(bellen && bellen.checked);
+      if (tel) {
+        tel.required = terug;
+        if (!terug) setError(tel, '');
+      }
+      if (telReq) telReq.hidden = !terug;
+      if (subject) subject.value = terug ? 'Terugbelverzoek via synomic.nl' : subjectMail;
+    };
+
+    contacts.forEach(function (r) {
+      r.addEventListener('change', syncContact);
+    });
+    if (bellen && /[?&]contact=terugbellen(&|$)/.test(location.search)) {
+      bellen.checked = true;
+    }
+    syncContact();
+
+    // Links naar ?contact=terugbellen op deze pagina zelf: geen herlaadbeurt,
+    // dan blijft wat de bezoeker al invulde staan.
+    document.querySelectorAll('[data-terugbellen]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        if (!bellen || !tel) return;
+        e.preventDefault();
+        bellen.checked = true;
+        syncContact();
+        tel.focus();
+      });
+    });
+
     var say = function (msg) {
       if (!status) return;
       status.innerHTML = msg ? '<p>' + msg + '</p>' : '';
